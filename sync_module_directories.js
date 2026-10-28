@@ -71,6 +71,8 @@ const modulesConfig = {
       'health-incidents.html': { viewId: 'health-incidents', parent: 'Settings', title: 'Incidents' },
       'notification-settings.html': { viewId: 'notification-settings', parent: 'Settings', title: 'Notification settings' },
       'notify-templates.html': { viewId: 'notify-templates', parent: 'Settings', title: 'Notify templates' },
+      'settings.html': { viewId: 'portal-settings', parent: 'Settings', title: 'Portal settings' },
+      'audit-logs.html': { viewId: 'audit-logs', parent: 'Reports', title: 'Audit logs' },
       'index.html': { viewId: 'portal-settings', parent: 'Settings', title: 'Portal settings' }
     }
   },
@@ -151,6 +153,8 @@ const modulesConfig = {
       'scheme-applications.html': { viewId: 'scheme-applications', parent: 'Field', title: 'Scheme applications' },
       'crop-diagnostics.html': { viewId: 'crop-diagnostics', parent: 'Field', title: 'Crop diagnostics' },
       'soil-request.html': { viewId: 'soil-request', parent: 'Field', title: 'Soil request' },
+      'saved-items.html': { viewId: 'saved-items', parent: 'Field', title: 'Saved items' },
+      'weather.html': { viewId: 'weather-dashboard', parent: 'Dashboard', title: 'Weather' },
       'index.html': { viewId: 'field-tools', parent: 'Field', title: 'Field tools' }
     }
   },
@@ -180,6 +184,7 @@ const modulesConfig = {
       'coverage-gaps.html': { viewId: 'coverage-gaps', parent: 'Insights', title: 'Coverage gaps' },
       'crop-intelligence.html': { viewId: 'crop-intelligence', parent: 'Insights', title: 'Crop intelligence' },
       'channel-mix.html': { viewId: 'channel-mix', parent: 'Insights', title: 'Channel mix' },
+      'network-map.html': { viewId: 'network-map', parent: 'Dashboard', title: 'Network map' },
       'index.html': { viewId: 'active-time', parent: 'Insights', title: 'Active time' }
     }
   },
@@ -206,6 +211,20 @@ const domLoadedNeedle = `// Initialize on window load
         try { lucide.createIcons(); } catch(_) {}
       }
       initCharts();
+      if (typeof initResponsivePortal === 'function') initResponsivePortal();
+      if (typeof enhanceOperationalToastButtons === 'function') enhanceOperationalToastButtons();
+      if (typeof bindPortalEscape === 'function') bindPortalEscape();
+      if (typeof renderSavedItems === 'function') renderSavedItems();
+      document.querySelectorAll('input[placeholder]').forEach((input) => {
+        if (!input.getAttribute('aria-label') && !document.querySelector('label[for="' + input.id + '"]')) {
+          input.setAttribute('aria-label', input.getAttribute('placeholder') || 'Input');
+        }
+      });
+      document.querySelectorAll('[id^="loginOtp"]').forEach((input, idx, list) => {
+        input.addEventListener('input', () => {
+          if (input.value && list[idx + 1]) list[idx + 1].focus();
+        });
+      });
     });`;
 
 // Clean obsolete access directory if present
@@ -239,6 +258,20 @@ for (const [modKey, mod] of Object.entries(modulesConfig)) {
       if (typeof initReportCharts === 'function') {
         initReportCharts();
       }
+      if (typeof initResponsivePortal === 'function') initResponsivePortal();
+      if (typeof enhanceOperationalToastButtons === 'function') enhanceOperationalToastButtons();
+      if (typeof bindPortalEscape === 'function') bindPortalEscape();
+      if (typeof renderSavedItems === 'function') renderSavedItems();
+      document.querySelectorAll('input[placeholder]').forEach((input) => {
+        if (!input.getAttribute('aria-label') && !document.querySelector('label[for="' + input.id + '"]')) {
+          input.setAttribute('aria-label', input.getAttribute('placeholder') || 'Input');
+        }
+      });
+      document.querySelectorAll('[id^="loginOtp"]').forEach((input, idx, list) => {
+        input.addEventListener('input', () => {
+          if (input.value && list[idx + 1]) list[idx + 1].focus();
+        });
+      });
       navigateTo('${cfg.viewId}', '${cfg.parent}', '${cfg.title}');
     });`;
 

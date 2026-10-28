@@ -2,7 +2,7 @@
 <html lang="en" class="h-full bg-[#F8FAFC]">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Language master — Ankurmitra Web Portal</title>
   <link rel="icon" type="image/png" href="../assets/ankurmitra_emblem.png">
   <link rel="apple-touch-icon" href="../assets/ankurmitra_emblem.png">
@@ -541,17 +541,6 @@
     body.portal-authenticated #floatingAiMitraContainer { display: flex; }
     .tilt-card-3d:hover { transform: none; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08) !important; }
     .tilt-glare { display: none !important; }
-    @media (max-width: 1023px) {
-      #portalSidebar {
-        position: fixed;
-        top: 64px;
-        bottom: 0;
-        left: 0;
-        z-index: 40;
-        box-shadow: 16px 0 40px rgba(15, 23, 42, 0.18);
-      }
-      #portalSidebar.mobile-open { display: flex !important; }
-    }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after {
@@ -562,11 +551,9 @@
       .mandi-ticker-track { animation: none !important; }
       .animate-ping, .animate-bounce, .animate-pulse, .hud-soundwave-bar { animation: none !important; }
     }
-    @media (min-width: 1920px) {
-      #mainScrollCanvas { max-width: 1680px; margin-left: auto; margin-right: auto; width: 100%; }
-    }
 
 </style>
+  <link rel="stylesheet" href="../assets/portal-responsive.css">
 </head>
 <body class="h-full flex flex-col antialiased selection:bg-[#E5F4EA] selection:text-[#0B6623] overflow-hidden">
   <a href="#mainScrollCanvas" class="skip-link">Skip to content</a>
@@ -648,10 +635,10 @@
     <div class="w-full lg:w-1/2 flex flex-col justify-between p-6 sm:p-10 lg:p-12 bg-white overflow-y-auto">
       
       <!-- Top Bar inside Login Card with Official Product Logo -->
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <img src="../assets/product_logo.png" alt="Ankurmitra - Smart companion for growth" class="w-[105px] h-auto object-contain object-left">
-          <span class="text-xs text-[#64748B] font-semibold border-l border-[#E5E7EB] pl-3 py-1">Smart companion for growth</span>
+      <div class="flex items-center justify-between gap-3 flex-wrap">
+        <div class="flex items-center gap-3 min-w-0">
+          <img src="../assets/product_logo.png" alt="Ankurmitra - Smart companion for growth" class="w-[105px] h-auto object-contain object-left flex-shrink-0">
+          <span class="text-xs text-[#64748B] font-semibold border-l border-[#E5E7EB] pl-3 py-1 hidden sm:inline">Smart companion for growth</span>
         </div>
 
         <div class="text-right">
@@ -669,7 +656,7 @@
         </div>
 
         <!-- Auth Method Tabs: 1. Password, 2. PIN, 3. OTP -->
-        <div class="mt-6 flex border-b border-[#E5E7EB] text-xs font-semibold">
+        <div class="mt-6 flex border-b border-[#E5E7EB] text-xs font-semibold overflow-x-auto">
           <button type="button" onclick="setAuthMethod('password')" id="authTab-password" class="pb-2.5 px-3.5 border-b-2 border-[#0B6623] text-[#0B6623] font-bold transition">1. Password</button>
           <button type="button" onclick="setAuthMethod('pin')" id="authTab-pin" class="pb-2.5 px-3.5 border-b-2 border-transparent text-[#64748B] hover:text-[#0F172A] transition">2. PIN</button>
           <button type="button" onclick="setAuthMethod('otp')" id="authTab-otp" class="pb-2.5 px-3.5 border-b-2 border-transparent text-[#64748B] hover:text-[#0F172A] transition">3. OTP</button>
@@ -686,13 +673,13 @@
                 placeholder="XXXXX XXXXX" required>
             </div>
             <!-- Auto-detect role helper & quick fill demo buttons -->
-            <div class="mt-1.5 flex items-center justify-between text-[11px] text-[#64748B]">
+            <div class="mt-1.5 flex items-center justify-between text-[11px] text-[#64748B] gap-2 flex-wrap">
               <span>Role is auto-detected on sign in</span>
-              <div class="flex items-center gap-1.5">
+              <div class="flex items-center gap-1.5 flex-wrap">
                 <span class="text-slate-400">Demo:</span>
-                <button type="button" onclick="quickFillPhone('98250 12345')" class="hover:text-[#0B6623] font-semibold underline">Admin</button>
-                <button type="button" onclick="quickFillPhone('98250 22222')" class="hover:text-[#0B6623] font-semibold underline">Dealer</button>
-                <button type="button" onclick="quickFillPhone('98250 33333')" class="hover:text-[#0B6623] font-semibold underline">Industry</button>
+                <button type="button" onclick="quickFillPhone('98250 12345')" class="hover:text-[#0B6623] font-semibold underline min-h-8">Admin</button>
+                <button type="button" onclick="quickFillPhone('98250 22222')" class="hover:text-[#0B6623] font-semibold underline min-h-8">Dealer</button>
+                <button type="button" onclick="quickFillPhone('98250 33333')" class="hover:text-[#0B6623] font-semibold underline min-h-8">Industry</button>
               </div>
             </div>
           </div>
@@ -732,7 +719,7 @@
           <!-- 3. OTP Field -->
           <div id="authField-otp" class="hidden">
             <label class="block text-xs font-bold text-[#0F172A] mb-1" for="loginOtp0">6-Digit Verification OTP</label>
-            <div class="flex gap-2" role="group" aria-label="One-time password">
+            <div class="flex gap-2 flex-wrap" role="group" aria-label="One-time password">
               <input type="text" id="loginOtp0" inputmode="numeric" maxlength="1" value="" aria-label="OTP digit 1" class="w-10 h-10 text-center font-bold font-mono text-sm border border-[#E5E7EB] rounded-lg bg-[#F8FAFC]">
               <input type="text" id="loginOtp1" inputmode="numeric" maxlength="1" value="" aria-label="OTP digit 2" class="w-10 h-10 text-center font-bold font-mono text-sm border border-[#E5E7EB] rounded-lg bg-[#F8FAFC]">
               <input type="text" id="loginOtp2" inputmode="numeric" maxlength="1" value="" aria-label="OTP digit 3" class="w-10 h-10 text-center font-bold font-mono text-sm border border-[#E5E7EB] rounded-lg bg-[#F8FAFC]">
@@ -744,7 +731,7 @@
           </div>
 
           <!-- Primary Submit Button (Height 40px, green pill #0B6623) -->
-          <button type="submit" class="w-full h-10 bg-[#0B6623] hover:bg-[#074818] active:scale-[0.99] text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center justify-center gap-2">
+          <button type="submit" class="w-full h-11 min-h-11 bg-[#0B6623] hover:bg-[#074818] active:scale-[0.99] text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center justify-center gap-2">
             <span>Sign in</span>
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </button>
@@ -810,11 +797,11 @@
   <div id="app-shell" class="h-full flex flex-col flex-1 overflow-hidden">
     
     <!-- STICKY HEADER (64px) -->
-    <header role="banner" class="h-16 bg-white border-b border-[#E5E7EB] z-30 flex items-center justify-between px-4 sm:px-6 flex-shrink-0 transition-colors">
+    <header role="banner" class="h-16 bg-white border-b border-[#E5E7EB] z-30 flex items-center justify-between px-4 sm:px-6 flex-shrink-0 transition-colors min-w-0 gap-2">
       
       <!-- Left / Center: Search field 40px (Location chip and role chip removed as requested) -->
-      <div class="flex items-center gap-3 flex-1 max-w-2xl">
-        <button type="button" onclick="toggleMobileSidebar()" class="lg:hidden p-2 text-[#64748B] hover:bg-[#F8FAFC] rounded-lg" aria-label="Open navigation menu" aria-controls="portalSidebar">
+      <div class="flex items-center gap-3 flex-1 max-w-2xl min-w-0">
+        <button type="button" id="mobileMenuBtn" onclick="toggleMobileSidebar()" class="lg:hidden p-2 text-[#64748B] hover:bg-[#F8FAFC] rounded-lg inline-flex items-center justify-center" aria-label="Open navigation menu" aria-controls="portalSidebar" aria-expanded="false">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
 
@@ -834,7 +821,7 @@
       </div>
 
       <!-- Right: Theme Switcher, Notification Flyout Popup, User Profile Flyout Dropdown -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
         
         <!-- Theme Toggle Button (Light / Dark) -->
         
@@ -1215,6 +1202,7 @@
         </div>
 
       </aside>
+      <div id="sidebarBackdrop" class="portal-sidebar-backdrop" hidden aria-hidden="true"></div>
 
       <!-- =====================================================================
            MAIN BODY AREA (12-column main, canvas #F8FAFC)
@@ -1351,7 +1339,7 @@
               <h1 id="pageHeading" class="text-[22px] font-bold text-[#0F172A] tracking-tight">Welcome</h1>
             </div>
 
-            <div id="pageActionContainer" class="flex items-center gap-2">
+            <div id="pageActionContainer" class="flex items-center gap-2 flex-wrap">
               <!-- Dynamically populated action buttons -->
             </div>
           </div>
@@ -1542,7 +1530,7 @@
                       <p class="text-xs text-[#64748B]">Geographic pin clusters across Sudavad, Bagasara, and Amreli</p>
                     </div>
                     <!-- Role Pin Legends -->
-                    <div class="flex items-center gap-2 text-[11px] font-semibold">
+                    <div class="flex items-center gap-2 text-[11px] font-semibold flex-wrap">
                       <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#22C55E]"></span> Farmer</span>
                       <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B]"></span> Dealer</span>
                       <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#00A6C7]"></span> Retailer</span>
@@ -25992,7 +25980,7 @@
              Centre: © 2026 Rudram. All rights reserved.
              Right: 4 20px line icons (LinkedIn, website globe, Twitter, Instagram)
              ===================================================================== -->
-        <footer class="h-12 bg-white border-t border-[#E5E7EB] px-6 flex items-center justify-between text-xs text-[#64748B] flex-shrink-0 z-20">
+        <footer class="h-12 bg-white border-t border-[#E5E7EB] px-4 sm:px-6 flex items-center justify-between text-xs text-[#64748B] flex-shrink-0 z-20 portal-app-footer">
           <div class="font-medium">Version 1.0.0</div>
           <div class="font-medium text-center">© 2026 Rudram. All rights reserved.</div>
           <div class="flex items-center gap-2">
@@ -26886,16 +26874,21 @@
       }
     }
 
-    // Initialize on window load
+        // Initialize on window load
     window.addEventListener('DOMContentLoaded', () => {
       checkPersistedSession();
       if (typeof initAllPortalGrids === 'function') {
         initAllPortalGrids();
       }
+      renderNavigationTree(currentRole);
       if (window.lucide && typeof lucide.createIcons === 'function') {
         try { lucide.createIcons(); } catch(_) {}
       }
       initCharts();
+      if (typeof initReportCharts === 'function') {
+        initReportCharts();
+      }
+      if (typeof initResponsivePortal === 'function') initResponsivePortal();
       if (typeof enhanceOperationalToastButtons === 'function') enhanceOperationalToastButtons();
       if (typeof bindPortalEscape === 'function') bindPortalEscape();
       if (typeof renderSavedItems === 'function') renderSavedItems();
@@ -26909,6 +26902,7 @@
           if (input.value && list[idx + 1]) list[idx + 1].focus();
         });
       });
+      navigateTo('language-master', 'Masters', 'Language master');
     });
 
     
@@ -27449,6 +27443,7 @@
     // Switch View
     function navigateTo(pageId, parentLabel = '', childLabel = '') {
       if (typeof startTopLoader === 'function') startTopLoader();
+      if (typeof closeMobileSidebar === 'function') closeMobileSidebar();
 
       // Auto-resolve labels for Users module
       if (pageId === 'role-matrix' || pageId === 'access') {
@@ -30506,15 +30501,86 @@
       }
     }
 
+    var PORTAL_MOBILE_NAV_BP = 1024;
+
+    function isMobileNavViewport() {
+      return window.innerWidth < PORTAL_MOBILE_NAV_BP;
+    }
+
+    function setMobileSidebarOpen(open) {
+      const sb = document.getElementById('portalSidebar');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      const btn = document.getElementById('mobileMenuBtn');
+      if (!sb) return;
+      sb.classList.toggle('mobile-open', !!open);
+      sb.classList.remove('hidden');
+      sb.setAttribute('aria-hidden', open ? 'false' : 'true');
+      if (btn) {
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+      }
+      if (backdrop) {
+        backdrop.hidden = !open;
+        backdrop.classList.toggle('is-open', !!open);
+        backdrop.setAttribute('aria-hidden', open ? 'false' : 'true');
+      }
+      document.body.classList.toggle('portal-nav-open', !!open);
+    }
+
+    function closeMobileSidebar() {
+      setMobileSidebarOpen(false);
+    }
+
     function toggleMobileSidebar() {
-      if (window.innerWidth >= 1024) {
+      if (!isMobileNavViewport()) {
         toggleSidebarWidth();
-      } else {
+        return;
+      }
+      const sb = document.getElementById('portalSidebar');
+      const open = !(sb && sb.classList.contains('mobile-open'));
+      setMobileSidebarOpen(open);
+    }
+
+    function wrapPortalTables() {
+      document.querySelectorAll('#mainScrollCanvas table, .view-section table').forEach(function(table) {
+        if (table.closest('.table-scroll, .overflow-x-auto, .portal-table-scroll')) return;
+        const wrap = document.createElement('div');
+        wrap.className = 'portal-table-scroll';
+        wrap.setAttribute('role', 'region');
+        wrap.setAttribute('tabindex', '0');
+        wrap.setAttribute('aria-label', 'Scrollable data table');
+        table.parentNode.insertBefore(wrap, table);
+        wrap.appendChild(table);
+      });
+    }
+
+    function onPortalResponsiveResize() {
+      if (!isMobileNavViewport()) {
+        closeMobileSidebar();
         const sb = document.getElementById('portalSidebar');
-        sb.classList.toggle('hidden');
-        sb.classList.toggle('mobile-open');
+        if (sb) sb.removeAttribute('aria-hidden');
       }
     }
+
+    function initResponsivePortal() {
+      wrapPortalTables();
+      const backdrop = document.getElementById('sidebarBackdrop');
+      if (backdrop && backdrop.dataset.bound !== '1') {
+        backdrop.dataset.bound = '1';
+        backdrop.addEventListener('click', closeMobileSidebar);
+      }
+      if (!window.__portalResponsiveBound) {
+        window.__portalResponsiveBound = true;
+        window.addEventListener('resize', onPortalResponsiveResize);
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') closeMobileSidebar();
+        });
+      }
+      if (isMobileNavViewport()) closeMobileSidebar();
+    }
+    window.initResponsivePortal = initResponsivePortal;
+    window.closeMobileSidebar = closeMobileSidebar;
+    window.toggleMobileSidebar = toggleMobileSidebar;
 
     // Toast Notification Utility
     function showToast(message, type = 'info') {
@@ -30843,6 +30909,7 @@
     function bindPortalEscape() {
       document.addEventListener('keydown', function(e) {
         if (e.key !== 'Escape') return;
+        if (typeof closeMobileSidebar === 'function') closeMobileSidebar();
         ['portalConfirmModal', 'forgotCredentialModal', 'omniSpotlightModal'].forEach(id => {
           const el = document.getElementById(id);
           if (el && !el.classList.contains('hidden')) {
