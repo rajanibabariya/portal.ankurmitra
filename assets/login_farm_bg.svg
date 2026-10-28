@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="35%" stop-color="#BAE6FD" />
+      <stop offset="65%" stop-color="#FEF08A" />
+      <stop offset="85%" stop-color="#FED7AA" />
+      <stop offset="100%" stop-color="#FDBA74" />
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="65%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#FFFBEB" stop-opacity="1" />
+      <stop offset="25%" stop-color="#FDE047" stop-opacity="0.9" />
+      <stop offset="55%" stop-color="#F59E0B" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#EA580C" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="hillFar" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#166534" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#14532D" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="fieldMid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#15803D" />
+      <stop offset="100%" stop-color="#0B6623" />
+    </linearGradient>
+    <linearGradient id="fieldGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#22C55E" />
+      <stop offset="100%" stop-color="#0B6623" />
+    </linearGradient>
+    <linearGradient id="soilRow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A16207" />
+      <stop offset="100%" stop-color="#78350F" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1600" height="1200" fill="url(#skyGrad)" />
+
+  <!-- Sun -->
+  <circle cx="1050" cy="480" r="320" fill="url(#sunGlow)" />
+  <circle cx="1050" cy="480" r="90" fill="#FFFBEB" opacity="0.95" />
+
+  <!-- Distant Saurashtra Hills -->
+  <path d="M 0,680 Q 250,560 550,620 T 1100,590 T 1600,640 L 1600,1200 L 0,1200 Z" fill="url(#hillFar)" />
+  <path d="M 0,720 Q 350,640 750,690 T 1400,650 T 1600,700 L 1600,1200 L 0,1200 Z" fill="#166534" opacity="0.85" />
+
+  <!-- Groundnut & Cotton Crop Fields in Perspective -->
+  <path d="M 0,770 L 1600,750 L 1600,1200 L 0,1200 Z" fill="url(#fieldMid)" />
+
+  <!-- Agricultural Furrows & Ridges (Saurashtra Farm Field) -->
+  <g opacity="0.9">
+    <!-- Soil Beds -->
+    <polygon points="0,1200 480,760 520,760 80,1200" fill="url(#soilRow)" />
+    <polygon points="180,1200 550,760 590,760 290,1200" fill="url(#soilRow)" />
+    <polygon points="410,1200 630,760 670,760 540,1200" fill="url(#soilRow)" />
+    <polygon points="680,1200 730,760 770,760 820,1200" fill="url(#soilRow)" />
+    <polygon points="980,1200 840,760 880,760 1120,1200" fill="url(#soilRow)" />
+    <polygon points="1280,1200 950,760 990,760 1440,1200" fill="url(#soilRow)" />
+    <polygon points="1520,1200 1060,760 1100,760 1600,1050" fill="url(#soilRow)" />
+
+    <!-- Lush Crop Canopy Ridges -->
+    <polygon points="80,1200 520,760 550,760 180,1200" fill="url(#fieldGreen)" />
+    <polygon points="290,1200 590,760 630,760 410,1200" fill="#4ADE80" opacity="0.85" />
+    <polygon points="540,1200 670,760 730,760 680,1200" fill="url(#fieldGreen)" />
+    <polygon points="820,1200 770,760 840,760 980,1200" fill="#4ADE80" opacity="0.9" />
+    <polygon points="1120,1200 880,760 950,760 1280,1200" fill="url(#fieldGreen)" />
+    <polygon points="1440,1200 990,760 1060,760 1520,1200" fill="#22C55E" />
+  </g>
+
+  <!-- Horizontal Furrow Texture Lines -->
+  <g stroke="#14532D" stroke-width="3" opacity="0.4">
+    <line x1="0" y1="810" x2="1600" y2="800" />
+    <line x1="0" y1="860" x2="1600" y2="850" />
+    <line x1="0" y1="920" x2="1600" y2="910" stroke-width="4" />
+    <line x1="0" y1="990" x2="1600" y2="980" stroke-width="5" />
+    <line x1="0" y1="1080" x2="1600" y2="1070" stroke-width="6" />
+  </g>
+
+  <!-- Golden Sunrise Morning Mist -->
+  <rect x="0" y="720" width="1600" height="110" fill="#FEF08A" opacity="0.22" />
+</svg>
