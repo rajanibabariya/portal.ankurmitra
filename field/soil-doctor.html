@@ -22181,120 +22181,271 @@
 
                     </div>
 
-                    <!-- AnkurMitra Product Logo Brand Themes Section -->
-                    <div class="pt-3 border-t border-slate-100 dark:border-slate-800">
-                      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                        <div class="flex items-center gap-2.5">
-                          <div class="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 p-1 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center shrink-0 shadow-2xs">
-                            <img src="../assets/product_logo.png" alt="AnkurMitra Brand" class="h-6 w-auto object-contain">
-                          </div>
-                          <div>
-                            <h4 class="text-xs font-black text-[#0F172A] dark:text-white flex items-center gap-1.5">
-                              <span>Product Logo Brand Themes</span>
-                              <span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold bg-emerald-100 dark:bg-emerald-900/50 text-[#0B6623] dark:text-emerald-300">Emblem Palette</span>
-                            </h4>
-                            <p class="text-[10px] text-[#64748B] dark:text-slate-400">Themes calibrated directly from the Ankurmitra emblem (forest foliage, sprout leaves, rising sun gold, and fertile Saurashtra soil).</p>
-                          </div>
+                                        <!-- DESIGN THEME SECTION (Matches User Reference Image) -->
+                    <div class="pt-2 border-t border-slate-100 dark:border-slate-800">
+                      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                        <div>
+                          <h3 class="text-sm font-black text-[#0F172A] dark:text-white">Design theme</h3>
+                          <p class="text-[11px] text-[#64748B] dark:text-slate-400 mt-0.5">Pick a complete look for the whole portal. Applies instantly on every page and is remembered on this device.</p>
                         </div>
-                        <span id="activeThemeBadgeDisplay" class="px-2.5 py-1 text-[10px] font-bold rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-[#0B6623] dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shrink-0">
-                          Harmonized Dual Active
+                        <span id="activeDesignThemePill" class="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shrink-0 self-start sm:self-auto">
+                          Emerald Field
                         </span>
                       </div>
 
-                      <!-- 5 Product Logo Theme Cards Grid -->
-                      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3" id="productLogoThemeCardsGrid">
+                      <!-- 6 Design Theme Cards Grid -->
+                      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5" id="designThemeCardsGrid">
                         
-                        <!-- 1. Harmonized Dual -->
-                        <div onclick="selectProductLogoTheme('ankurmitra-harmony', true)" data-preset="ankurmitra-harmony" class="theme-preset-card active-theme p-3.5 rounded-2xl border-2 border-[#16A34A] bg-emerald-50/50 dark:bg-emerald-950/30">
-                          <div class="flex items-center justify-between mb-2">
-                            <div class="flex items-center gap-1.5">
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#16A34A] shadow-xs ring-1 ring-white/50"></span>
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#22C55E] shadow-xs ring-1 ring-white/50 -ml-1"></span>
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#F59E0B] shadow-xs ring-1 ring-white/50 -ml-1"></span>
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#B45309] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                        <!-- 1. Emerald Field -->
+                        <div onclick="selectDesignTheme('emerald-field', true)" data-theme="emerald-field" class="design-theme-card active-theme p-3 rounded-2xl border-2 border-[#15803D] bg-white dark:bg-slate-900 cursor-pointer transition relative group hover:shadow-md">
+                          <!-- Miniature Preview Mockup -->
+                          <div class="h-24 w-full rounded-xl bg-[#F0FDF4] dark:bg-slate-800 border border-emerald-200/80 dark:border-slate-700 p-2 flex gap-1.5 relative overflow-hidden select-none mb-2.5">
+                            <!-- Sidebar -->
+                            <div class="w-1/4 h-full rounded-lg bg-[#15803D] p-1 flex flex-col justify-between shrink-0">
+                              <div class="space-y-1">
+                                <div class="w-full h-1 rounded bg-white/80"></div>
+                                <div class="w-3/4 h-1 rounded bg-white/60"></div>
+                                <div class="w-4/5 h-1 rounded bg-white/60"></div>
+                              </div>
+                              <div class="w-1/2 h-1 rounded bg-white/40"></div>
                             </div>
-                            <span class="theme-check-badge w-5 h-5 rounded-full bg-[#16A34A] text-white flex items-center justify-center text-[10px] font-bold shadow-xs">✓</span>
+                            <!-- Canvas -->
+                            <div class="flex-1 flex flex-col gap-1.5">
+                              <div class="w-3/4 h-1.5 rounded bg-slate-800 dark:bg-slate-600"></div>
+                              <div class="flex-1 flex gap-1">
+                                <div class="flex-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 p-1 flex flex-col justify-between">
+                                  <div class="w-1/2 h-1 rounded bg-slate-200 dark:bg-slate-700"></div>
+                                  <div class="w-3 h-1 rounded bg-[#15803D]"></div>
+                                </div>
+                                <div class="flex-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 p-1 flex flex-col justify-between">
+                                  <div class="w-1/2 h-1 rounded bg-slate-200 dark:border-slate-700"></div>
+                                  <div class="w-4 h-1 rounded bg-slate-800 dark:bg-slate-600"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Selected Check Badge -->
+                            <div class="theme-mockup-check absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#15803D] text-white flex items-center justify-center text-[9px] font-black shadow-xs">✓</div>
                           </div>
-                          <div class="text-xs font-black text-[#0F172A] dark:text-white">Light Harmonized Dual</div>
-                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-0.5 leading-snug">Crisp leaf canopy, sunny amber, sprout green & warm sand furrow harmony.</p>
-                          <div class="mt-2 flex items-center gap-1">
-                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-[#E5F4EA] text-[#16A34A]">Leaf #16A34A</span>
-                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-[#FEF3C7] text-[#D97706]">Sun #F59E0B</span>
+                          <!-- Text Details -->
+                          <div class="flex items-center gap-1.5 font-black text-xs text-[#0F172A] dark:text-white">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#15803D] shrink-0"></span>
+                            <span>Emerald Field</span>
                           </div>
+                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-1 leading-snug">Forest sidebar, mint canvas and crop-row texture. Brand-true.</p>
                         </div>
 
-                        <!-- 2. Ankur Emerald -->
-                        <div onclick="selectProductLogoTheme('ankur-emerald', true)" data-preset="ankur-emerald" class="theme-preset-card p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
-                          <div class="flex items-center justify-between mb-2">
-                            <div class="flex items-center gap-1.5">
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#15803D] shadow-xs ring-1 ring-white/50"></span>
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#16A34A] shadow-xs ring-1 ring-white/50 -ml-1"></span>
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#22C55E] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                        <!-- 2. Sunbeam -->
+                        <div onclick="selectDesignTheme('sunbeam', true)" data-theme="sunbeam" class="design-theme-card p-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 cursor-pointer transition relative group hover:border-amber-400 hover:shadow-md">
+                          <!-- Miniature Preview Mockup -->
+                          <div class="h-24 w-full rounded-xl bg-[#FEFCE8] dark:bg-slate-800 border border-amber-200/80 dark:border-slate-700 p-2 flex gap-1.5 relative overflow-hidden select-none mb-2.5">
+                            <!-- Sidebar -->
+                            <div class="w-1/4 h-full rounded-lg bg-[#FEF08A] dark:bg-amber-950/60 p-1 flex flex-col justify-between shrink-0">
+                              <div class="space-y-1">
+                                <div class="w-full h-1 rounded bg-amber-400"></div>
+                                <div class="w-3/4 h-1 rounded bg-amber-300"></div>
+                                <div class="w-4/5 h-1 rounded bg-amber-300"></div>
+                              </div>
+                              <div class="w-1/2 h-1 rounded bg-amber-300"></div>
                             </div>
-                            <span class="theme-check-badge w-5 h-5 rounded-full bg-[#16A34A] text-white flex items-center justify-center text-[10px] font-bold shadow-xs">✓</span>
+                            <!-- Canvas -->
+                            <div class="flex-1 flex flex-col gap-1.5">
+                              <div class="w-3/4 h-1.5 rounded bg-slate-800 dark:bg-slate-600"></div>
+                              <div class="flex-1 flex gap-1">
+                                <div class="flex-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 p-1 flex flex-col justify-between">
+                                  <div class="w-1/2 h-1 rounded bg-slate-200 dark:bg-slate-700"></div>
+                                  <div class="w-3 h-1 rounded bg-[#EAB308]"></div>
+                                </div>
+                                <div class="flex-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 p-1 flex flex-col justify-between">
+                                  <div class="w-1/2 h-1 rounded bg-slate-200 dark:border-slate-700"></div>
+                                  <div class="w-4 h-1 rounded bg-slate-800 dark:bg-slate-600"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Selected Check Badge -->
+                            <div class="theme-mockup-check hidden absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#EAB308] text-white flex items-center justify-center text-[9px] font-black shadow-xs">✓</div>
                           </div>
-                          <div class="text-xs font-black text-[#0F172A] dark:text-white">Light Ankur Emerald</div>
-                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-0.5 leading-snug">Botanical agricultural forest canopy inspired by cotton foliage and ANKUR text.</p>
-                          <div class="mt-2 flex items-center gap-1">
-                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-green-100 text-green-800">Canopy #15803D</span>
-                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-emerald-100 text-emerald-800">Leaf #16A34A</span>
+                          <!-- Text Details -->
+                          <div class="flex items-center gap-1.5 font-black text-xs text-[#0F172A] dark:text-white">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#EAB308] shrink-0"></span>
+                            <span>Sunbeam</span>
                           </div>
+                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-1 leading-snug">Cream canvas with sunny yellow pills. Friendly and bright.</p>
                         </div>
 
-                        <!-- 3. Mitra Spring Sprout -->
-                        <div onclick="selectProductLogoTheme('mitra-sprout', true)" data-preset="mitra-sprout" class="theme-preset-card p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
-                          <div class="flex items-center justify-between mb-2">
-                            <div class="flex items-center gap-1.5">
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#22C55E] shadow-xs ring-1 ring-white/50"></span>
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#4ADE80] shadow-xs ring-1 ring-white/50 -ml-1"></span>
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#86EFAC] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                        <!-- 3. Terracotta Soil -->
+                        <div onclick="selectDesignTheme('terracotta-soil', true)" data-theme="terracotta-soil" class="design-theme-card p-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 cursor-pointer transition relative group hover:border-orange-400 hover:shadow-md">
+                          <!-- Miniature Preview Mockup -->
+                          <div class="h-24 w-full rounded-xl bg-[#FFF7ED] dark:bg-slate-800 border border-orange-200/80 dark:border-slate-700 p-2 flex gap-1.5 relative overflow-hidden select-none mb-2.5">
+                            <!-- Sidebar -->
+                            <div class="w-1/4 h-full rounded-lg bg-[#FFEDD5] dark:bg-orange-950/60 p-1 flex flex-col justify-between shrink-0">
+                              <div class="space-y-1">
+                                <div class="w-full h-1 rounded bg-[#EA580C]"></div>
+                                <div class="w-3/4 h-1 rounded bg-[#FB923C]"></div>
+                                <div class="w-4/5 h-1 rounded bg-[#FB923C]"></div>
+                              </div>
+                              <div class="w-1/2 h-1 rounded bg-[#FB923C]"></div>
                             </div>
-                            <span class="theme-check-badge w-5 h-5 rounded-full bg-[#22C55E] text-white flex items-center justify-center text-[10px] font-bold shadow-xs">✓</span>
+                            <!-- Canvas -->
+                            <div class="flex-1 flex flex-col gap-1.5">
+                              <div class="w-3/4 h-1.5 rounded bg-[#431407] dark:bg-slate-600"></div>
+                              <div class="flex-1 flex gap-1">
+                                <div class="flex-1 rounded-md bg-white dark:bg-slate-900 border border-orange-100 dark:border-slate-700 p-1 flex flex-col justify-between">
+                                  <div class="w-1/2 h-1 rounded bg-slate-200 dark:bg-slate-700"></div>
+                                  <div class="w-3 h-1 rounded bg-[#C2410C]"></div>
+                                </div>
+                                <div class="flex-1 rounded-md bg-white dark:bg-slate-900 border border-orange-100 dark:border-slate-700 p-1 flex flex-col justify-between">
+                                  <div class="w-1/2 h-1 rounded bg-slate-200 dark:border-slate-700"></div>
+                                  <div class="w-4 h-1 rounded bg-[#7C2D12] dark:bg-slate-600"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Selected Check Badge -->
+                            <div class="theme-mockup-check hidden absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#C2410C] text-white flex items-center justify-center text-[9px] font-black shadow-xs">✓</div>
                           </div>
-                          <div class="text-xs font-black text-[#0F172A] dark:text-white">Light Mitra Spring</div>
-                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-0.5 leading-snug">Vibrant living sprout green representing new crop germination and MITRA partnership.</p>
-                          <div class="mt-2 flex items-center gap-1">
-                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-green-100 text-green-800">Sprout #22C55E</span>
-                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-emerald-100 text-emerald-800">Mint #4ADE80</span>
+                          <!-- Text Details -->
+                          <div class="flex items-center gap-1.5 font-black text-xs text-[#0F172A] dark:text-white">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#C2410C] shrink-0"></span>
+                            <span>Terracotta Soil</span>
                           </div>
+                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-1 leading-snug">Warm clay tones, serif headings and a paper grain.</p>
                         </div>
 
-                        <!-- 4. Surya Sunrise Gold -->
-                        <div onclick="selectProductLogoTheme('surya-gold', true)" data-preset="surya-gold" class="theme-preset-card p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
-                          <div class="flex items-center justify-between mb-2">
-                            <div class="flex items-center gap-1.5">
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#F59E0B] shadow-xs ring-1 ring-white/50"></span>
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#FBBF24] shadow-xs ring-1 ring-white/50 -ml-1"></span>
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#FDE68A] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                        <!-- 4. Monsoon Glass -->
+                        <div onclick="selectDesignTheme('monsoon-glass', true)" data-theme="monsoon-glass" class="design-theme-card p-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 cursor-pointer transition relative group hover:border-sky-400 hover:shadow-md">
+                          <!-- Miniature Preview Mockup -->
+                          <div class="h-24 w-full rounded-xl bg-[#F0F9FF] dark:bg-slate-800 border border-sky-200/80 dark:border-slate-700 p-2 flex gap-1.5 relative overflow-hidden select-none mb-2.5">
+                            <!-- Sidebar -->
+                            <div class="w-1/4 h-full rounded-lg bg-[#E0F2FE] dark:bg-sky-950/60 p-1 flex flex-col justify-between shrink-0">
+                              <div class="space-y-1">
+                                <div class="w-full h-1 rounded bg-[#0284C7]"></div>
+                                <div class="w-3/4 h-1 rounded bg-[#38BDF8]"></div>
+                                <div class="w-4/5 h-1 rounded bg-[#38BDF8]"></div>
+                              </div>
+                              <div class="w-1/2 h-1 rounded bg-[#38BDF8]"></div>
                             </div>
-                            <span class="theme-check-badge w-5 h-5 rounded-full bg-[#F59E0B] text-white flex items-center justify-center text-[10px] font-bold shadow-xs">✓</span>
+                            <!-- Canvas -->
+                            <div class="flex-1 flex flex-col gap-1.5">
+                              <div class="w-3/4 h-1.5 rounded bg-slate-800 dark:bg-slate-600"></div>
+                              <div class="flex-1 flex gap-1">
+                                <div class="flex-1 rounded-md bg-white/80 backdrop-blur-xs dark:bg-slate-900 border border-sky-100 dark:border-slate-700 p-1 flex flex-col justify-between">
+                                  <div class="w-1/2 h-1 rounded bg-slate-200 dark:bg-slate-700"></div>
+                                  <div class="w-3 h-1 rounded bg-[#0284C7]"></div>
+                                </div>
+                                <div class="flex-1 rounded-md bg-white/80 backdrop-blur-xs dark:bg-slate-900 border border-sky-100 dark:border-slate-700 p-1 flex flex-col justify-between">
+                                  <div class="w-1/2 h-1 rounded bg-slate-200 dark:border-slate-700"></div>
+                                  <div class="w-4 h-1 rounded bg-slate-800 dark:bg-slate-600"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Selected Check Badge -->
+                            <div class="theme-mockup-check hidden absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#0284C7] text-white flex items-center justify-center text-[9px] font-black shadow-xs">✓</div>
                           </div>
-                          <div class="text-xs font-black text-[#0F172A] dark:text-white">Light Surya Sunrise</div>
-                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-0.5 leading-snug">Warm radiant amber and dawn gold inspired by the rising sun spreading over Saurashtra fields.</p>
-                          <div class="mt-2 flex items-center gap-1">
-                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-amber-100 text-amber-900">Solar #F59E0B</span>
-                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-yellow-100 text-yellow-900">Sunrise #FBBF24</span>
+                          <!-- Text Details -->
+                          <div class="flex items-center gap-1.5 font-black text-xs text-[#0F172A] dark:text-white">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#0284C7] shrink-0"></span>
+                            <span>Monsoon Glass</span>
                           </div>
+                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-1 leading-snug">Frosted glass panels over drifting rain-cloud colour.</p>
                         </div>
 
-                        <!-- 5. Dharati Fertile Soil -->
-                        <div onclick="selectProductLogoTheme('dharati-soil', true)" data-preset="dharati-soil" class="theme-preset-card p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
-                          <div class="flex items-center justify-between mb-2">
-                            <div class="flex items-center gap-1.5">
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#B45309] shadow-xs ring-1 ring-white/50"></span>
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#D97706] shadow-xs ring-1 ring-white/50 -ml-1"></span>
-                              <span class="w-3.5 h-3.5 rounded-full bg-[#F59E0B] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                        <!-- 5. Morning Mist (Professional Light Theme) -->
+                        <div onclick="selectDesignTheme('morning-mist', true)" data-theme="morning-mist" class="design-theme-card p-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 cursor-pointer transition relative group hover:border-emerald-400 hover:shadow-md">
+                          <!-- Miniature Preview Mockup -->
+                          <div class="h-24 w-full rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex gap-1.5 relative overflow-hidden select-none mb-2.5">
+                            <!-- Sidebar -->
+                            <div class="w-1/4 h-full rounded-lg bg-slate-200 dark:bg-slate-700 p-1 flex flex-col justify-between shrink-0">
+                              <div class="space-y-1">
+                                <div class="w-full h-1 rounded bg-[#0F766E]"></div>
+                                <div class="w-3/4 h-1 rounded bg-[#10B981]"></div>
+                                <div class="w-4/5 h-1 rounded bg-[#10B981]"></div>
+                              </div>
+                              <div class="w-1/2 h-1 rounded bg-slate-400"></div>
                             </div>
-                            <span class="theme-check-badge w-5 h-5 rounded-full bg-[#B45309] text-white flex items-center justify-center text-[10px] font-bold shadow-xs">✓</span>
+                            <!-- Canvas -->
+                            <div class="flex-1 flex flex-col gap-1.5">
+                              <div class="w-3/4 h-1.5 rounded bg-slate-800 dark:bg-slate-600"></div>
+                              <div class="flex-1 flex gap-1">
+                                <div class="flex-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 p-1 flex flex-col justify-between">
+                                  <div class="w-1/2 h-1 rounded bg-slate-200 dark:border-slate-700"></div>
+                                  <div class="w-3 h-1 rounded bg-[#10B981]"></div>
+                                </div>
+                                <div class="flex-1 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 p-1 flex flex-col justify-between">
+                                  <div class="w-1/2 h-1 rounded bg-slate-200 dark:border-slate-700"></div>
+                                  <div class="w-4 h-1 rounded bg-slate-800 dark:bg-slate-600"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Selected Check Badge -->
+                            <div class="theme-mockup-check hidden absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#0F766E] text-white flex items-center justify-center text-[9px] font-black shadow-xs">✓</div>
                           </div>
-                          <div class="text-xs font-black text-[#0F172A] dark:text-white">Light Dharati Sand</div>
-                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-0.5 leading-snug">Warm golden earth and sunlit agricultural furrows honoring fertile Gujarati soil.</p>
-                          <div class="mt-2 flex items-center gap-1">
-                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-amber-100 text-amber-950">Sand #B45309</span>
-                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-orange-100 text-orange-950">Furrow #D97706</span>
+                          <!-- Text Details -->
+                          <div class="flex items-center gap-1.5 font-black text-xs text-[#0F172A] dark:text-white">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] shrink-0"></span>
+                            <span>Morning Mist</span>
                           </div>
+                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-1 leading-snug">Crisp executive slate with fresh lime glow and a clean live grid.</p>
                         </div>
 
+                        <!-- 6. Ink & Paper -->
+                        <div onclick="selectDesignTheme('ink-paper', true)" data-theme="ink-paper" class="design-theme-card p-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 cursor-pointer transition relative group hover:border-blue-500 hover:shadow-md">
+                          <!-- Miniature Preview Mockup -->
+                          <div class="h-24 w-full rounded-xl bg-white dark:bg-slate-900 border-2 border-slate-900 dark:border-white p-2 flex gap-1.5 relative overflow-hidden select-none mb-2.5">
+                            <!-- Sidebar -->
+                            <div class="w-1/4 h-full rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-900 dark:border-white p-1 flex flex-col justify-between shrink-0">
+                              <div class="space-y-1">
+                                <div class="w-full h-1 rounded bg-[#2563EB]"></div>
+                                <div class="w-3/4 h-1 rounded bg-slate-800 dark:bg-slate-300"></div>
+                                <div class="w-4/5 h-1 rounded bg-slate-800 dark:bg-slate-300"></div>
+                              </div>
+                              <div class="w-1/2 h-1 rounded bg-slate-400"></div>
+                            </div>
+                            <!-- Canvas -->
+                            <div class="flex-1 flex flex-col gap-1.5">
+                              <div class="w-3/4 h-1.5 rounded bg-black dark:bg-white"></div>
+                              <div class="flex-1 flex gap-1">
+                                <div class="flex-1 rounded-md bg-white dark:bg-slate-800 border-2 border-black dark:border-white p-1 flex flex-col justify-between">
+                                  <div class="w-1/2 h-1 rounded bg-slate-300"></div>
+                                  <div class="w-3 h-1 rounded bg-[#2563EB]"></div>
+                                </div>
+                                <div class="flex-1 rounded-md bg-white dark:bg-slate-800 border-2 border-black dark:border-white p-1 flex flex-col justify-between">
+                                  <div class="w-1/2 h-1 rounded bg-slate-300"></div>
+                                  <div class="w-4 h-1 rounded bg-black dark:bg-white"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Selected Check Badge -->
+                            <div class="theme-mockup-check hidden absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#2563EB] text-white flex items-center justify-center text-[9px] font-black shadow-xs">✓</div>
+                          </div>
+                          <!-- Text Details -->
+                          <div class="flex items-center gap-1.5 font-black text-xs text-[#0F172A] dark:text-white">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#2563EB] shrink-0"></span>
+                            <span>Ink & Paper</span>
+                          </div>
+                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-1 leading-snug">Hard borders, offset shadows, electric blue. Neo-brutalist.</p>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <!-- MOTION & ANIMATION SECTION (Matches User Reference Image) -->
+                    <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div>
+                        <h4 class="text-xs font-black text-[#0F172A] dark:text-white">Motion & animation</h4>
+                        <p class="text-[11px] text-[#64748B] dark:text-slate-400 mt-0.5">Full plays every entrance and ambient effect. Calm keeps entrances only. Off stops all movement.</p>
+                      </div>
+                      <div class="flex items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shrink-0 self-start sm:self-auto" id="portalMotionSegmentedControl">
+                        <button type="button" onclick="setPortalMotion('full')" id="motionBtnFull" class="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-white dark:bg-slate-700 text-[#0F172A] dark:text-white shadow-2xs">
+                          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
+                          <span>Full</span>
+                        </button>
+                        <button type="button" onclick="setPortalMotion('calm')" id="motionBtnCalm" class="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-[#64748B] dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white">
+                          <i data-lucide="wind" class="w-3.5 h-3.5"></i>
+                          <span>Calm</span>
+                        </button>
+                        <button type="button" onclick="setPortalMotion('off')" id="motionBtnOff" class="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-[#64748B] dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white">
+                          <i data-lucide="pause" class="w-3.5 h-3.5"></i>
+                          <span>Off</span>
+                        </button>
                       </div>
                     </div>
 

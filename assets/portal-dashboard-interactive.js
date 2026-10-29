@@ -8,75 +8,103 @@
   'use strict';
 
   // ─────────────────────────────────────────────────────────────────────────
-  // 1. PRODUCT LOGO THEME PRESETS ENGINE (LIGHT & VIBRANT PALETTES)
+  // 1. DESIGN THEME PRESETS ENGINE (LIGHT, CRISP & PROFESSIONAL PALETTES)
+  // Matches exact 6 Themes from Design Theme Setting UI:
+  // 1. Emerald Field  2. Sunbeam  3. Terracotta Soil  4. Monsoon Glass  5. Morning Mist  6. Ink & Paper
   // ─────────────────────────────────────────────────────────────────────────
   const THEME_PALETTES = {
-    'ankurmitra-harmony': {
-      id: 'ankurmitra-harmony',
-      name: 'Light Harmonized Dual',
-      primary: '#16A34A',      // Fresh Spring Emerald
-      primaryHover: '#15803D',
-      secondary: '#F59E0B',    // Radiant Solar Amber
-      secondaryHover: '#D97706',
-      accent: '#22C55E',       // Sprout Green
-      leaf: '#4ADE80',
-      soil: '#B45309',         // Warm Golden Sand
-      canvas: '#F8FAF8',
-      desc: 'Balanced dual harmony of crisp leaf canopy, warm sunrise glow, and fertile soil furrows.'
-    },
-    'ankur-emerald': {
-      id: 'ankur-emerald',
-      name: 'Light Ankur Emerald',
+    'emerald-field': {
+      id: 'emerald-field',
+      name: 'Emerald Field',
       primary: '#15803D',      // Botanical Forest Canopy
       primaryHover: '#166534',
-      secondary: '#16A34A',    // Emerald Shoot
-      secondaryHover: '#15803D',
-      accent: '#22C55E',
-      leaf: '#4ADE80',
-      soil: '#B45309',
-      canvas: '#F8FAF8',
-      desc: 'Vibrant botanical green inspired by flourishing Saurashtra crop canopies and ANKUR text.'
-    },
-    'mitra-sprout': {
-      id: 'mitra-sprout',
-      name: 'Light Mitra Spring',
-      primary: '#22C55E',      // Fresh Germinating Sprout
-      primaryHover: '#16A34A',
-      secondary: '#4ADE80',    // Spring Meadow
-      secondaryHover: '#22C55E',
-      accent: '#86EFAC',
+      secondary: '#22C55E',    // Mint / Sprout
+      secondaryHover: '#16A34A',
+      accent: '#4ADE80',
       leaf: '#86EFAC',
       soil: '#B45309',
-      canvas: '#F8FAF8',
-      desc: 'Airy, energetic spring lime representing germination, partnership, and new beginnings.'
+      canvas: '#F0FDF4',       // Mint Canvas
+      badgeClass: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800',
+      desc: 'Forest sidebar, mint canvas and crop-row texture. Brand-true.'
     },
-    'surya-gold': {
-      id: 'surya-gold',
-      name: 'Light Surya Sunrise',
-      primary: '#F59E0B',      // Radiant Solar Amber
-      primaryHover: '#D97706',
-      secondary: '#FBBF24',    // Morning Golden Ray
-      secondaryHover: '#F59E0B',
-      accent: '#FDE68A',
+    'sunbeam': {
+      id: 'sunbeam',
+      name: 'Sunbeam',
+      primary: '#D97706',      // Solar Honey / Gold
+      primaryHover: '#B45309',
+      secondary: '#EAB308',    // Sunny Yellow
+      secondaryHover: '#CA8A04',
+      accent: '#FDE047',
       leaf: '#4ADE80',
-      soil: '#B45309',
-      canvas: '#FFFDF7',
-      desc: 'Warm sunrise gold bringing life to the fields and illuminating Saurashtra mornings.'
+      soil: '#92400E',
+      canvas: '#FEFCE8',       // Cream Canvas
+      badgeClass: 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border-amber-200 dark:border-amber-800',
+      desc: 'Cream canvas with sunny yellow pills. Friendly and bright.'
     },
-    'dharati-soil': {
-      id: 'dharati-soil',
-      name: 'Light Dharati Sand',
-      primary: '#B45309',      // Golden Sand & Furrow
-      primaryHover: '#92400E',
-      secondary: '#D97706',    // Warm Terracotta
-      secondaryHover: '#B45309',
-      accent: '#F59E0B',
-      leaf: '#4ADE80',
-      soil: '#B45309',
-      canvas: '#FAF8F5',
-      desc: 'Grounded organic warm bronze and golden earth tones honoring fertile agricultural furrows.'
+    'terracotta-soil': {
+      id: 'terracotta-soil',
+      name: 'Terracotta Soil',
+      primary: '#C2410C',      // Warm Terracotta / Rich Clay
+      primaryHover: '#9A3412',
+      secondary: '#EA580C',    // Vibrant Clay
+      secondaryHover: '#C2410C',
+      accent: '#FB923C',
+      leaf: '#16A34A',
+      soil: '#7C2D12',
+      canvas: '#FFF7ED',       // Warm Paper
+      badgeClass: 'bg-orange-100 text-orange-800 dark:bg-orange-950 dark:text-orange-300 border-orange-200 dark:border-orange-800',
+      desc: 'Warm clay tones, serif headings and a paper grain.'
+    },
+    'monsoon-glass': {
+      id: 'monsoon-glass',
+      name: 'Monsoon Glass',
+      primary: '#0284C7',      // Rain Cloud / Sky Cerulean
+      primaryHover: '#0369A1',
+      secondary: '#0EA5E9',    // Vibrant Sky
+      secondaryHover: '#0284C7',
+      accent: '#38BDF8',
+      leaf: '#10B981',
+      soil: '#475569',
+      canvas: '#F0F9FF',       // Drifting Rain-Cloud Canvas
+      badgeClass: 'bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300 border-sky-200 dark:border-sky-800',
+      desc: 'Frosted glass panels over drifting rain-cloud colour.'
+    },
+    'morning-mist': {
+      id: 'morning-mist',
+      name: 'Morning Mist',
+      primary: '#0F766E',      // Executive Deep Teal / Crisp Slate
+      primaryHover: '#115E59',
+      secondary: '#10B981',    // Fresh Lime Glow
+      secondaryHover: '#059669',
+      accent: '#34D399',
+      leaf: '#6EE7B7',
+      soil: '#475569',
+      canvas: '#F8FAFC',       // Clean Live Grid Slate
+      badgeClass: 'bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300 border-teal-200 dark:border-teal-800',
+      desc: 'Crisp executive slate with fresh lime glow and a clean live grid.'
+    },
+    'ink-paper': {
+      id: 'ink-paper',
+      name: 'Ink & Paper',
+      primary: '#2563EB',      // Electric Blue Neo-Brutalist
+      primaryHover: '#1D4ED8',
+      secondary: '#3B82F6',
+      secondaryHover: '#2563EB',
+      accent: '#60A5FA',
+      leaf: '#16A34A',
+      soil: '#1E293B',
+      canvas: '#FFFFFF',       // Clean Paper White
+      badgeClass: 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 border-blue-200 dark:border-blue-800',
+      desc: 'Hard borders, offset shadows, electric blue. Neo-brutalist.'
     }
   };
+
+  // Backward-compatible aliases for legacy preset calls
+  THEME_PALETTES['ankurmitra-harmony'] = THEME_PALETTES['emerald-field'];
+  THEME_PALETTES['ankur-emerald'] = THEME_PALETTES['emerald-field'];
+  THEME_PALETTES['mitra-sprout'] = THEME_PALETTES['emerald-field'];
+  THEME_PALETTES['surya-gold'] = THEME_PALETTES['sunbeam'];
+  THEME_PALETTES['dharati-soil'] = THEME_PALETTES['terracotta-soil'];
 
   function hexToRgba(hex, alpha) {
     let c;
@@ -90,18 +118,20 @@
   }
 
   /**
-   * Applies one of the 5 product logo themes.
-   * Updates CSS dataset attribute, live stylesheet override, localStorage, settings cards, and active charts.
+   * Applies one of the 6 Design Themes across the entire portal.
+   * Updates CSS dataset attribute, live stylesheet override, localStorage, active cards, badges, and charts.
    */
-  function selectProductLogoTheme(presetId, notify) {
-    if (!THEME_PALETTES[presetId]) {
-      presetId = 'ankurmitra-harmony';
+  function selectDesignTheme(themeId, notify) {
+    // Resolve alias if needed
+    if (!THEME_PALETTES[themeId]) {
+      themeId = 'emerald-field';
     }
 
-    const theme = THEME_PALETTES[presetId];
+    const theme = THEME_PALETTES[themeId];
+    const canonicalId = theme.id;
 
     // 1. Set dataset attribute on html root for CSS variable scoping
-    document.documentElement.setAttribute('data-theme-preset', presetId);
+    document.documentElement.setAttribute('data-theme-preset', canonicalId);
 
     // 2. Set direct CSS variables on root style for instantaneous override
     const rootStyle = document.documentElement.style;
@@ -148,6 +178,9 @@
         --portal-accent: ${theme.primary} !important;
         --portal-accent-hover: ${theme.primaryHover} !important;
         --portal-accent-border: ${theme.secondary} !important;
+      }
+      body:not(.dark) #mainScrollCanvas {
+        background-color: ${theme.canvas} !important;
       }
       .child-nav-selected {
         background: linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%) !important;
@@ -211,6 +244,10 @@
       #portalTopProgressBar {
         background: linear-gradient(90deg, ${theme.primary}, ${theme.secondary}, ${theme.accent}) !important;
       }
+      .design-theme-card.active-theme {
+        border-color: ${theme.primary} !important;
+        box-shadow: 0 0 0 1px ${theme.primary}, 0 8px 20px -6px ${hexToRgba(theme.primary, 0.4)} !important;
+      }
       .theme-preset-card.active-theme {
         border-color: ${theme.primary} !important;
         box-shadow: 0 0 0 1px ${theme.primary}, 0 8px 20px -6px ${hexToRgba(theme.primary, 0.4)} !important;
@@ -223,15 +260,44 @@
 
     // 4. Persist in localStorage
     try {
-      localStorage.setItem('ankurmitra_theme_preset', presetId);
+      localStorage.setItem('ankurmitra_theme_preset', canonicalId);
     } catch (_) {}
 
-    // 5. Update Theme Selection Cards UI in Setting View
-    const grid = document.getElementById('productLogoThemeCardsGrid');
-    if (grid) {
-      grid.querySelectorAll('.theme-preset-card').forEach(card => {
+    // 5. Update Active Theme Pill Badge in Appearance Setting View
+    const pill = document.getElementById('activeDesignThemePill');
+    if (pill) {
+      pill.textContent = theme.name;
+      pill.className = `px-3 py-1 rounded-full text-xs font-extrabold border shrink-0 self-start sm:self-auto ${theme.badgeClass}`;
+    }
+
+    // 6. Update Design Theme Cards Grid in Appearance Settings
+    const designGrid = document.getElementById('designThemeCardsGrid');
+    if (designGrid) {
+      designGrid.querySelectorAll('.design-theme-card').forEach(card => {
+        const cardTheme = card.getAttribute('data-theme');
+        const check = card.querySelector('.theme-mockup-check');
+        if (cardTheme === canonicalId) {
+          card.classList.add('active-theme');
+          card.classList.add('border-2');
+          card.classList.remove('border');
+          card.style.borderColor = theme.primary;
+          if (check) check.classList.remove('hidden');
+        } else {
+          card.classList.remove('active-theme');
+          card.classList.remove('border-2');
+          card.classList.add('border');
+          card.style.borderColor = '';
+          if (check) check.classList.add('hidden');
+        }
+      });
+    }
+
+    // 7. Update Legacy Theme Preset Cards Grid if present
+    const legacyGrid = document.getElementById('productLogoThemeCardsGrid');
+    if (legacyGrid) {
+      legacyGrid.querySelectorAll('.theme-preset-card').forEach(card => {
         const cardPreset = card.getAttribute('data-preset');
-        if (cardPreset === presetId) {
+        if (cardPreset === canonicalId || cardPreset === themeId) {
           card.classList.add('active-theme');
           card.style.borderColor = theme.primary;
         } else {
@@ -241,15 +307,54 @@
       });
     }
 
-    // 6. Dynamic Chart recoloring
+    // 8. Dynamic Chart recoloring
     updateChartsWithTheme(theme);
 
-    // 7. Toast feedback if user-initiated
+    // 9. Toast feedback if user-initiated
     if (notify && typeof window.showToast === 'function') {
-      window.showToast(`Applied "${theme.name}" theme based on AnkurMitra emblem!`, 'success');
+      window.showToast(`Applied "${theme.name}" design theme!`, 'success');
     }
   }
-  window.selectProductLogoTheme = selectProductLogoTheme;
+  window.selectDesignTheme = selectDesignTheme;
+  window.selectProductLogoTheme = selectDesignTheme;
+
+  /**
+   * Sets Portal Motion & Animation Mode: 'full', 'calm', or 'off'.
+   * 'full': plays every entrance and ambient effect.
+   * 'calm': keeps entrances only, stops continuous loops.
+   * 'off': stops all animations and transitions.
+   */
+  function setPortalMotion(mode, notify) {
+    if (!['full', 'calm', 'off'].includes(mode)) {
+      mode = 'full';
+    }
+
+    document.documentElement.setAttribute('data-motion', mode);
+
+    try {
+      localStorage.setItem('ankurmitra_motion', mode);
+    } catch (_) {}
+
+    // Update segmented pill button states
+    const modes = ['full', 'calm', 'off'];
+    modes.forEach(m => {
+      const cap = m.charAt(0).toUpperCase() + m.slice(1);
+      const btn = document.getElementById('motionBtn' + cap);
+      if (btn) {
+        if (m === mode) {
+          btn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-white dark:bg-slate-700 text-[#0F172A] dark:text-white shadow-2xs';
+        } else {
+          btn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-[#64748B] dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-white';
+        }
+      }
+    });
+
+    if (notify && typeof window.showToast === 'function') {
+      const label = mode === 'full' ? 'Full motion' : (mode === 'calm' ? 'Calm motion' : 'Motion paused');
+      window.showToast(`${label} activated.`, 'info');
+    }
+  }
+  window.setPortalMotion = setPortalMotion;
 
   /**
    * Sets Portal Theme Mode: 'light', 'dark', or 'system'.
@@ -937,17 +1042,24 @@
     } catch (_) {}
     setPortalTheme(savedMode, false);
 
-    // 2. Restore Product Logo Theme Preset
-    let savedPreset = 'ankurmitra-harmony';
+    // 2. Restore Motion & Animation Mode (Full / Calm / Off)
+    let savedMotion = 'full';
     try {
-      savedPreset = localStorage.getItem('ankurmitra_theme_preset') || 'ankurmitra-harmony';
+      savedMotion = localStorage.getItem('ankurmitra_motion') || 'full';
     } catch (_) {}
-    selectProductLogoTheme(savedPreset, false);
+    setPortalMotion(savedMotion, false);
 
-    // 3. Initialize Mandi Comparison Bar Chart if canvas exists
+    // 3. Restore Design Theme Preset (Default: Emerald Field)
+    let savedPreset = 'emerald-field';
+    try {
+      savedPreset = localStorage.getItem('ankurmitra_theme_preset') || 'emerald-field';
+    } catch (_) {}
+    selectDesignTheme(savedPreset, false);
+
+    // 4. Initialize Mandi Comparison Bar Chart if canvas exists
     initMandiComparisonChart();
 
-    // 4. Live Synchronized Dashboard Clock
+    // 5. Live Synchronized Dashboard Clock
     if (!window.dashClockInterval) {
       window.dashClockInterval = setInterval(() => {
         const now = new Date();
@@ -962,10 +1074,13 @@
     }
   }
 
-  // Run immediately for instant theme variables
+  // Run immediately for instant theme variables & anti-flicker pre-paint
   try {
-    const savedPreset = localStorage.getItem('ankurmitra_theme_preset') || 'ankurmitra-harmony';
-    selectProductLogoTheme(savedPreset, false);
+    const savedPreset = localStorage.getItem('ankurmitra_theme_preset') || 'emerald-field';
+    selectDesignTheme(savedPreset, false);
+
+    const savedMotion = localStorage.getItem('ankurmitra_motion') || 'full';
+    setPortalMotion(savedMotion, false);
 
     const savedMode = localStorage.getItem('ankurmitra_theme') || 'light';
     setPortalTheme(savedMode, false);
