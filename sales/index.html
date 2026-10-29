@@ -16,6 +16,8 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <!-- Lucide Icons CDN (pinned) -->
   <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <!-- Early Theme Restoration & Dashboard Engine -->
+  <script src="../assets/portal-dashboard-interactive.js"></script>
 
   <script>
     tailwind.config = {
@@ -206,36 +208,65 @@
       --font-body: 14px;
     }
 
-    /* Dynamic Accent Color across all setting pages and shell */
-    body.custom-accent-active .child-nav-selected {
-      background-color: var(--portal-accent) !important;
-      border-left-color: var(--portal-accent-border) !important;
+    /* Dynamic Theme & Accent Overrides across entire application */
+    .child-nav-selected {
+      background: var(--am-gradient-brand, var(--portal-accent, #16A34A)) !important;
+      border-left: 3px solid var(--am-secondary, var(--portal-accent-border, #F59E0B)) !important;
+      color: #FFFFFF !important;
     }
-    body.custom-accent-active .bg-[#0B6623],
-    body.custom-accent-active button.bg-[#0B6623],
-    body.custom-accent-active div.bg-[#0B6623],
-    body.custom-accent-active .portal-accent-bg,
-    body.custom-accent-active .portal-pref-tab-btn.active,
-    body.custom-accent-active .appcfg-tab-btn.active,
-    body.custom-accent-active .mobile-cfg-tab-btn.active {
-      background-color: var(--portal-accent) !important;
+    .child-nav-selected svg {
+      color: #FFFFFF !important;
+      stroke: #FFFFFF !important;
     }
-    body.custom-accent-active .hover:bg-[#09521C]:hover,
-    body.custom-accent-active button.bg-[#0B6623]:hover {
-      background-color: var(--portal-accent-hover) !important;
+    .bg-\[\#0B6623\],
+    .bg-\[\#16A34A\],
+    .bg-am-primary,
+    [class*="bg-[#0B6623]"],
+    [class*="bg-[#16A34A]"],
+    .portal-accent-bg,
+    .portal-pref-tab-btn.active,
+    .appcfg-tab-btn.active,
+    .mobile-cfg-tab-btn.active {
+      background-color: var(--am-primary, var(--portal-accent, #16A34A)) !important;
     }
-    body.custom-accent-active .text-[#0B6623] {
-      color: var(--portal-accent) !important;
+    button.bg-\[\#0B6623\],
+    a.bg-\[\#0B6623\],
+    button.bg-\[\#16A34A\],
+    a.bg-\[\#16A34A\] {
+      background: var(--am-gradient-brand, var(--am-primary, #16A34A)) !important;
+      color: #FFFFFF !important;
     }
-    body.custom-accent-active .border-[#0B6623] {
-      border-color: var(--portal-accent) !important;
+    .hover\:bg-\[\#074818\]:hover,
+    .hover\:bg-\[\#09521C\]:hover,
+    .hover\:bg-\[\#15803D\]:hover,
+    button.bg-\[\#0B6623\]:hover,
+    button.bg-\[\#16A34A\]:hover {
+      background-color: var(--am-primary-hover, var(--portal-accent-hover, #15803D)) !important;
+      filter: brightness(1.06);
     }
-    body.custom-accent-active .focus:border-[#0B6623]:focus {
-      border-color: var(--portal-accent) !important;
+    .text-\[\#0B6623\],
+    .text-\[\#16A34A\],
+    [class*="text-[#0B6623]"],
+    [class*="text-[#16A34A]"] {
+      color: var(--am-primary, var(--portal-accent, #16A34A)) !important;
     }
-    body.custom-accent-active input[type="checkbox"]:checked,
-    body.custom-accent-active input[type="radio"]:checked {
-      accent-color: var(--portal-accent) !important;
+    .border-\[\#0B6623\],
+    .border-\[\#16A34A\],
+    [class*="border-[#0B6623]"],
+    [class*="border-[#16A34A]"] {
+      border-color: var(--am-primary, var(--portal-accent, #16A34A)) !important;
+    }
+    .focus\:border-\[\#0B6623\]:focus,
+    .focus\:border-\[\#16A34A\]:focus {
+      border-color: var(--am-primary, var(--portal-accent, #16A34A)) !important;
+    }
+    .focus\:ring-\[\#0B6623\]:focus,
+    .focus\:ring-\[\#16A34A\]:focus {
+      --tw-ring-color: var(--am-primary, var(--portal-accent, #16A34A)) !important;
+    }
+    input[type="checkbox"]:checked,
+    input[type="radio"]:checked {
+      accent-color: var(--am-primary, var(--portal-accent, #16A34A)) !important;
     }
 
     /* Dynamic Corner Radius */
@@ -26010,45 +26041,454 @@
 
 
 <div id="view-welcome" class="hidden space-y-6 view-section">
-  <div class="saas-card p-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-    <div>
-      <button type="button" onclick="navigateTo('dashboard','Dashboard','Master dashboard')" class="text-[11px] font-bold text-[#0B6623] hover:underline">Dashboard / Welcome</button>
-      <div class="flex items-center gap-2 text-xs font-bold text-[#0B6623] mt-1">AnkurMitra · Amreli desk</div>
-      <h2 class="text-xl font-black text-[#0F172A] mt-1">Welcome</h2>
-      <p class="text-xs text-[#64748B]">Start the day with weather, mandi, open orders, and field tickets for Saurashtra.</p>
-    </div>
-    <div class="flex flex-wrap gap-2"><button type="button" onclick="navigateTo('dashboard','Dashboard','Master dashboard')" class="h-9 px-3.5 bg-[#0B6623] hover:bg-[#09521C] text-white text-xs font-bold rounded-xl">Open master dashboard</button><button type="button" onclick="navigateTo('weather-dashboard','Dashboard','Weather dashboard')" class="h-9 px-3.5 bg-white border border-[#E5E7EB] hover:bg-[#F8FAFC] text-xs font-bold rounded-xl">Weather dashboard</button><button type="button" onclick="navigateTo('network-map','Dashboard','Network map')" class="h-9 px-3.5 bg-white border border-[#E5E7EB] hover:bg-[#F8FAFC] text-xs font-bold rounded-xl">Network map</button></div>
-  </div>
-  
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-      <button type="button" onclick="navigateTo('weather-dashboard','Dashboard','Weather dashboard')" class="saas-card p-5 text-left hover:border-[#0B6623]">
-        <div class="text-[11px] font-bold text-sky-700">WEATHER</div>
-        <div class="text-2xl font-black mt-1">32°C · Spray OK</div>
-        <p class="text-xs text-[#64748B] mt-1">Bagasara wind 12 km/h. Inform cotton farmers before 5 pm.</p>
-      </button>
-      <button type="button" onclick="navigateTo('mandi-prices','Content','Mandi prices')" class="saas-card p-5 text-left hover:border-[#0B6623]">
-        <div class="text-[11px] font-bold text-amber-700">MANDI</div>
-        <div class="text-2xl font-black mt-1">Cotton ₹7,450</div>
-        <p class="text-xs text-[#64748B] mt-1">Rajkot Shankar-6 up ₹65. Gondal groundnut ₹6,820.</p>
-      </button>
-      <button type="button" onclick="navigateTo('live-orders','Orders','Live orders')" class="saas-card p-5 text-left hover:border-[#0B6623]">
-        <div class="text-[11px] font-bold text-emerald-700">ORDERS</div>
-        <div class="text-2xl font-black mt-1">14 new</div>
-        <p class="text-xs text-[#64748B] mt-1">Jayesh Patel urea 10 bags waiting Accept at Kishan Agro.</p>
-      </button>
-      <button type="button" onclick="navigateTo('crop-doctor','Field','Crop doctor')" class="saas-card p-5 text-left hover:border-[#0B6623]">
-        <div class="text-[11px] font-bold text-rose-700">FIELD</div>
-        <div class="text-2xl font-black mt-1">8 open chats</div>
-        <p class="text-xs text-[#64748B] mt-1">Pink bollworm in 14 Sudavad clusters needs agronomist reply.</p>
-      </button>
-    </div>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <button type="button" onclick="navigateTo('dashboard','Dashboard','Master dashboard')" class="saas-card p-5 text-left">Master dashboard</button>
-      <button type="button" onclick="navigateTo('network-dashboard','Dashboard','Network dashboard')" class="saas-card p-5 text-left">Network dashboard</button>
-      <button type="button" onclick="navigateTo('field-tools','Field','Field tools')" class="saas-card p-5 text-left">Field tools</button>
-    </div>
-</div>
 
+  <!-- Executive Morning Greeting & Shift Cockpit -->
+  <div class="saas-card p-6 bg-gradient-to-r from-emerald-50/90 via-teal-50/40 to-white dark:from-emerald-950/40 dark:via-slate-900 dark:to-slate-900 border border-emerald-200/80 dark:border-emerald-800/50 flex flex-col lg:flex-row lg:items-center justify-between gap-5 relative overflow-hidden shadow-xs">
+    <div class="relative z-10">
+      <div class="flex flex-wrap items-center gap-2 text-xs font-bold text-[#16A34A] dark:text-emerald-400">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#16A34A] dark:bg-emerald-400"></span>
+        </span>
+        <span id="welcomeGreetingBadge">શુભ પ્રભાત · Shubh Prabhat!</span>
+        <span class="text-slate-300 dark:text-slate-600">•</span>
+        <span class="text-[11px] font-mono text-[#64748B] dark:text-slate-400" id="welcomeLiveClock">09:42:15 IST · Shift A Operational</span>
+        <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 dark:bg-emerald-900/60 text-[#16A34A] dark:text-emerald-300">Amreli District HQ</span>
+      </div>
+      
+      <h1 class="text-2xl lg:text-3xl font-black text-[#0F172A] dark:text-white mt-1.5 tracking-tight flex items-center gap-2.5">
+        <span>Welcome to AnkurMitra Command</span>
+        <span class="text-xs font-extrabold px-3 py-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/50 dark:text-amber-300 border border-amber-200 dark:border-amber-700">Kharif 2026</span>
+      </h1>
+      
+      <p class="text-xs text-[#64748B] dark:text-slate-400 mt-1 max-w-3xl leading-relaxed">
+        Daily mission control for Saurashtra: check morning weather radar, review live APMC mandi spreads, clear incoming crop doctor foliar scans, and supervise van delivery dispatches.
+      </p>
+    </div>
+
+    <!-- Quick Action Launch Buttons -->
+    <div class="flex flex-wrap items-center gap-2.5 shrink-0 relative z-10">
+      <button type="button" onclick="simulateWelcomePulse()" class="h-9 px-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-emerald-50 dark:hover:bg-slate-700 text-[#0F172A] dark:text-white text-xs font-bold rounded-xl transition flex items-center gap-1.5 shadow-2xs group" title="Simulate incoming morning field events">
+        <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-500 group-hover:scale-110 transition"></i>
+        <span>Simulate Morning Pulse</span>
+      </button>
+      <button type="button" onclick="openBroadcastAdvisoryModal()" class="h-9 px-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-emerald-50 dark:hover:bg-slate-700 text-[#0F172A] dark:text-white text-xs font-bold rounded-xl transition flex items-center gap-1.5 shadow-2xs group" title="Send morning alert to Saurashtra clusters">
+        <i data-lucide="radio" class="w-3.5 h-3.5 text-rose-500 group-hover:scale-110 transition"></i>
+        <span>Broadcast Bulletin</span>
+      </button>
+      <button type="button" onclick="navigateTo('dashboard','Dashboard','Master dashboard')" class="h-9 px-4 bg-[#16A34A] hover:bg-[#15803D] text-white text-xs font-bold rounded-xl shadow-xs transition flex items-center gap-1.5">
+        <i data-lucide="layout-dashboard" class="w-3.5 h-3.5"></i>
+        <span>Full Master Dashboard →</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Operational Shift Readiness & Health Scorecard (4 Visual Metric Meters) -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    
+    <!-- 1. APMC Mandi Readiness -->
+    <div class="saas-card p-4 border border-slate-200 dark:border-slate-800 flex items-center justify-between hover:border-[#16A34A] transition">
+      <div>
+        <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-700 dark:text-amber-400 block">APMC Mandi Yard Feeds</span>
+        <div class="text-xl font-black text-[#0F172A] dark:text-white mt-1">98% Synced</div>
+        <div class="text-[11px] font-semibold text-emerald-600 mt-0.5 flex items-center gap-1">
+          <i data-lucide="check-circle" class="w-3 h-3"></i>
+          <span>6 APMCs Reporting Live</span>
+        </div>
+      </div>
+      <div class="w-11 h-11 rounded-2xl bg-amber-50 dark:bg-amber-950/40 text-amber-600 flex items-center justify-center font-bold">
+        <i data-lucide="trending-up" class="w-5 h-5"></i>
+      </div>
+    </div>
+
+    <!-- 2. Godown Buffer Capacity -->
+    <div class="saas-card p-4 border border-slate-200 dark:border-slate-800 flex items-center justify-between hover:border-[#16A34A] transition">
+      <div>
+        <span class="text-[10px] font-extrabold uppercase tracking-wider text-sky-700 dark:text-sky-400 block">Godown Logistics Buffer</span>
+        <div class="text-xl font-black text-[#0F172A] dark:text-white mt-1">84% Capacity</div>
+        <div class="text-[11px] font-semibold text-sky-600 mt-0.5 flex items-center gap-1">
+          <i data-lucide="package" class="w-3 h-3"></i>
+          <span>2,400 Bags Buffer Available</span>
+        </div>
+      </div>
+      <div class="w-11 h-11 rounded-2xl bg-sky-50 dark:bg-sky-950/40 text-sky-600 flex items-center justify-center font-bold">
+        <i data-lucide="warehouse" class="w-5 h-5"></i>
+      </div>
+    </div>
+
+    <!-- 3. Agronomist Field SLA -->
+    <div class="saas-card p-4 border border-slate-200 dark:border-slate-800 flex items-center justify-between hover:border-[#16A34A] transition">
+      <div>
+        <span class="text-[10px] font-extrabold uppercase tracking-wider text-rose-700 dark:text-rose-400 block">Crop Doctor Field SLA</span>
+        <div class="text-xl font-black text-[#0F172A] dark:text-white mt-1">92% On-Target</div>
+        <div class="text-[11px] font-semibold text-emerald-600 mt-0.5 flex items-center gap-1">
+          <i data-lucide="clock" class="w-3 h-3"></i>
+          <span>Avg Response: 11 Minutes</span>
+        </div>
+      </div>
+      <div class="w-11 h-11 rounded-2xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 flex items-center justify-center font-bold">
+        <i data-lucide="stethoscope" class="w-5 h-5"></i>
+      </div>
+    </div>
+
+    <!-- 4. Van Fleet Deliveries -->
+    <div class="saas-card p-4 border border-slate-200 dark:border-slate-800 flex items-center justify-between hover:border-[#16A34A] transition">
+      <div>
+        <span class="text-[10px] font-extrabold uppercase tracking-wider text-indigo-700 dark:text-indigo-400 block">Van Fleet Dispatch</span>
+        <div class="text-xl font-black text-[#0F172A] dark:text-white mt-1">100% Routed</div>
+        <div class="text-[11px] font-semibold text-indigo-600 mt-0.5 flex items-center gap-1">
+          <i data-lucide="truck" class="w-3 h-3"></i>
+          <span>2 Vans En-Route · 21 Orders</span>
+        </div>
+      </div>
+      <div class="w-11 h-11 rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 flex items-center justify-center font-bold">
+        <i data-lucide="map-pin" class="w-5 h-5"></i>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Priority Attention Triage Banner -->
+  <div class="saas-card p-4 bg-gradient-to-r from-amber-50/90 via-white to-rose-50/60 dark:from-amber-950/30 dark:via-slate-900 dark:to-rose-950/20 border border-amber-300/80 dark:border-amber-800/40 flex flex-wrap items-center justify-between gap-3 shadow-xs">
+    <div class="flex items-start gap-3">
+      <div class="w-10 h-10 rounded-2xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-xs">
+        <i data-lucide="alert-triangle" class="w-5 h-5 animate-pulse"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-sm font-black text-[#0F172A] dark:text-white">Attention Required: 3 Morning Operational Priorities</span>
+          <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-100 text-amber-800 dark:bg-amber-900/60 dark:text-amber-300">High Priority</span>
+        </div>
+        <p class="text-xs text-[#475569] dark:text-slate-400 mt-0.5">
+          <strong>1. Sudavad:</strong> 640 farmers have 0 input dealers · <strong>2. Pink Bollworm:</strong> Spray safe window ends at 17:00 IST · <strong>3. Urea Shortage:</strong> Bagasara Kishan Agro down to 12 buffer bags.
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center gap-2">
+      <button type="button" onclick="navigateTo('coverage-gaps','Insights','Coverage gaps')" class="h-8 px-3 bg-white dark:bg-slate-800 border border-amber-200 dark:border-amber-800 hover:bg-amber-50 text-xs font-bold rounded-xl text-[#0F172A] dark:text-slate-200 shadow-2xs">
+        Invite Dealer to Sudavad
+      </button>
+      <button type="button" onclick="navigateTo('crop-doctor','Field','Crop doctor')" class="h-8 px-3 bg-white dark:bg-slate-800 border border-rose-200 dark:border-rose-800 hover:bg-rose-50 text-xs font-bold rounded-xl text-rose-700 dark:text-rose-400 shadow-2xs">
+        Open Crop Doctor
+      </button>
+      <button type="button" onclick="navigateTo('dealer-stock','Sales','Dealer stock')" class="h-8 px-3.5 bg-[#16A34A] hover:bg-[#15803D] text-white text-xs font-bold rounded-xl shadow-xs">
+        Dispatch 200 Bags Urea
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Multi-Station Grid (Left: 7 Cols Stations | Right: 5 Cols Interactive Tools) -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+    
+    <!-- Left Stations (7 Cols) -->
+    <div class="lg:col-span-7 space-y-5">
+      
+      <!-- Station 1: APMC Mandi Morning Flashboard & Instant Direct Arbitrage Calculator -->
+      <div class="saas-card p-5 border border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-xl bg-amber-100 dark:bg-amber-950/50 text-amber-600 flex items-center justify-center font-bold">
+              <i data-lucide="scale" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <h2 class="text-sm font-black text-[#0F172A] dark:text-white">APMC Mandi vs AnkurMitra Direct Farmgate Flashboard</h2>
+              <p class="text-[11px] text-[#64748B] dark:text-slate-400">Live commodity price arbitrage across Saurashtra APMC yards</p>
+            </div>
+          </div>
+          <button type="button" onclick="navigateTo('mandi-prices','Content','Mandi prices')" class="text-xs font-bold text-[#16A34A] hover:underline flex items-center gap-1">
+            <span>Full Mandi Board</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center mb-4">
+          <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700">
+            <span class="text-[10px] font-extrabold text-slate-500 uppercase block">Cotton Shankar-6</span>
+            <strong class="text-base font-black text-[#0F172A] dark:text-white block mt-0.5">₹ 7,450</strong>
+            <span class="text-[10px] font-extrabold text-emerald-600">▲ +₹65 (Rajkot)</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700">
+            <span class="text-[10px] font-extrabold text-slate-500 uppercase block">Groundnut Bold</span>
+            <strong class="text-base font-black text-[#0F172A] dark:text-white block mt-0.5">₹ 6,820</strong>
+            <span class="text-[10px] font-extrabold text-emerald-600">▲ +₹42 (Gondal)</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700">
+            <span class="text-[10px] font-extrabold text-slate-500 uppercase block">Wheat Tukdi</span>
+            <strong class="text-base font-black text-[#0F172A] dark:text-white block mt-0.5">₹ 2,940</strong>
+            <span class="text-[10px] font-extrabold text-rose-500">▼ -₹12 (Amreli)</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700">
+            <span class="text-[10px] font-extrabold text-slate-500 uppercase block">Cumin Unjha-1</span>
+            <strong class="text-base font-black text-[#0F172A] dark:text-white block mt-0.5">₹ 28,500</strong>
+            <span class="text-[10px] font-extrabold text-emerald-600">▲ +₹280 (Unjha)</span>
+          </div>
+        </div>
+
+        <!-- Interactive Farmer Direct Gain Estimator -->
+        <div class="p-3.5 bg-emerald-50/70 dark:bg-emerald-950/30 rounded-2xl border border-emerald-200 dark:border-emerald-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+          <div>
+            <div class="font-extrabold text-[#0F172A] dark:text-white flex items-center gap-1.5">
+              <i data-lucide="calculator" class="w-4 h-4 text-[#16A34A]"></i>
+              <span>Direct Farmgate Farmer Gain Calculator</span>
+            </div>
+            <p class="text-[11px] text-[#64748B] dark:text-slate-400 mt-0.5">
+              Selling direct via AnkurMitra saves 4% commission cess + ₹330/qtl bonus
+            </p>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <input type="number" id="welcomeCalcQuintals" value="40" min="1" max="1000" oninput="calculateWelcomeMandiGain()" class="w-16 h-8 px-2 text-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg font-bold text-xs outline-none">
+            <span class="text-[11px] font-bold text-slate-500">Qtl =</span>
+            <span class="px-2.5 py-1 rounded-lg bg-[#16A34A] text-white font-mono font-black text-xs" id="welcomeCalcGainResult">+₹ 13,200 Gain</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Station 2: Agro-Weather Radar & Micro-Climate Station -->
+      <div class="saas-card p-5 border border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 gap-2 mb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-xl bg-sky-100 dark:bg-sky-950/50 text-sky-600 flex items-center justify-center font-bold">
+              <i data-lucide="cloud-sun" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <h2 class="text-sm font-black text-[#0F172A] dark:text-white">Micro-Climate Weather Doppler & Spray Window</h2>
+              <p class="text-[11px] text-[#64748B] dark:text-slate-400">Live sensor telemetry for agricultural spraying and pest windows</p>
+            </div>
+          </div>
+          
+          <select id="welcomeWeatherTalukaSelect" onchange="changeWelcomeTaluka(this.value)" class="h-8 px-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold text-[#16A34A] outline-none shadow-2xs">
+            <option value="Amreli" selected>Amreli Taluka</option>
+            <option value="Bagasara">Bagasara Taluka</option>
+            <option value="Dhari">Dhari Taluka</option>
+            <option value="Sudavad">Sudavad Cluster</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center mb-3">
+          <div class="p-3 rounded-2xl bg-sky-50/50 dark:bg-slate-800/40 border border-sky-100 dark:border-slate-700">
+            <span class="text-[10px] font-bold text-slate-500">Ambient Temp</span>
+            <strong class="text-lg font-black text-[#0F172A] dark:text-white block mt-0.5" id="welcomeWeatherTemp">32°C</strong>
+            <span class="text-[9px] text-sky-600 font-bold">Clear Sky</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-sky-50/50 dark:bg-slate-800/40 border border-sky-100 dark:border-slate-700">
+            <span class="text-[10px] font-bold text-slate-500">Relative Humidity</span>
+            <strong class="text-lg font-black text-[#0F172A] dark:text-white block mt-0.5" id="welcomeWeatherHum">58%</strong>
+            <span class="text-[9px] text-emerald-600 font-bold">Normal Range</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-sky-50/50 dark:bg-slate-800/40 border border-sky-100 dark:border-slate-700">
+            <span class="text-[10px] font-bold text-slate-500">Wind Velocity</span>
+            <strong class="text-lg font-black text-[#0F172A] dark:text-white block mt-0.5" id="welcomeWeatherWind">12 km/h</strong>
+            <span class="text-[9px] text-slate-500 font-bold">South-West</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-sky-50/50 dark:bg-slate-800/40 border border-sky-100 dark:border-slate-700">
+            <span class="text-[10px] font-bold text-slate-500">Soil Temperature</span>
+            <strong class="text-lg font-black text-[#0F172A] dark:text-white block mt-0.5" id="welcomeWeatherSoil">26.4°C</strong>
+            <span class="text-[9px] text-amber-600 font-bold">Moisture 24%</span>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 flex items-center justify-between text-xs">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
+            <span class="font-extrabold text-[#16A34A] dark:text-emerald-400" id="welcomeWeatherSpray">SPRAY STATUS: SAFE FOR APPLICATION</span>
+          </div>
+          <span class="text-[11px] font-medium text-[#64748B] dark:text-slate-400">Optimal absorption window ends at 17:00 IST</span>
+        </div>
+      </div>
+
+      <!-- Station 3: Active Van Logistics & Route Radar -->
+      <div class="saas-card p-5 border border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950/50 text-indigo-600 flex items-center justify-center font-bold">
+              <i data-lucide="truck" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <h2 class="text-sm font-black text-[#0F172A] dark:text-white">Active Delivery Van Logistics (Amreli Region)</h2>
+              <p class="text-[11px] text-[#64748B] dark:text-slate-400">2 vans moving · 21 packages scheduled for farmer delivery</p>
+            </div>
+          </div>
+          <button type="button" onclick="navigateTo('deliveries','Delivery','Deliveries')" class="text-xs font-bold text-[#16A34A] hover:underline flex items-center gap-1">
+            <span>Live Dispatch Board</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <div class="space-y-3 text-xs">
+          <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl bg-indigo-500 text-white font-bold flex items-center justify-center shrink-0">
+                01
+              </div>
+              <div>
+                <div class="font-extrabold text-[#0F172A] dark:text-white">Van #GJ-14-V-8820 (Driver: Mukeshbhai)</div>
+                <div class="text-[11px] text-[#64748B] dark:text-slate-400 mt-0.5">Route: Amreli Silo → Bagasara Hub → Sudavad (14 drops · 85% done)</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-[#16A34A]">On Schedule</span>
+              <button type="button" onclick="navigateTo('deliveries','Delivery','Deliveries')" class="h-7 px-2.5 rounded-lg bg-white dark:bg-slate-700 border text-[11px] font-bold shadow-2xs">Track</button>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl bg-teal-500 text-white font-bold flex items-center justify-center shrink-0">
+                02
+              </div>
+              <div>
+                <div class="font-extrabold text-[#0F172A] dark:text-white">Van #GJ-14-V-9140 (Driver: Sureshbhai)</div>
+                <div class="text-[11px] text-[#64748B] dark:text-slate-400 mt-0.5">Route: Amreli → Dhari Valley → Khambha (7 drops · Bio-fertilizers)</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-100 text-teal-800">En-Route</span>
+              <button type="button" onclick="navigateTo('deliveries','Delivery','Deliveries')" class="h-7 px-2.5 rounded-lg bg-white dark:bg-slate-700 border text-[11px] font-bold shadow-2xs">Track</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Interactive Tools & Launchpad (5 Cols) -->
+    <div class="lg:col-span-5 space-y-5">
+      
+      <!-- Interactive Operations Shift Checklist -->
+      <div class="saas-card p-5 border border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-3">
+          <div>
+            <h3 class="text-sm font-black text-[#0F172A] dark:text-white flex items-center gap-1.5">
+              <i data-lucide="check-square" class="w-4 h-4 text-[#16A34A]"></i>
+              <span>Today's Shift Operational Checklist</span>
+            </h3>
+            <p class="text-[11px] text-[#64748B] dark:text-slate-400">Click tasks as you execute morning procedures</p>
+          </div>
+          <span id="welcomeChecklistProgressBadge" class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 text-[#16A34A] dark:bg-emerald-950 dark:text-emerald-300">
+            1/4 Done (25%)
+          </span>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden mb-3.5">
+          <div id="welcomeChecklistProgressBar" class="h-full bg-[#16A34A] transition-all duration-300" style="width: 25%"></div>
+        </div>
+
+        <div class="space-y-2.5 text-xs">
+          <label class="flex items-start gap-2.5 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition">
+            <input type="checkbox" checked onchange="toggleWelcomeChecklist(this)" class="mt-0.5 rounded text-[#16A34A] focus:ring-[#16A34A] w-4 h-4">
+            <span class="text-[#0F172A] dark:text-slate-200 font-semibold line-through opacity-70">
+              Verify APMC Mandi morning price spreads against direct procurement contracts
+            </span>
+          </label>
+          <label class="flex items-start gap-2.5 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition">
+            <input type="checkbox" onchange="toggleWelcomeChecklist(this)" class="mt-0.5 rounded text-[#16A34A] focus:ring-[#16A34A] w-4 h-4">
+            <span class="text-[#0F172A] dark:text-slate-200 font-semibold">
+              Validate Doppler agro-met radar and broadcast spray safety window before 11:00 AM
+            </span>
+          </label>
+          <label class="flex items-start gap-2.5 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition">
+            <input type="checkbox" onchange="toggleWelcomeChecklist(this)" class="mt-0.5 rounded text-[#16A34A] focus:ring-[#16A34A] w-4 h-4">
+            <span class="text-[#0F172A] dark:text-slate-200 font-semibold">
+              Approve 200 bags Neem Urea replenishment dispatch for Kishan Agro (Bagasara)
+            </span>
+          </label>
+          <label class="flex items-start gap-2.5 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition">
+            <input type="checkbox" onchange="toggleWelcomeChecklist(this)" class="mt-0.5 rounded text-[#16A34A] focus:ring-[#16A34A] w-4 h-4">
+            <span class="text-[#0F172A] dark:text-slate-200 font-semibold">
+              Resolve pending Crop Doctor foliar diagnostic tickets older than 15 minutes
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Station 4: Crop Doctor Live Queue (Triage Desk) -->
+      <div class="saas-card p-5 border border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-950/50 text-rose-600 flex items-center justify-center font-bold">
+              <i data-lucide="stethoscope" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <h3 class="text-sm font-black text-[#0F172A] dark:text-white">Crop Doctor · Incoming Diagnostics</h3>
+              <p class="text-[11px] text-[#64748B] dark:text-slate-400">3 urgent foliar pest scans awaiting agronomist Rx</p>
+            </div>
+          </div>
+          <button type="button" onclick="navigateTo('crop-doctor','Field','Crop doctor')" class="text-xs font-bold text-[#16A34A] hover:underline">View All</button>
+        </div>
+
+        <div class="space-y-2.5 text-xs">
+          <!-- Item 1 -->
+          <div class="p-3 rounded-2xl bg-rose-50/50 dark:bg-slate-800/50 border border-rose-100 dark:border-slate-700 space-y-1.5">
+            <div class="flex items-center justify-between">
+              <strong class="font-bold text-[#0F172A] dark:text-white">Jayesh Patel · Sudavad</strong>
+              <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-rose-100 text-rose-800">Pink Bollworm (High)</span>
+            </div>
+            <p class="text-[11px] text-slate-600 dark:text-slate-400">Cotton Shankar-6 (4 acre). Larva detected in flower bud.</p>
+            <div class="flex items-center justify-between pt-1">
+              <span class="text-[10px] text-slate-400 font-mono">11 min ago</span>
+              <button type="button" onclick="approveWelcomeRx('Jayesh Patel', 'Emamectin Benzoate 5% SG')" class="px-2.5 py-1 rounded-lg bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-[10px] shadow-2xs">
+                Approve & Send Rx
+              </button>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 space-y-1.5">
+            <div class="flex items-center justify-between">
+              <strong class="font-bold text-[#0F172A] dark:text-white">Kishorbhai Radadiya · Bagasara</strong>
+              <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-amber-100 text-amber-800">Tikka Leaf Spot</span>
+            </div>
+            <p class="text-[11px] text-slate-600 dark:text-slate-400">Groundnut GG-20 (6 acre). Circular brown foliar lesions.</p>
+            <div class="flex items-center justify-between pt-1">
+              <span class="text-[10px] text-slate-400 font-mono">24 min ago</span>
+              <button type="button" onclick="approveWelcomeRx('Kishorbhai', 'Mancozeb 75% WP')" class="px-2.5 py-1 rounded-lg bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-[10px] shadow-2xs">
+                Approve & Send Rx
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Launchpad Grid (6 Clean Cards) -->
+      <div class="saas-card p-5 border border-slate-200 dark:border-slate-800 shadow-xs">
+        <h3 class="text-xs font-black text-[#0F172A] dark:text-white uppercase tracking-wider mb-3 flex items-center gap-1.5">
+          <i data-lucide="compass" class="w-3.5 h-3.5 text-[#16A34A]"></i>
+          <span>Portal Quick Launchpad</span>
+        </h3>
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <button type="button" onclick="navigateTo('dashboard','Dashboard','Master dashboard')" class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-slate-700 text-left transition flex items-center gap-2 group">
+            <i data-lucide="layout-dashboard" class="w-4 h-4 text-emerald-600 group-hover:scale-110 transition"></i>
+            <span class="font-bold text-[#0F172A] dark:text-white">Master Hub</span>
+          </button>
+          <button type="button" onclick="navigateTo('mandi-prices','Content','Mandi prices')" class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-slate-700 text-left transition flex items-center gap-2 group">
+            <i data-lucide="trending-up" class="w-4 h-4 text-amber-600 group-hover:scale-110 transition"></i>
+            <span class="font-bold text-[#0F172A] dark:text-white">Mandi Rates</span>
+          </button>
+          <button type="button" onclick="navigateTo('crop-doctor','Field','Crop doctor')" class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-rose-50 dark:hover:bg-slate-700 text-left transition flex items-center gap-2 group">
+            <i data-lucide="stethoscope" class="w-4 h-4 text-rose-600 group-hover:scale-110 transition"></i>
+            <span class="font-bold text-[#0F172A] dark:text-white">Crop Doctor</span>
+          </button>
+          <button type="button" onclick="navigateTo('deliveries','Delivery','Deliveries')" class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-slate-700 text-left transition flex items-center gap-2 group">
+            <i data-lucide="truck" class="w-4 h-4 text-indigo-600 group-hover:scale-110 transition"></i>
+            <span class="font-bold text-[#0F172A] dark:text-white">Deliveries</span>
+          </button>
+          <button type="button" onclick="navigateTo('wallet-payouts','Wallet','Wallet and payouts')" class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-slate-700 text-left transition flex items-center gap-2 group">
+            <i data-lucide="wallet" class="w-4 h-4 text-teal-600 group-hover:scale-110 transition"></i>
+            <span class="font-bold text-[#0F172A] dark:text-white">Wallet Desk</span>
+          </button>
+          <button type="button" onclick="navigateTo('portal-settings','Settings','Portal settings')" class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-purple-50 dark:hover:bg-slate-700 text-left transition flex items-center gap-2 group">
+            <i data-lucide="sliders" class="w-4 h-4 text-purple-600 group-hover:scale-110 transition"></i>
+            <span class="font-bold text-[#0F172A] dark:text-white">Appearance</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 <div id="view-network-dashboard" class="hidden space-y-6 view-section">
   <div class="saas-card p-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
     <div>
@@ -32667,22 +33107,55 @@ function setPortalTheme(theme, showFeedback = true) {
   if (theme === 'dark') {
     document.documentElement.classList.add('dark');
     localStorage.setItem('ankurmitra_theme', 'dark');
+  } else if (theme === 'system') {
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('ankurmitra_theme', 'system');
   } else {
     document.documentElement.classList.remove('dark');
     localStorage.setItem('ankurmitra_theme', 'light');
   }
+
+  // Update Appearance Settings Theme Cards
+  ['light', 'dark', 'system'].forEach(mode => {
+    const card = document.getElementById('themeCard-' + mode);
+    const check = document.getElementById('themeCheck-' + mode);
+    if (card) {
+      if (mode === theme) {
+        card.className = 'p-4 rounded-2xl border-2 border-[var(--am-primary,#16A34A)] bg-emerald-50/40 dark:bg-emerald-950/30 cursor-pointer transition relative group';
+      } else {
+        card.className = 'p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer transition relative group hover:border-[var(--am-primary,#16A34A)]';
+      }
+    }
+    if (check) {
+      if (mode === theme) {
+        check.classList.remove('hidden');
+      } else {
+        check.classList.add('hidden');
+      }
+    }
+  });
+
+  // Update Header Theme Toggle Button
   const themeBtn = document.getElementById('headerThemeToggleBtn');
   if (themeBtn) {
-    const icon = theme === 'dark' ? 'sun' : 'moon';
+    const isDark = document.documentElement.classList.contains('dark');
+    const icon = isDark ? 'sun' : 'moon';
     themeBtn.innerHTML = `<i data-lucide="${icon}" class="w-4 h-4"></i>`;
     if (window.lucide && typeof lucide.createIcons === 'function') {
       try { lucide.createIcons(); } catch (_) {}
     }
   }
+
   if (showFeedback && typeof showToast === 'function') {
-    showToast(`Switched theme to ${theme} mode.`, 'info');
+    showToast(`Applied ${theme.charAt(0).toUpperCase() + theme.slice(1)} theme mode.`, 'info');
   }
 }
+window.setPortalTheme = setPortalTheme;
 
 document.addEventListener("click", () => {
   const l = document.getElementById("headerLangDropdownMenu");
@@ -41267,6 +41740,7 @@ function updateSettingsLiveClock(tz) {
 
         prefs = {
           theme: localStorage.getItem('ankurmitra_theme') || 'light',
+          themePreset: localStorage.getItem('ankurmitra_theme_preset') || 'ankurmitra-harmony',
           language: lang,
           timezone: tz,
           currency: curr,
@@ -41415,6 +41889,9 @@ function updateSettingsLiveClock(tz) {
       // 13. Theme
       if (typeof setPortalTheme === 'function' && prefs.theme) {
         setPortalTheme(prefs.theme, false);
+      }
+      if (typeof selectProductLogoTheme === 'function' && prefs.themePreset) {
+        selectProductLogoTheme(prefs.themePreset, false);
       }
 
       // 14. Language, Timezone, Currency

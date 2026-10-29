@@ -1,8 +1,8 @@
 /**
  * AnkurMitra Portal — Executive Dashboard & Product Logo Theme Engine
  * Ultra-premium, hyper-interactive controllers for Amreli District Operations Grid,
- * Chart.js synchronizations, live operational pulse, multi-cluster triage,
- * and 5 official Product Logo Theme presets with light color palettes.
+ * Welcome Dashboard Cockpit, Chart.js synchronizations, live operational pulse,
+ * multi-cluster triage, and 5 official Product Logo Theme presets with light color palettes.
  */
 (function(window, document) {
   'use strict';
@@ -78,9 +78,20 @@
     }
   };
 
+  function hexToRgba(hex, alpha) {
+    let c;
+    if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+      c = hex.substring(1).split('');
+      if (c.length === 3) c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+      c = '0x' + c.join('');
+      return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + alpha + ')';
+    }
+    return hex;
+  }
+
   /**
    * Applies one of the 5 product logo themes.
-   * Updates CSS dataset attribute, localStorage, settings cards, and active charts.
+   * Updates CSS dataset attribute, live stylesheet override, localStorage, settings cards, and active charts.
    */
   function selectProductLogoTheme(presetId, notify) {
     if (!THEME_PALETTES[presetId]) {
@@ -89,38 +100,231 @@
 
     const theme = THEME_PALETTES[presetId];
 
-    // Set dataset attribute on html root for CSS variable scoping
+    // 1. Set dataset attribute on html root for CSS variable scoping
     document.documentElement.setAttribute('data-theme-preset', presetId);
 
-    // Persist in localStorage
+    // 2. Set direct CSS variables on root style for instantaneous override
+    const rootStyle = document.documentElement.style;
+    rootStyle.setProperty('--am-primary', theme.primary);
+    rootStyle.setProperty('--am-primary-hover', theme.primaryHover);
+    rootStyle.setProperty('--am-secondary', theme.secondary);
+    rootStyle.setProperty('--am-secondary-hover', theme.secondaryHover);
+    rootStyle.setProperty('--am-accent', theme.accent);
+    rootStyle.setProperty('--am-leaf', theme.leaf);
+    rootStyle.setProperty('--am-soil', theme.soil);
+    rootStyle.setProperty('--am-canvas', theme.canvas);
+    rootStyle.setProperty('--am-glow', hexToRgba(theme.primary, 0.35));
+    rootStyle.setProperty('--am-gradient-brand', `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`);
+    rootStyle.setProperty('--portal-accent', theme.primary);
+    rootStyle.setProperty('--portal-accent-hover', theme.primaryHover);
+    rootStyle.setProperty('--portal-accent-border', theme.secondary);
+    rootStyle.setProperty('--portal-accent-light', hexToRgba(theme.primary, 0.12));
+
+    // Also update global currentPortalAccentColor if defined
+    if (typeof window.currentPortalAccentColor !== 'undefined') {
+      window.currentPortalAccentColor = theme.primary;
+    }
+
+    // 3. Inject or update dynamic stylesheet to enforce theme across all elements
+    let dynStyle = document.getElementById('am-dynamic-theme-style');
+    if (!dynStyle) {
+      dynStyle = document.createElement('style');
+      dynStyle.id = 'am-dynamic-theme-style';
+      document.head.appendChild(dynStyle);
+    }
+
+    dynStyle.textContent = `
+      :root {
+        --am-primary: ${theme.primary} !important;
+        --am-primary-hover: ${theme.primaryHover} !important;
+        --am-secondary: ${theme.secondary} !important;
+        --am-secondary-hover: ${theme.secondaryHover} !important;
+        --am-accent: ${theme.accent} !important;
+        --am-soil: ${theme.soil} !important;
+        --am-leaf: ${theme.leaf} !important;
+        --am-canvas: ${theme.canvas} !important;
+        --am-glow: ${hexToRgba(theme.primary, 0.35)} !important;
+        --am-gradient-brand: linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%) !important;
+        --portal-accent: ${theme.primary} !important;
+        --portal-accent-hover: ${theme.primaryHover} !important;
+        --portal-accent-border: ${theme.secondary} !important;
+      }
+      .child-nav-selected {
+        background: linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%) !important;
+        border-left: 3px solid ${theme.secondary} !important;
+        color: #FFFFFF !important;
+        box-shadow: 0 4px 14px -4px ${hexToRgba(theme.primary, 0.5)} !important;
+      }
+      .child-nav-selected svg {
+        color: #FFFFFF !important;
+        stroke: #FFFFFF !important;
+      }
+      .bg-\\[\\#0B6623\\],
+      .bg-\\[\\#16A34A\\],
+      [class*="bg-[#0B6623]"],
+      [class*="bg-[#16A34A]"],
+      .portal-accent-bg,
+      .portal-pref-tab-btn.active,
+      .appcfg-tab-btn.active,
+      .mobile-cfg-tab-btn.active {
+        background-color: ${theme.primary} !important;
+      }
+      button.bg-\\[\\#0B6623\\],
+      a.bg-\\[\\#0B6623\\],
+      button.bg-\\[\\#16A34A\\],
+      a.bg-\\[\\#16A34A\\],
+      .am-primary {
+        background: linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%) !important;
+        color: #FFFFFF !important;
+        box-shadow: 0 4px 14px -4px ${hexToRgba(theme.primary, 0.5)} !important;
+      }
+      button.bg-\\[\\#0B6623\\]:hover,
+      a.bg-\\[\\#0B6623\\]:hover,
+      button.bg-\\[\\#16A34A\\]:hover,
+      a.bg-\\[\\#16A34A\\]:hover,
+      .hover\\:bg-\\[\\#074818\\]:hover,
+      .hover\\:bg-\\[\\#09521C\\]:hover,
+      .hover\\:bg-\\[\\#15803D\\]:hover {
+        background-color: ${theme.primaryHover} !important;
+        filter: brightness(1.06) !important;
+      }
+      .text-\\[\\#0B6623\\],
+      .text-\\[\\#16A34A\\],
+      [class*="text-[#0B6623]"],
+      [class*="text-[#16A34A]"] {
+        color: ${theme.primary} !important;
+      }
+      .border-\\[\\#0B6623\\],
+      .border-\\[\\#16A34A\\],
+      [class*="border-[#0B6623]"],
+      [class*="border-[#16A34A]"] {
+        border-color: ${theme.primary} !important;
+      }
+      .focus\\:border-\\[\\#0B6623\\]:focus,
+      .focus\\:border-\\[\\#16A34A\\]:focus {
+        border-color: ${theme.primary} !important;
+      }
+      .focus\\:ring-\\[\\#0B6623\\]:focus,
+      .focus\\:ring-\\[\\#16A34A\\]:focus {
+        --tw-ring-color: ${theme.primary} !important;
+      }
+      #portalTopProgressBar {
+        background: linear-gradient(90deg, ${theme.primary}, ${theme.secondary}, ${theme.accent}) !important;
+      }
+      .theme-preset-card.active-theme {
+        border-color: ${theme.primary} !important;
+        box-shadow: 0 0 0 1px ${theme.primary}, 0 8px 20px -6px ${hexToRgba(theme.primary, 0.4)} !important;
+      }
+      .theme-preset-card.active-theme .theme-check-badge {
+        background-color: ${theme.primary} !important;
+        display: flex !important;
+      }
+    `;
+
+    // 4. Persist in localStorage
     try {
       localStorage.setItem('ankurmitra_theme_preset', presetId);
     } catch (_) {}
 
-    // Update Theme Selection Cards UI in Setting View
+    // 5. Update Theme Selection Cards UI in Setting View
     const grid = document.getElementById('productLogoThemeCardsGrid');
     if (grid) {
       grid.querySelectorAll('.theme-preset-card').forEach(card => {
         const cardPreset = card.getAttribute('data-preset');
         if (cardPreset === presetId) {
-          card.classList.add('active-theme', 'border-2', 'border-[#16A34A]');
-          card.classList.remove('border-slate-200', 'dark:border-slate-700');
+          card.classList.add('active-theme');
+          card.style.borderColor = theme.primary;
         } else {
-          card.classList.remove('active-theme', 'border-2', 'border-[#16A34A]');
-          card.classList.add('border', 'border-slate-200', 'dark:border-slate-700');
+          card.classList.remove('active-theme');
+          card.style.borderColor = '';
         }
       });
     }
 
-    // Dynamic Chart recoloring
+    // 6. Dynamic Chart recoloring
     updateChartsWithTheme(theme);
 
-    // Toast feedback if user-initiated
+    // 7. Toast feedback if user-initiated
     if (notify && typeof window.showToast === 'function') {
       window.showToast(`Applied "${theme.name}" theme based on AnkurMitra emblem!`, 'success');
     }
   }
   window.selectProductLogoTheme = selectProductLogoTheme;
+
+  /**
+   * Sets Portal Theme Mode: 'light', 'dark', or 'system'.
+   */
+  function setPortalTheme(theme, showFeedback = true) {
+    let effectiveDark = false;
+    if (theme === 'dark') {
+      effectiveDark = true;
+    } else if (theme === 'system') {
+      effectiveDark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+
+    if (effectiveDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    try {
+      localStorage.setItem('ankurmitra_theme', theme);
+    } catch (_) {}
+
+    // Update Appearance Settings Theme Cards
+    ['light', 'dark', 'system'].forEach(mode => {
+      const card = document.getElementById('themeCard-' + mode);
+      const check = document.getElementById('themeCheck-' + mode);
+      if (card) {
+        if (mode === theme) {
+          card.className = 'p-4 rounded-2xl border-2 border-[var(--am-primary,#16A34A)] bg-emerald-50/40 dark:bg-emerald-950/30 cursor-pointer transition relative group';
+        } else {
+          card.className = 'p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer transition relative group hover:border-[var(--am-primary,#16A34A)]';
+        }
+      }
+      if (check) {
+        if (mode === theme) {
+          check.classList.remove('hidden');
+        } else {
+          check.classList.add('hidden');
+        }
+      }
+    });
+
+    // Update Header Theme Toggle Button
+    const themeBtn = document.getElementById('headerThemeToggleBtn');
+    if (themeBtn) {
+      const isDark = document.documentElement.classList.contains('dark');
+      const icon = isDark ? 'sun' : 'moon';
+      themeBtn.innerHTML = `<i data-lucide="${icon}" class="w-4 h-4"></i>`;
+      if (window.lucide && typeof lucide.createIcons === 'function') {
+        try { lucide.createIcons(); } catch (_) {}
+      }
+    }
+
+    if (showFeedback && typeof window.showToast === 'function') {
+      window.showToast(`Applied ${theme.charAt(0).toUpperCase() + theme.slice(1)} theme mode.`, 'info');
+    }
+  }
+  window.setPortalTheme = setPortalTheme;
+
+  function toggleTheme() {
+    const isDark = document.documentElement.classList.contains('dark');
+    setPortalTheme(isDark ? 'light' : 'dark', true);
+  }
+  window.toggleTheme = toggleTheme;
+
+  // Listen to OS theme changes if user has 'system' active
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      let saved = 'light';
+      try { saved = localStorage.getItem('ankurmitra_theme'); } catch (_) {}
+      if (saved === 'system') {
+        setPortalTheme('system', false);
+      }
+    });
+  }
 
   /**
    * Updates Chart.js charts with the active theme colors.
@@ -173,17 +377,6 @@
     }
   }
   window.updateChartsWithTheme = updateChartsWithTheme;
-
-  function hexToRgba(hex, alpha) {
-    let c;
-    if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
-      c = hex.substring(1).split('');
-      if (c.length === 3) c = [c[0], c[0], c[1], c[1], c[2], c[2]];
-      c = '0x' + c.join('');
-      return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + alpha + ')';
-    }
-    return hex;
-  }
 
   // ─────────────────────────────────────────────────────────────────────────
   // 2. MANDI PRICE COMPARISON BAR CHART INITIALIZER
@@ -484,7 +677,116 @@
   window.simulateLiveOpsPulse = simulateLiveOpsPulse;
 
   // ─────────────────────────────────────────────────────────────────────────
-  // 6. BROADCAST ADVISORY MODAL
+  // 6. WELCOME DASHBOARD INTERACTIVE CONTROLLERS
+  // ─────────────────────────────────────────────────────────────────────────
+  const WELCOME_WEATHER_DATA = {
+    'Amreli': { temp: '32°C', hum: '58%', wind: '12 km/h SW', soil: '26.4°C', spray: 'SPRAY STATUS: SAFE FOR APPLICATION' },
+    'Bagasara': { temp: '33°C', hum: '52%', wind: '14 km/h W', soil: '27.1°C', spray: 'SPRAY STATUS: SAFE FOR APPLICATION' },
+    'Dhari': { temp: '31°C', hum: '64%', wind: '9 km/h S', soil: '25.8°C', spray: 'SPRAY STATUS: SAFE FOR APPLICATION' },
+    'Sudavad': { temp: '32.5°C', hum: '55%', wind: '11 km/h SW', soil: '26.8°C', spray: 'SPRAY WINDOW CLOSES AT 17:00 IST' }
+  };
+
+  function changeWelcomeTaluka(taluka) {
+    const d = WELCOME_WEATHER_DATA[taluka] || WELCOME_WEATHER_DATA['Amreli'];
+    const tEl = document.getElementById('welcomeWeatherTemp');
+    const hEl = document.getElementById('welcomeWeatherHum');
+    const wEl = document.getElementById('welcomeWeatherWind');
+    const sEl = document.getElementById('welcomeWeatherSoil');
+    const spEl = document.getElementById('welcomeWeatherSpray');
+
+    if (tEl) tEl.textContent = d.temp;
+    if (hEl) hEl.textContent = d.hum;
+    if (wEl) wEl.textContent = d.wind;
+    if (sEl) sEl.textContent = d.soil;
+    if (spEl) spEl.textContent = d.spray;
+
+    if (typeof window.showToast === 'function') {
+      window.showToast(`Updated morning weather radar for ${taluka} (${d.temp})`, 'info');
+    }
+  }
+  window.changeWelcomeTaluka = changeWelcomeTaluka;
+
+  function calculateWelcomeMandiGain() {
+    const input = document.getElementById('welcomeCalcQuintals');
+    const resultEl = document.getElementById('welcomeCalcGainResult');
+    if (!input || !resultEl) return;
+
+    const q = parseFloat(input.value) || 0;
+    const gain = q * 330; // +₹330 direct farmer premium per quintal
+    resultEl.textContent = `+₹ ${gain.toLocaleString('en-IN')} Gain`;
+  }
+  window.calculateWelcomeMandiGain = calculateWelcomeMandiGain;
+
+  function toggleWelcomeChecklist(checkbox) {
+    if (!checkbox) return;
+    const labelSpan = checkbox.parentElement.querySelector('span');
+    if (checkbox.checked) {
+      if (labelSpan) labelSpan.classList.add('line-through', 'opacity-70');
+    } else {
+      if (labelSpan) labelSpan.classList.remove('line-through', 'opacity-70');
+    }
+
+    const allCheckboxes = document.querySelectorAll('#view-welcome input[type="checkbox"][onchange*="toggleWelcomeChecklist"]');
+    let completed = 0;
+    allCheckboxes.forEach(cb => {
+      if (cb.checked) completed++;
+    });
+
+    const total = allCheckboxes.length || 4;
+    const pct = Math.round((completed / total) * 100);
+
+    const bar = document.getElementById('welcomeChecklistProgressBar');
+    const badge = document.getElementById('welcomeChecklistProgressBadge');
+
+    if (bar) bar.style.width = pct + '%';
+    if (badge) badge.textContent = `${completed}/${total} Done (${pct}%)`;
+
+    if (completed === total && typeof window.showToast === 'function') {
+      window.showToast('Excellent! All 4 morning shift operational checklists completed.', 'success');
+    }
+  }
+  window.toggleWelcomeChecklist = toggleWelcomeChecklist;
+
+  function approveWelcomeRx(farmerName, medicine) {
+    const btn = window.event ? window.event.currentTarget : null;
+    if (btn) {
+      btn.outerHTML = '<span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-[#16A34A] font-bold text-[10px] inline-flex items-center gap-1"><span>Approved ✓</span></span>';
+    }
+
+    if (typeof window.showToast === 'function') {
+      window.showToast(`Prescription for "${medicine}" approved and sent to ${farmerName} on WhatsApp!`, 'success');
+    }
+  }
+  window.approveWelcomeRx = approveWelcomeRx;
+
+  const MORNING_PULSE_EVENTS = [
+    'Farmer Jayesh Patel (Sudavad) confirmed morning harvest intake of 40 Quintals Shankar-6 Cotton!',
+    'Kishan Agro (Bagasara) confirmed receipt of 200 bags Neem Urea buffer from Rajkot Silo.',
+    'Gondal APMC morning auction: Groundnut opened at ₹6,820/q (+₹42.50 above baseline).',
+    'Doppler Radar update: Micro-climate spray window confirmed Safe until 17:00 IST in Amreli District.'
+  ];
+  let morningPulseIdx = 0;
+
+  function simulateWelcomePulse() {
+    const msg = MORNING_PULSE_EVENTS[morningPulseIdx % MORNING_PULSE_EVENTS.length];
+    morningPulseIdx++;
+
+    const clock = document.getElementById('welcomeLiveClock');
+    if (clock) {
+      const now = new Date();
+      clock.textContent = now.toLocaleTimeString('en-IN', { hour12: false }) + ' IST · Morning Pulse Received';
+      clock.classList.add('text-emerald-500', 'font-bold');
+      setTimeout(() => clock.classList.remove('text-emerald-500', 'font-bold'), 2000);
+    }
+
+    if (typeof window.showToast === 'function') {
+      window.showToast(msg, 'success');
+    }
+  }
+  window.simulateWelcomePulse = simulateWelcomePulse;
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 7. BROADCAST ADVISORY MODAL
   // ─────────────────────────────────────────────────────────────────────────
   function openBroadcastAdvisoryModal(targetVillage) {
     const modal = document.getElementById('broadcastAdvisoryModal');
@@ -525,7 +827,7 @@
   window.submitBroadcastAdvisory = submitBroadcastAdvisory;
 
   // ─────────────────────────────────────────────────────────────────────────
-  // 7. EXPORT DASHBOARD TELEMETRY REPORT
+  // 8. EXPORT DASHBOARD TELEMETRY REPORT
   // ─────────────────────────────────────────────────────────────────────────
   function exportDashboardData() {
     const csvContent =
@@ -551,7 +853,7 @@
   window.exportDashboardData = exportDashboardData;
 
   // ─────────────────────────────────────────────────────────────────────────
-  // 8. KPI CARD DRILLDOWNS & FILTERS
+  // 9. KPI CARD DRILLDOWNS & FILTERS
   // ─────────────────────────────────────────────────────────────────────────
   function drillDashboardKpi(kpiKey) {
     if (typeof window.navigateTo !== 'function') return;
@@ -625,31 +927,49 @@
   window.toggleDashboardRole = toggleDashboardRole;
 
   // ─────────────────────────────────────────────────────────────────────────
-  // 9. AUTOMATIC INITIALIZATION ON DOM READY
+  // 10. AUTOMATIC INITIALIZATION ON DOM READY & IMMEDIATE PRE-PAINT RESTORE
   // ─────────────────────────────────────────────────────────────────────────
   function initDashboardAndTheme() {
-    // 1. Initialize saved product logo theme preset
+    // 1. Restore Theme Mode (Light / Dark / System)
+    let savedMode = 'light';
+    try {
+      savedMode = localStorage.getItem('ankurmitra_theme') || 'light';
+    } catch (_) {}
+    setPortalTheme(savedMode, false);
+
+    // 2. Restore Product Logo Theme Preset
     let savedPreset = 'ankurmitra-harmony';
     try {
       savedPreset = localStorage.getItem('ankurmitra_theme_preset') || 'ankurmitra-harmony';
     } catch (_) {}
-
     selectProductLogoTheme(savedPreset, false);
 
-    // 2. Initialize Mandi Comparison Bar Chart
+    // 3. Initialize Mandi Comparison Bar Chart if canvas exists
     initMandiComparisonChart();
 
-    // 3. Live synchronized dashboard clock
+    // 4. Live Synchronized Dashboard Clock
     if (!window.dashClockInterval) {
       window.dashClockInterval = setInterval(() => {
-        const el = document.getElementById('dashLiveClock');
-        if (el) {
-          const now = new Date();
-          el.textContent = now.toLocaleTimeString('en-IN', { hour12: false }) + ' IST · Live Telemetry';
-        }
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString('en-IN', { hour12: false }) + ' IST';
+
+        const el1 = document.getElementById('dashLiveClock');
+        if (el1) el1.textContent = timeStr + ' · Live Telemetry';
+
+        const el2 = document.getElementById('welcomeLiveClock');
+        if (el2) el2.textContent = timeStr + ' · Shift A Operational';
       }, 1000);
     }
   }
+
+  // Run immediately for instant theme variables
+  try {
+    const savedPreset = localStorage.getItem('ankurmitra_theme_preset') || 'ankurmitra-harmony';
+    selectProductLogoTheme(savedPreset, false);
+
+    const savedMode = localStorage.getItem('ankurmitra_theme') || 'light';
+    setPortalTheme(savedMode, false);
+  } catch (_) {}
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initDashboardAndTheme);
