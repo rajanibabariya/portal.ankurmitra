@@ -1,0 +1,817 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* =========================================================================
+   Ankur Mitra Portal — premium theme & motion layer
+   Loaded after portal-responsive.css on every page. Purely presentational:
+   keeps brand colours (#0B6623 / #7CB342 / #00A6C7) and existing markup.
+   All entrance animations use fill-mode "backwards" so no transform lingers
+   on containers (fixed-position modals inside views keep working).
+   ========================================================================= */
+
+:root {
+  --am-green: #0B6623;
+  --am-green-2: #12863a;
+  --am-leaf: #7CB342;
+  --am-teal: #00A6C7;
+  --am-ink: #0F172A;
+  --am-ease: cubic-bezier(.22, 1, .36, 1);
+  --am-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --am-shadow-sm: 0 1px 2px rgba(15, 23, 42, .04), 0 2px 6px -2px rgba(15, 23, 42, .05);
+  --am-shadow-md: 0 2px 4px rgba(15, 23, 42, .04), 0 12px 28px -10px rgba(11, 102, 35, .18);
+  --am-shadow-glow: 0 8px 24px -8px rgba(11, 102, 35, .55);
+  --am-glass: rgba(255, 255, 255, .72);
+  --am-canvas: #F5F8F6;
+}
+
+html { scroll-behavior: smooth; }
+::selection { background: rgba(124, 179, 66, .28); color: inherit; }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Glass header ------------------------------------------------- */
+header[role="banner"] {
+  background-color: var(--am-glass) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  backdrop-filter: saturate(180%) blur(16px);
+  border-bottom-color: rgba(229, 231, 235, .7) !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .6) inset, 0 6px 24px -18px rgba(15, 23, 42, .35);
+  position: relative;
+}
+header[role="banner"]::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--am-leaf), var(--am-teal), transparent);
+  background-size: 200% 100%;
+  animation: am-shimmer-line 8s linear infinite;
+  opacity: .55;
+  pointer-events: none;
+}
+@keyframes am-shimmer-line { to { background-position: -200% 0; } }
+
+header[role="banner"] input[type="search"],
+header[role="banner"] input[type="text"] {
+  transition: box-shadow .3s var(--am-ease), border-color .3s var(--am-ease), background-color .3s;
+}
+
+/* ---------- Sidebar ------------------------------------------------------ */
+#sidebarZoneA, #sidebarZoneC,
+html.dark #sidebarZoneA, html.dark #sidebarZoneC { background: transparent !important; }
+
+#sidebarZoneB > div > button {
+  position: relative;
+  transition: background-color .25s var(--am-ease), transform .25s var(--am-ease), color .2s;
+}
+#sidebarZoneB > div > button:hover { transform: translateX(3px); background-color: rgba(124, 179, 66, .10) !important; }
+#sidebarZoneB > div > button svg[data-lucide] { transition: transform .35s var(--am-spring); }
+#sidebarZoneB > div > button:hover svg[data-lucide] { transform: scale(1.15) rotate(-6deg); }
+
+#sidebarZoneB [data-nav-id] {
+  transition: background-color .25s var(--am-ease), transform .25s var(--am-ease), color .2s, box-shadow .3s;
+}
+#sidebarZoneB [data-nav-id]:not(.child-nav-selected):hover {
+  background-color: rgba(11, 102, 35, .06);
+  color: var(--am-green);
+  transform: translateX(4px);
+}
+
+.child-nav-selected {
+  background: linear-gradient(110deg, var(--am-green) 0%, var(--am-green-2) 55%, #2a9a46 100%) !important;
+  background-size: 200% 100% !important;
+  box-shadow: var(--am-shadow-glow), inset 0 1px 0 rgba(255, 255, 255, .18) !important;
+  animation: am-nav-pop .45s var(--am-spring) backwards, am-gradient-drift 6s ease-in-out infinite;
+}
+@keyframes am-nav-pop {
+  from { transform: scale(.94); opacity: .4; }
+}
+@keyframes am-gradient-drift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ---------- Page heading ------------------------------------------------- */
+#pageHeading {
+  background: linear-gradient(100deg, var(--am-ink) 0%, var(--am-green) 70%, var(--am-teal) 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -.02em;
+  animation: am-heading-in .6s var(--am-ease) backwards;
+}
+@keyframes am-heading-in {
+  from { opacity: 0; transform: translateY(6px); letter-spacing: .02em; }
+}
+#pageHeading::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 44px;
+  margin-top: 8px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--am-green), var(--am-leaf), var(--am-teal));
+  animation: am-bar-grow .8s var(--am-ease) .15s backwards;
+}
+@keyframes am-bar-grow { from { width: 0; opacity: 0; } }
+
+/* ---------- Cards -------------------------------------------------------- */
+.saas-card,
+#mainScrollCanvas .bg-white.border.rounded-2xl,
+#mainScrollCanvas .bg-white.border.rounded-xl {
+  box-shadow: var(--am-shadow-sm);
+  transition: transform .35s var(--am-ease), box-shadow .35s var(--am-ease), border-color .35s;
+}
+#mainScrollCanvas .am-card:hover {
+  transform: translateY(-3px);
+  box-shadow: inset 0 3px 0 -1px var(--am-leaf), var(--am-shadow-md);
+  border-color: rgba(124, 179, 66, .45) !important;
+  background-image: radial-gradient(420px circle at var(--am-mx, 50%) var(--am-my, 50%), rgba(124, 179, 66, .09), transparent 45%);
+}
+
+/* View entrance: restarts each time a .view-section is shown */
+.view-section:not(.hidden) {
+  animation: am-view-in .5s var(--am-ease) backwards;
+}
+@keyframes am-view-in {
+  from { opacity: 0; transform: translateY(10px); }
+}
+
+@keyframes am-rise {
+  from { opacity: 0; transform: translateY(16px) scale(.985); filter: blur(3px); }
+}
+
+/* ---------- Buttons ------------------------------------------------------ */
+button, a[role="button"], .btn {
+  transition-property: transform, box-shadow, background-color, color, border-color, opacity;
+  transition-duration: .2s;
+  transition-timing-function: var(--am-ease);
+}
+button:not(:disabled):active, a[role="button"]:active { transform: scale(.97); }
+
+button.bg-\[\#0B6623\],
+a.bg-\[\#0B6623\],
+.am-primary {
+  background-image: linear-gradient(135deg, var(--am-green) 0%, var(--am-green-2) 100%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .15) inset, 0 4px 14px -6px rgba(11, 102, 35, .6);
+  overflow: hidden;
+  isolation: isolate;
+}
+/* Only add a positioning context where the button isn't already positioned */
+button.bg-\[\#0B6623\]:not(.fixed):not(.absolute):not(.sticky),
+a.bg-\[\#0B6623\]:not(.fixed):not(.absolute):not(.sticky) { position: relative; }
+button.bg-\[\#0B6623\]:hover,
+a.bg-\[\#0B6623\]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .2) inset, 0 10px 22px -8px rgba(11, 102, 35, .7);
+}
+button.bg-\[\#0B6623\]::before,
+a.bg-\[\#0B6623\]::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: -60%; width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .35), transparent);
+  transform: skewX(-20deg);
+  transition: left .7s var(--am-ease);
+  z-index: -1;
+  pointer-events: none;
+}
+button.bg-\[\#0B6623\]:hover::before,
+a.bg-\[\#0B6623\]:hover::before { left: 130%; }
+
+.am-ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: rgba(255, 255, 255, .45);
+  transform: scale(0);
+  animation: am-ripple .65s ease-out forwards;
+  z-index: 0;
+}
+@keyframes am-ripple { to { transform: scale(2.6); opacity: 0; } }
+
+/* ---------- Inputs ------------------------------------------------------- */
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+select, textarea {
+  transition: border-color .25s var(--am-ease), box-shadow .25s var(--am-ease), background-color .25s;
+}
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):focus,
+select:focus, textarea:focus {
+  border-color: var(--am-leaf) !important;
+  box-shadow: 0 0 0 4px rgba(124, 179, 66, .18) !important;
+  outline: none;
+}
+:focus-visible { outline: 2px solid var(--am-leaf); outline-offset: 2px; }
+
+/* ---------- Tables ------------------------------------------------------- */
+#mainScrollCanvas table thead th {
+  letter-spacing: .02em;
+}
+#mainScrollCanvas table tbody tr {
+  transition: background-color .2s var(--am-ease), box-shadow .2s var(--am-ease);
+}
+#mainScrollCanvas table tbody tr:hover {
+  background-color: rgba(124, 179, 66, .07) !important;
+  box-shadow: inset 3px 0 0 var(--am-leaf);
+}
+
+/* ---------- Pills / badges ---------------------------------------------- */
+#mainScrollCanvas .rounded-full { transition: transform .25s var(--am-spring), box-shadow .25s; }
+#mainScrollCanvas button.rounded-full:hover { transform: translateY(-1px); }
+
+/* ---------- Overlays: dropdowns, toasts, modals ------------------------- */
+#notificationPopupDropdown:not(.hidden),
+#profileDropdownMenu:not(.hidden) {
+  transform-origin: top right;
+  animation: am-pop-in .28s var(--am-spring) backwards;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+@keyframes am-pop-in {
+  from { opacity: 0; transform: translateY(-6px) scale(.96); }
+}
+
+#toastContainer > * {
+  animation: am-toast-in .5s var(--am-spring) backwards;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+@keyframes am-toast-in {
+  from { opacity: 0; transform: translateX(28px) scale(.95); }
+}
+
+.fixed.inset-0[class*="bg-black"]:not(.hidden):not(#page-login),
+.fixed.inset-0[class*="bg-slate-900"]:not(.hidden):not(#page-login) {
+  animation: am-fade .25s ease-out backwards;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.fixed.inset-0[class*="bg-black"]:not(.hidden) > div,
+.fixed.inset-0[class*="bg-slate-900"]:not(.hidden) > div {
+  animation: am-pop-in .4s var(--am-spring) backwards;
+}
+@keyframes am-fade { from { opacity: 0; } }
+
+/* ---------- Scrollbars --------------------------------------------------- */
+::-webkit-scrollbar-thumb { background: #D5DED3; transition: background .2s; }
+::-webkit-scrollbar-thumb:hover { background: var(--am-leaf); }
+
+/* ---------- Login -------------------------------------------------------- */
+#page-login > div:first-child > div:first-child {
+  animation: am-kenburns 26s ease-in-out infinite alternate;
+  transform-origin: 60% 40%;
+}
+@keyframes am-kenburns {
+  from { transform: scale(1.02); }
+  to { transform: scale(1.14) translate(-1.5%, -1%); }
+}
+#page-login > div:first-child > div:nth-child(2) {
+  background-size: 200% 200%;
+  animation: am-gradient-drift 14s ease-in-out infinite;
+}
+#page-login > div:first-child > .relative.z-10 {
+  animation: am-rise .9s var(--am-ease) backwards;
+}
+#page-login > div:first-child > .relative.z-10:nth-of-type(2) { animation-delay: .1s; }
+#page-login > div:first-child > .relative.z-10:nth-of-type(3) { animation-delay: .25s; }
+#page-login > div:first-child > .relative.z-10:nth-of-type(4) { animation-delay: .4s; }
+
+#page-login > div:last-child {
+  background:
+    radial-gradient(600px 400px at 100% 0%, rgba(124, 179, 66, .10), transparent 60%),
+    radial-gradient(500px 360px at 0% 100%, rgba(0, 166, 199, .07), transparent 60%),
+    #FFFFFF !important;
+}
+#page-login > div:last-child > * {
+  animation: am-rise .8s var(--am-ease) backwards;
+}
+#page-login > div:last-child > *:nth-child(2) { animation-delay: .12s; }
+#page-login > div:last-child > *:nth-child(3) { animation-delay: .24s; }
+#page-login > div:last-child > *:nth-child(4) { animation-delay: .36s; }
+
+.am-particle {
+  position: absolute;
+  bottom: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(220, 252, 231, .9), rgba(124, 179, 66, 0) 70%);
+  pointer-events: none;
+  z-index: 5;
+  animation: am-float linear infinite;
+}
+@keyframes am-float {
+  0% { transform: translate3d(0, 0, 0); opacity: 0; }
+  10% { opacity: .9; }
+  90% { opacity: .6; }
+  100% { transform: translate3d(var(--am-drift, 30px), -110vh, 0); opacity: 0; }
+}
+
+/* ---------- Dark mode ---------------------------------------------------- */
+html.dark { --am-glass: rgba(17, 24, 39, .72); --am-canvas: #0B0F17; }
+html.dark header[role="banner"] {
+  background-color: var(--am-glass) !important;
+  border-bottom-color: rgba(31, 41, 55, .8) !important;
+  box-shadow: 0 6px 24px -18px rgba(0, 0, 0, .8);
+}
+html.dark #pageHeading {
+  background: linear-gradient(100deg, #F8FAFC 0%, #A7E08A 70%, #5FD6EE 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+html.dark #mainScrollCanvas .am-card:hover {
+  box-shadow: 0 14px 34px -14px rgba(0, 0, 0, .8), 0 0 0 1px rgba(124, 179, 66, .25);
+}
+html.dark #page-login > div:last-child { background: #111827 !important; }
+/* Light-only gradient washes and chips that read as white blocks in dark mode */
+html.dark #mainScrollCanvas [class*="via-white"],
+html.dark #mainScrollCanvas [class*="to-white"] { background-image: none !important; }
+html.dark #mainScrollCanvas .bg-slate-200 { background-color: #334155 !important; color: #F8FAFC !important; }
+html.dark #sidebarZoneB [data-nav-id]:not(.child-nav-selected):hover { color: #A7E08A; background-color: rgba(124, 179, 66, .1); }
+
+/* =========================================================================
+   LIQUID GLASS
+   A fixed layer of slowly drifting colour blobs sits behind the whole app;
+   the shell's backgrounds become transparent so glass surfaces float over it.
+   Refraction (SVG displacement) is Chromium-only and gated by html.am-refract.
+   ========================================================================= */
+:root {
+  --am-glass-bg: rgba(255, 255, 255, .58);
+  --am-glass-bg-strong: rgba(255, 255, 255, .72);
+  --am-glass-panel: rgba(255, 255, 255, .86);
+  --am-glass-inner: rgba(255, 255, 255, .42);
+  --am-glass-edge: rgba(255, 255, 255, .78);
+  --am-glass-hi: rgba(255, 255, 255, .95);
+  --am-glass-sheen: linear-gradient(135deg, rgba(255, 255, 255, .6) 0%, rgba(255, 255, 255, .14) 36%, rgba(255, 255, 255, 0) 60%);
+  --am-glass-shadow: 0 1px 2px rgba(15, 23, 42, .04), 0 12px 32px -14px rgba(15, 60, 30, .22);
+  --am-blur: 18px;
+}
+html.dark {
+  --am-glass-bg: rgba(22, 31, 48, .55);
+  --am-glass-bg-strong: rgba(17, 24, 39, .7);
+  --am-glass-panel: rgba(17, 24, 39, .88);
+  --am-glass-inner: rgba(30, 41, 59, .45);
+  --am-glass-edge: rgba(255, 255, 255, .09);
+  --am-glass-hi: rgba(255, 255, 255, .12);
+  --am-glass-sheen: linear-gradient(135deg, rgba(255, 255, 255, .08) 0%, rgba(255, 255, 255, .02) 40%, rgba(255, 255, 255, 0) 60%);
+  --am-glass-shadow: 0 14px 34px -14px rgba(0, 0, 0, .7);
+}
+
+/* Let the blob layer show through the shell */
+html { background-color: var(--am-canvas) !important; }
+html body, html.dark body { background-color: transparent !important; }
+html #mainScrollCanvas, html.dark #mainScrollCanvas { background: transparent !important; }
+#app-shell .bg-\[\#F8FAFC\]:has(> #mainScrollCanvas),
+html.dark #app-shell .bg-\[\#F8FAFC\]:has(> #mainScrollCanvas) { background-color: transparent !important; }
+
+.am-liquid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.am-blob {
+  position: absolute;
+  width: 46vmax;
+  height: 46vmax;
+  border-radius: 50%;
+  will-change: transform;
+  animation: am-blob-a 28s ease-in-out infinite alternate;
+}
+.am-blob:nth-child(1) { left: -12vmax; top: -14vmax; background: radial-gradient(circle at 50% 50%, rgba(124, 179, 66, .42), rgba(124, 179, 66, 0) 66%); }
+.am-blob:nth-child(2) { right: -14vmax; top: -8vmax; background: radial-gradient(circle at 50% 50%, rgba(0, 166, 199, .30), rgba(0, 166, 199, 0) 66%); animation-name: am-blob-b; animation-duration: 34s; }
+.am-blob:nth-child(3) { left: 22vw; bottom: -22vmax; background: radial-gradient(circle at 50% 50%, rgba(52, 211, 153, .32), rgba(52, 211, 153, 0) 66%); animation-name: am-blob-c; animation-duration: 31s; }
+.am-blob:nth-child(4) { right: 6vw; bottom: -16vmax; width: 34vmax; height: 34vmax; background: radial-gradient(circle at 50% 50%, rgba(250, 204, 21, .20), rgba(250, 204, 21, 0) 66%); animation-name: am-blob-b; animation-duration: 40s; animation-direction: alternate-reverse; }
+html.dark .am-blob { opacity: .55; }
+@keyframes am-blob-a {
+  0% { transform: translate(0, 0) scale(1, 1) rotate(0deg); }
+  50% { transform: translate(14vw, 10vh) scale(1.18, .88) rotate(40deg); }
+  100% { transform: translate(6vw, 26vh) scale(.92, 1.12) rotate(90deg); }
+}
+@keyframes am-blob-b {
+  0% { transform: translate(0, 0) scale(1, 1); }
+  50% { transform: translate(-16vw, 18vh) scale(.86, 1.16); }
+  100% { transform: translate(-6vw, 34vh) scale(1.14, .9); }
+}
+@keyframes am-blob-c {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(18vw, -22vh) scale(1.2, .9); }
+  100% { transform: translate(-10vw, -12vh) scale(.94, 1.1); }
+}
+
+/* Shell surfaces */
+header[role="banner"],
+html.dark header[role="banner"] {
+  background-color: var(--am-glass-bg-strong) !important;
+  border-bottom-color: var(--am-glass-edge) !important;
+  box-shadow: inset 0 -1px 0 var(--am-glass-hi), 0 8px 28px -20px rgba(15, 23, 42, .4);
+}
+#portalSidebar,
+html.dark #portalSidebar {
+  background: var(--am-glass-bg-strong) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
+  border-right-color: var(--am-glass-edge) !important;
+  box-shadow: inset -1px 0 0 var(--am-glass-hi);
+}
+
+/* Glass cards (classified in portal-motion.js: only cards that were plain white) */
+#mainScrollCanvas .am-glass,
+#mainScrollCanvas .am-glass-inner {
+  background-color: var(--am-glass-bg) !important;
+  background-image: var(--am-glass-sheen);
+  border-color: var(--am-glass-edge) !important;
+  box-shadow: inset 0 1px 0 var(--am-glass-hi), inset 0 0 0 1px rgba(255, 255, 255, .18), var(--am-glass-shadow);
+}
+#mainScrollCanvas .am-glass {
+  -webkit-backdrop-filter: blur(var(--am-blur)) saturate(170%);
+  backdrop-filter: blur(var(--am-blur)) saturate(170%);
+}
+#mainScrollCanvas .am-glass-inner {
+  background-color: var(--am-glass-inner) !important;
+  box-shadow: inset 0 1px 0 var(--am-glass-hi);
+}
+#mainScrollCanvas .am-glass:hover {
+  background-image:
+    radial-gradient(360px circle at var(--am-mx, 50%) var(--am-my, 50%), rgba(255, 255, 255, .55), transparent 45%),
+    var(--am-glass-sheen);
+  box-shadow: inset 0 1px 0 var(--am-glass-hi), inset 0 3px 0 -1px var(--am-leaf), 0 18px 40px -16px rgba(11, 102, 35, .3);
+}
+html.dark #mainScrollCanvas .am-glass:hover {
+  background-image:
+    radial-gradient(360px circle at var(--am-mx, 50%) var(--am-my, 50%), rgba(167, 224, 138, .10), transparent 45%),
+    var(--am-glass-sheen);
+}
+
+/* Secondary buttons: translucent glass pills */
+#mainScrollCanvas button.bg-white.border,
+header[role="banner"] button.border {
+  background-color: rgba(255, 255, 255, .5) !important;
+  box-shadow: inset 0 1px 0 var(--am-glass-hi), 0 1px 2px rgba(15, 23, 42, .05);
+}
+html.dark #mainScrollCanvas button.bg-white.border,
+html.dark header[role="banner"] button.border { background-color: rgba(30, 41, 59, .5) !important; }
+
+/* Primary buttons: liquid green with specular top edge */
+button.bg-\[\#0B6623\],
+a.bg-\[\#0B6623\] {
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, .5), inset 0 -3px 8px rgba(0, 0, 0, .18), 0 6px 18px -8px rgba(11, 102, 35, .7);
+}
+
+/* Floating panels: the strongest glass */
+#notificationPopupDropdown, #profileDropdownMenu,
+html.dark #notificationPopupDropdown, html.dark #profileDropdownMenu {
+  background-color: var(--am-glass-panel) !important;
+  background-image: var(--am-glass-sheen);
+  border-color: var(--am-glass-edge) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  backdrop-filter: blur(24px) saturate(190%);
+  box-shadow: inset 0 1px 0 var(--am-glass-hi), 0 24px 60px -20px rgba(15, 23, 42, .45) !important;
+}
+html.dark #profileDropdownMenu .text-\[\#334155\],
+html.dark #notificationPopupDropdown .text-\[\#334155\] { color: #CBD5E1 !important; }
+html.dark #profileDropdownMenu .hover\:bg-\[\#F8FAFC\]:hover,
+html.dark #notificationPopupDropdown .hover\:bg-\[\#F8FAFC\]:hover { background-color: rgba(255, 255, 255, .06) !important; }
+#toastContainer > * {
+  background-color: rgba(15, 23, 42, .72) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  backdrop-filter: blur(18px) saturate(180%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 18px 40px -16px rgba(0, 0, 0, .5);
+}
+
+/* Refraction — Chromium only (applies an SVG displacement to the backdrop) */
+html.am-refract header[role="banner"] {
+  -webkit-backdrop-filter: blur(6px) url(#am-liquid-refract) saturate(180%);
+  backdrop-filter: blur(6px) url(#am-liquid-refract) saturate(180%);
+}
+html.am-refract #notificationPopupDropdown,
+html.am-refract #profileDropdownMenu,
+html.am-refract #toastContainer > * {
+  backdrop-filter: blur(18px) url(#am-liquid-refract) saturate(190%);
+}
+
+/* Sidebar: a liquid pill that slides and stretches between selected items */
+#sidebarZoneB { position: relative; }
+#sidebarZoneB > div:not(.am-nav-blob) { position: relative; z-index: 1; }
+.am-nav-blob {
+  position: absolute;
+  top: 0; left: 0;
+  margin: 0 !important;
+  z-index: 0;
+  border-radius: 10px;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(135deg, #0B6623 0%, #149140 60%, #3aa856 100%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, .5), inset 0 -3px 8px rgba(0, 0, 0, .2), 0 8px 22px -8px rgba(11, 102, 35, .65);
+}
+.am-nav-blob::after {
+  content: "";
+  position: absolute;
+  inset: 1px 1px 50% 1px;
+  border-radius: 9px 9px 14px 14px / 9px 9px 8px 8px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .38), rgba(255, 255, 255, 0));
+}
+.am-nav-blob.am-ready {
+  transition: transform .62s cubic-bezier(.34, 1.36, .64, 1), width .35s var(--am-ease), height .35s var(--am-ease), opacity .3s;
+}
+#sidebarZoneB.am-has-blob .child-nav-selected {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-left-color: transparent !important;
+  animation: none;
+}
+
+/* Login: blobs behind a glass form card */
+#page-login > div:last-child { position: relative; isolation: isolate; }
+#page-login > div:last-child > .am-liquid-bg { position: absolute; z-index: -1; }
+#page-login > div:last-child > .my-auto {
+  padding: 28px;
+  border-radius: 28px;
+  background: var(--am-glass-bg) var(--am-glass-sheen);
+  border: 1px solid var(--am-glass-edge);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: inset 0 1px 0 var(--am-glass-hi), 0 30px 70px -30px rgba(11, 102, 35, .35);
+}
+
+@media (max-width: 767px) {
+  :root { --am-blur: 12px; }
+  #page-login > div:last-child > .my-auto { padding: 20px; border-radius: 22px; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  #mainScrollCanvas .am-glass, #mainScrollCanvas .am-glass-inner,
+  #portalSidebar, header[role="banner"],
+  #notificationPopupDropdown, #profileDropdownMenu,
+  #page-login > div:last-child > .my-auto {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background-color: var(--color-surface, #FFFFFF) !important;
+  }
+}
+
+/* =========================================================================
+   PREMIUM LAYER
+   Typography, deep-emerald sidebar, hero title bar, beam borders, 3D tilt,
+   scroll reveal, glowing AI orb. Overrides the sections above.
+   ========================================================================= */
+:root {
+  --am-font: 'Plus Jakarta Sans', 'Manrope', system-ui, sans-serif;
+  --am-glass-hover: rgba(255, 255, 255, .9);
+}
+html.dark { --am-glass-hover: rgba(22, 31, 48, .94); }
+
+body, .font-sans, button, select, textarea,
+input:not(.font-mono) { font-family: var(--am-font) !important; }
+body { letter-spacing: -.005em; }
+#mainScrollCanvas .text-2xl, #mainScrollCanvas .text-3xl, #mainScrollCanvas .text-4xl,
+#mainScrollCanvas .text-xl { letter-spacing: -.025em; font-variant-numeric: tabular-nums; }
+
+/* ---------- Grain: a faint film texture over the blob layer -------------- */
+.am-liquid-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Deep-emerald sidebar (both themes) -------------------------- */
+/* One emerald family: mint icons, mint-white text, a light selected pill   */
+#portalSidebar, html.dark #portalSidebar {
+  background:
+    radial-gradient(120% 35% at 0% 0%, rgba(134, 239, 172, .10), transparent 65%),
+    linear-gradient(180deg, #0B3B24 0%, #08301D 55%, #062616 100%) !important;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border-right: 1px solid rgba(255, 255, 255, .06) !important;
+  box-shadow: inset -1px 0 0 rgba(255, 255, 255, .03), 12px 0 40px -24px rgba(3, 26, 13, .6);
+}
+#portalSidebar .border-\[\#E5E7EB\] { border-color: rgba(255, 255, 255, .06) !important; }
+#portalSidebar .text-\[\#64748B\] { color: rgba(220, 252, 231, .62) !important; }
+#portalSidebar .text-\[\#0F172A\],
+#portalSidebar .text-slate-800,
+html.dark #sidebarRudramFull span { color: #F0FDF4 !important; }
+#portalSidebar .text-\[\#0B6623\] { color: #86EFAC !important; }
+#portalSidebar .hover\:text-\[\#0F172A\]:hover,
+#portalSidebar .hover\:text-\[\#0B6623\]:hover,
+#portalSidebar .group:hover .group-hover\:text-\[\#0B6623\] { color: #FFFFFF !important; }
+#portalSidebar .hover\:bg-\[\#F8FAFC\]:hover,
+#portalSidebar .hover\:bg-\[\#F1F5F9\]:hover,
+#sidebarZoneB > div > button:hover { background-color: rgba(255, 255, 255, .06) !important; }
+#sidebarZoneB [data-nav-id]:not(.child-nav-selected):hover,
+html.dark #sidebarZoneB [data-nav-id]:not(.child-nav-selected):hover {
+  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, .06);
+}
+#portalSidebar ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, .12); }
+#portalSidebar ::-webkit-scrollbar-thumb:hover { background: rgba(134, 239, 172, .45); }
+#sidebarLogo {
+  background: #FFFFFF;
+  padding: 3px 8px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px -6px rgba(0, 0, 0, .45);
+}
+#sidebarEmblem { background: #FFFFFF; border-radius: 12px; padding: 3px; }
+
+/* Selected item: light mint pill with deep-green text and a leaf accent bar */
+.am-nav-blob {
+  background: linear-gradient(180deg, #FFFFFF 0%, #ECFDF5 100%);
+  box-shadow:
+    inset 0 -1px 0 rgba(6, 95, 70, .08),
+    0 0 0 1px rgba(255, 255, 255, .5),
+    0 8px 20px -8px rgba(0, 0, 0, .5);
+}
+.am-nav-blob::after {
+  inset: 28% auto 28% 8px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #22C55E, #7CB342);
+}
+#sidebarZoneB.am-has-blob .child-nav-selected,
+#sidebarZoneB.am-has-blob .child-nav-selected svg {
+  color: #065F46 !important;
+  stroke: currentColor !important;
+}
+#sidebarZoneB.am-has-blob .child-nav-selected { font-weight: 700; }
+
+/* ---------- Hero title bar --------------------------------------------- */
+#mainScrollCanvas > div:first-child {
+  padding: 20px 24px;
+  border-radius: 24px;
+  border: 1px solid var(--am-glass-edge);
+  background:
+    radial-gradient(60% 120% at 100% 0%, rgba(124, 179, 66, .22), transparent 60%),
+    radial-gradient(50% 120% at 70% 100%, rgba(0, 166, 199, .16), transparent 60%),
+    radial-gradient(40% 90% at 0% 0%, rgba(250, 204, 21, .10), transparent 60%),
+    rgba(255, 255, 255, .7);
+  background-size: 180% 180%, 160% 160%, 140% 140%, auto;
+  box-shadow: inset 0 1px 0 var(--am-glass-hi), var(--am-glass-shadow);
+  animation: am-aurora 16s ease-in-out infinite alternate;
+}
+html.dark #mainScrollCanvas > div:first-child {
+  background:
+    radial-gradient(60% 120% at 100% 0%, rgba(124, 179, 66, .16), transparent 60%),
+    radial-gradient(50% 120% at 70% 100%, rgba(0, 166, 199, .14), transparent 60%),
+    rgba(17, 24, 39, .65);
+  background-size: 180% 180%, 160% 160%, auto;
+}
+@keyframes am-aurora {
+  0% { background-position: 0% 0%, 100% 100%, 0% 0%, 0 0; }
+  100% { background-position: 100% 60%, 0% 20%, 60% 100%, 0 0; }
+}
+#pageHeading {
+  font-size: clamp(24px, 2.3vw, 32px) !important;
+  font-weight: 800 !important;
+  line-height: 1.15;
+  letter-spacing: -.03em;
+}
+#breadcrumbParent, #breadcrumbChild { letter-spacing: .01em; }
+
+/* ---------- Cards: beam border, tilt, lift ------------------------------ */
+@property --am-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+#mainScrollCanvas .am-glass:hover {
+  border-color: transparent !important;
+  background:
+    radial-gradient(360px circle at var(--am-mx, 50%) var(--am-my, 50%), rgba(255, 255, 255, .55), transparent 45%) padding-box,
+    linear-gradient(var(--am-glass-hover), var(--am-glass-hover)) padding-box,
+    conic-gradient(from var(--am-angle), rgba(124, 179, 66, .18) 0%, rgba(124, 179, 66, .18) 58%, #7CB342 72%, #00A6C7 82%, rgba(124, 179, 66, .18) 94%) border-box !important;
+  animation: am-beam 2.8s linear infinite;
+}
+html.dark #mainScrollCanvas .am-glass:hover {
+  background:
+    radial-gradient(360px circle at var(--am-mx, 50%) var(--am-my, 50%), rgba(167, 224, 138, .1), transparent 45%) padding-box,
+    linear-gradient(var(--am-glass-hover), var(--am-glass-hover)) padding-box,
+    conic-gradient(from var(--am-angle), rgba(255, 255, 255, .06) 0%, rgba(255, 255, 255, .06) 58%, #A3E635 72%, #22D3EE 82%, rgba(255, 255, 255, .06) 94%) border-box !important;
+}
+@keyframes am-beam { to { --am-angle: 360deg; } }
+
+#mainScrollCanvas .am-card:hover {
+  transform: perspective(900px) rotateX(var(--am-rx, 0deg)) rotateY(var(--am-ry, 0deg)) translateY(-4px);
+}
+/* Glass cards are stacking contexts: lift the active one so its menus overlap neighbours */
+#mainScrollCanvas .am-glass:hover,
+#mainScrollCanvas .am-glass:focus-within { z-index: 3; }
+
+/* Scroll reveal: set by portal-motion.js, removed once the card scrolls into view */
+.am-pre { opacity: 0; transform: translateY(28px) scale(.98); }
+
+/* ---------- Primary buttons: magnetic --------------------------------- */
+button.bg-\[\#0B6623\]:hover,
+a.bg-\[\#0B6623\]:hover { transform: translate(var(--am-tx, 0px), calc(var(--am-ty, 0px) - 1px)); }
+
+/* ---------- Tables ------------------------------------------------------ */
+#mainScrollCanvas table thead th {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: #64748B;
+}
+html.dark #mainScrollCanvas table thead th { color: #94A3B8; }
+
+/* ---------- Header search ---------------------------------------------- */
+header[role="banner"] input {
+  border-radius: 14px !important;
+  background-color: rgba(255, 255, 255, .55) !important;
+}
+html.dark header[role="banner"] input { background-color: rgba(15, 23, 42, .55) !important; }
+
+/* ---------- Top loading bar -------------------------------------------- */
+#portalTopProgressBar {
+  height: 3px !important;
+  background: linear-gradient(90deg, #0B6623, #7CB342, #00A6C7, #A3E635, #0B6623) !important;
+  background-size: 200% 100% !important;
+  box-shadow: 0 0 12px rgba(124, 179, 66, .8), 0 0 4px rgba(0, 166, 199, .6) !important;
+  animation: am-shimmer-line 1.2s linear infinite;
+}
+
+/* ---------- Scroll progress under the header --------------------------- */
+.am-scroll-progress {
+  position: fixed;
+  height: 2px;
+  z-index: 25;
+  pointer-events: none;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--am-green), var(--am-leaf), var(--am-teal));
+  box-shadow: 0 0 10px rgba(124, 179, 66, .6);
+}
+
+/* ---------- AI Mitra orb ----------------------------------------------- */
+#floatingAiMitraBtn {
+  background: radial-gradient(circle at 30% 28%, #6EE7B7 0%, #16a34a 38%, #0B6623 62%, #052e16 100%) !important;
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, .45), inset 0 -4px 10px rgba(0, 0, 0, .3), 0 12px 32px -8px rgba(11, 102, 35, .75) !important;
+  animation: am-orb-float 4s ease-in-out infinite;
+}
+#floatingAiMitraBtn::before,
+#floatingAiMitraBtn::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid rgba(124, 179, 66, .55);
+  animation: am-pulse-ring 2.6s cubic-bezier(.22, 1, .36, 1) infinite;
+  pointer-events: none;
+}
+#floatingAiMitraBtn::after { animation-delay: 1.3s; border-color: rgba(0, 166, 199, .5); }
+@keyframes am-pulse-ring {
+  from { transform: scale(1); opacity: .9; }
+  to { transform: scale(1.7); opacity: 0; }
+}
+@keyframes am-orb-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -5px; }
+}
+
+/* ---------- Login: shimmering headline + glass orbs --------------------- */
+#page-login > div:first-child h2 {
+  background: linear-gradient(100deg, #FFFFFF 0%, #FFFFFF 40%, #D9F99D 50%, #FFFFFF 60%, #FFFFFF 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: am-text-shine 5s ease-in-out infinite;
+}
+@keyframes am-text-shine {
+  0% { background-position: 100% 0; }
+  60%, 100% { background-position: -50% 0; }
+}
+.am-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 4;
+  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, .55), rgba(255, 255, 255, .08) 45%, rgba(163, 230, 53, .12) 70%, rgba(255, 255, 255, .02));
+  border: 1px solid rgba(255, 255, 255, .35);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, .15), 0 20px 40px -20px rgba(0, 0, 0, .4);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  animation: am-orb-drift 14s ease-in-out infinite alternate;
+}
+@keyframes am-orb-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(18px, -26px) scale(1.06); }
+  100% { transform: translate(-12px, 14px) scale(.96); }
+}
+
+/* ---------- Theme switch: circular reveal (View Transitions) ----------- */
+::view-transition-old(root),
+::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+
+/* ---------- Reduced motion ---------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .am-particle { display: none; }
+}

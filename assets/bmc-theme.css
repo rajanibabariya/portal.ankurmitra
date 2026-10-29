@@ -1,0 +1,468 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap');
+
+/* =========================================================================
+   Ankur Mitra Portal — "Buy Me a Coffee" skin
+   Loaded after portal-theme.css on every page. Purely presentational:
+   warm cream canvas, white rounded surfaces with soft shadows, ink text,
+   #FFDD00 yellow pill buttons, Circular-style type (Figtree), no glass,
+   no gradients, no tilt/beam effects. Markup and behaviour are untouched.
+   ========================================================================= */
+
+:root {
+  --bmc-yellow: #FFDD00;
+  --bmc-yellow-hover: #FFD000;
+  --bmc-yellow-soft: #FFF8CC;
+  --bmc-ink: #222222;
+  --bmc-ink-2: #3F3F3F;
+  --bmc-muted: #717171;
+  --bmc-faint: #A3A3A3;
+  --bmc-line: rgba(34, 34, 34, .10);
+  --bmc-line-strong: rgba(34, 34, 34, .18);
+  --bmc-canvas: #FAF8F0;
+  --bmc-surface: #FFFFFF;
+  --bmc-tint: rgba(0, 0, 0, .03);
+  --bmc-hover: rgba(34, 34, 34, .05);
+  --bmc-shadow: 0 0 2px rgba(0, 0, 0, .15), 0 2px 5px rgba(0, 0, 0, .05), 0 8px 40px rgba(0, 0, 0, .04);
+  --bmc-shadow-lg: 0 0 2px rgba(0, 0, 0, .15), 0 4px 10px rgba(0, 0, 0, .06), 0 16px 48px rgba(0, 0, 0, .08);
+  --bmc-font: 'Figtree', 'Circular', 'DM Sans', system-ui, sans-serif;
+
+  /* Re-point the older theme tokens so anything still reading them matches */
+  --am-font: var(--bmc-font);
+  --am-canvas: var(--bmc-canvas);
+  --am-glass: #FFFFFF;
+  --am-glass-bg: #FFFFFF;
+  --am-glass-bg-strong: #FFFFFF;
+  --am-glass-panel: #FFFFFF;
+  --am-glass-inner: var(--bmc-tint);
+  --am-glass-edge: var(--bmc-line);
+  --am-glass-hi: transparent;
+  --am-glass-sheen: none;
+  --am-glass-shadow: var(--bmc-shadow);
+  --am-glass-hover: #FFFFFF;
+  --am-shadow-sm: var(--bmc-shadow);
+  --am-shadow-md: var(--bmc-shadow-lg);
+  --am-shadow-glow: none;
+}
+html.dark {
+  --bmc-ink: #F5F5F5;
+  --bmc-ink-2: #D4D4D4;
+  --bmc-muted: #A3A3A3;
+  --bmc-faint: #737373;
+  --bmc-line: rgba(255, 255, 255, .10);
+  --bmc-line-strong: rgba(255, 255, 255, .18);
+  --bmc-canvas: #141414;
+  --bmc-surface: #1E1E1E;
+  --bmc-tint: rgba(255, 255, 255, .04);
+  --bmc-hover: rgba(255, 255, 255, .06);
+  --bmc-yellow-soft: rgba(255, 221, 0, .14);
+  --bmc-shadow: 0 0 0 1px rgba(255, 255, 255, .06), 0 8px 30px rgba(0, 0, 0, .35);
+  --bmc-shadow-lg: 0 0 0 1px rgba(255, 255, 255, .08), 0 16px 48px rgba(0, 0, 0, .5);
+  --am-canvas: var(--bmc-canvas);
+  --am-glass: var(--bmc-surface);
+  --am-glass-bg: var(--bmc-surface);
+  --am-glass-bg-strong: var(--bmc-surface);
+  --am-glass-panel: var(--bmc-surface);
+  --am-glass-hover: var(--bmc-surface);
+}
+
+/* ---------- Type --------------------------------------------------------- */
+body, .font-sans, button, select, textarea,
+input:not(.font-mono) { font-family: var(--bmc-font) !important; }
+body { letter-spacing: 0; color: var(--bmc-ink); }
+::selection { background: var(--bmc-yellow); color: #222222; }
+h1, h2, h3 { letter-spacing: -.02em; }
+#mainScrollCanvas .text-2xl, #mainScrollCanvas .text-3xl, #mainScrollCanvas .text-4xl,
+#mainScrollCanvas .text-xl { letter-spacing: -.03em; }
+
+/* ---------- Canvas: flat cream, no blobs or grain ----------------------- */
+html, html.dark { background-color: var(--bmc-canvas) !important; }
+.am-liquid-bg, .am-blob, .am-particle, .am-orb, .am-scroll-progress { display: none !important; }
+
+/* ---------- Header: plain white bar ------------------------------------- */
+header[role="banner"], html.dark header[role="banner"],
+html.am-refract header[role="banner"] {
+  background: var(--bmc-surface) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border-bottom: 1px solid var(--bmc-line) !important;
+  box-shadow: none !important;
+}
+header[role="banner"]::after { display: none !important; }
+header[role="banner"] input,
+html.dark header[role="banner"] input {
+  background-color: var(--bmc-tint) !important;
+  border-color: transparent !important;
+  border-radius: 9999px !important;
+  color: var(--bmc-ink) !important;
+}
+header[role="banner"] input:focus {
+  background-color: var(--bmc-surface) !important;
+  border-color: var(--bmc-ink) !important;
+  box-shadow: 0 0 0 3px rgba(255, 221, 0, .45) !important;
+}
+header[role="banner"] button.border,
+html.dark header[role="banner"] button.border {
+  background-color: var(--bmc-surface) !important;
+  border-color: var(--bmc-line) !important;
+  border-radius: 9999px !important;
+  box-shadow: none !important;
+}
+#portalTopProgressBar { background: var(--bmc-yellow) !important; box-shadow: none !important; }
+
+/* ---------- Sidebar: white, ink text, soft grey active pill ------------- */
+#portalSidebar, html.dark #portalSidebar {
+  background: var(--bmc-surface) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border-right: 1px solid var(--bmc-line) !important;
+  box-shadow: none !important;
+}
+#sidebarZoneA, #sidebarZoneC { background: var(--bmc-surface) !important; }
+#portalSidebar .border-\[\#E5E7EB\] { border-color: var(--bmc-line) !important; }
+#portalSidebar .text-\[\#64748B\] { color: var(--bmc-muted) !important; }
+#portalSidebar .text-\[\#0F172A\],
+#portalSidebar .text-slate-800,
+html.dark #sidebarRudramFull span { color: var(--bmc-ink) !important; }
+#portalSidebar .text-\[\#0B6623\] { color: var(--bmc-ink) !important; }
+#portalSidebar .hover\:text-\[\#0F172A\]:hover,
+#portalSidebar .hover\:text-\[\#0B6623\]:hover,
+#portalSidebar .group:hover .group-hover\:text-\[\#0B6623\] { color: var(--bmc-ink) !important; }
+#portalSidebar ::-webkit-scrollbar-thumb { background: var(--bmc-line-strong); }
+#sidebarLogo, #sidebarEmblem { background: transparent !important; padding: 0 !important; box-shadow: none !important; }
+
+/* Group headers */
+#sidebarZoneB > div > button {
+  height: 44px;
+  border-radius: 12px !important;
+}
+#sidebarZoneB > div > button span { font-size: 15px !important; font-weight: 600 !important; }
+#sidebarZoneB > div > button svg[data-lucide] { width: 18px !important; height: 18px !important; }
+#sidebarZoneB > div > button:hover,
+#portalSidebar .hover\:bg-\[\#F8FAFC\]:hover,
+#portalSidebar .hover\:bg-\[\#F1F5F9\]:hover {
+  background-color: var(--bmc-hover) !important;
+  transform: none !important;
+}
+#sidebarZoneB > div > button:hover svg[data-lucide] { transform: none !important; }
+
+/* Child items */
+#sidebarZoneB [data-nav-id] {
+  height: 40px;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  border-radius: 10px !important;
+  color: var(--bmc-ink-2);
+}
+#sidebarZoneB [data-nav-id] svg { color: var(--bmc-muted) !important; }
+#sidebarZoneB [data-nav-id]:not(.child-nav-selected):hover,
+html.dark #sidebarZoneB [data-nav-id]:not(.child-nav-selected):hover {
+  background-color: var(--bmc-hover) !important;
+  color: var(--bmc-ink) !important;
+  transform: none !important;
+}
+
+/* Selected: flat grey pill, bold ink — no bar, no gradient, no glow */
+.child-nav-selected,
+#sidebarZoneB.am-has-blob .child-nav-selected {
+  background: var(--bmc-hover) !important;
+  color: var(--bmc-ink) !important;
+  font-weight: 700 !important;
+  border-left: 0 !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+.child-nav-selected svg,
+#sidebarZoneB.am-has-blob .child-nav-selected svg { color: var(--bmc-ink) !important; stroke: currentColor !important; }
+#sidebarZoneB.am-has-blob .child-nav-selected { background: transparent !important; }
+.am-nav-blob {
+  background: var(--bmc-hover) !important;
+  box-shadow: none !important;
+  border-radius: 10px !important;
+}
+.am-nav-blob::after { display: none !important; }
+
+/* ---------- Page title: plain big ink heading --------------------------- */
+#mainScrollCanvas > div:first-child,
+html.dark #mainScrollCanvas > div:first-child {
+  padding: 4px 0 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+#pageHeading, html.dark #pageHeading {
+  background: none !important;
+  -webkit-text-fill-color: currentColor !important;
+  color: var(--bmc-ink) !important;
+  font-size: clamp(28px, 2.6vw, 36px) !important;
+  font-weight: 800 !important;
+  letter-spacing: -.035em !important;
+}
+#pageHeading::after { display: none !important; }
+#breadcrumbParent, #breadcrumbChild { color: var(--bmc-muted) !important; font-weight: 500; letter-spacing: 0; }
+
+/* ---------- Cards: white, big radius, soft BMC shadow, no border -------- */
+.saas-card,
+#mainScrollCanvas .am-glass,
+#mainScrollCanvas .bg-white.border.rounded-2xl,
+#mainScrollCanvas .bg-white.border.rounded-xl,
+#mainScrollCanvas .bg-white.rounded-2xl,
+#mainScrollCanvas .bg-white.rounded-3xl,
+html.dark #mainScrollCanvas .am-glass {
+  background: var(--bmc-surface) !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  border-radius: 20px !important;
+  box-shadow: var(--bmc-shadow) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  animation: none !important;
+}
+#mainScrollCanvas .am-glass:hover,
+#mainScrollCanvas .am-card:hover,
+html.dark #mainScrollCanvas .am-glass:hover {
+  background: var(--bmc-surface) !important;
+  border-color: transparent !important;
+  box-shadow: var(--bmc-shadow-lg) !important;
+  transform: none !important;
+  animation: none !important;
+}
+#mainScrollCanvas .am-glass-inner {
+  background: var(--bmc-tint) !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+/* Inner tinted panels read as BMC's soft grey blocks */
+#mainScrollCanvas .bg-\[\#F8FAFC\],
+#mainScrollCanvas .bg-\[\#F1F5F9\] { background-color: var(--bmc-tint) !important; }
+#mainScrollCanvas .border-\[\#E5E7EB\],
+#mainScrollCanvas .border-\[\#E2E8F0\],
+#mainScrollCanvas .border-\[\#F1F5F9\] { border-color: var(--bmc-line) !important; }
+
+/* ---------- Text colours ------------------------------------------------- */
+.text-\[\#0F172A\] { color: var(--bmc-ink) !important; }
+.text-\[\#334155\], .text-\[\#475569\] { color: var(--bmc-ink-2) !important; }
+.text-\[\#64748B\] { color: var(--bmc-muted) !important; }
+.text-\[\#94A3B8\] { color: var(--bmc-faint) !important; }
+/* Brand-green accent text becomes ink, like BMC's black links/labels */
+.text-\[\#0B6623\],
+.hover\:text-\[\#0B6623\]:hover,
+.hover\:text-\[\#074818\]:hover,
+.group:hover .group-hover\:text-\[\#0B6623\] { color: var(--bmc-ink) !important; }
+#mainScrollCanvas a.text-\[\#0B6623\],
+#mainScrollCanvas button.text-\[\#0B6623\]:not([class*="bg-"]) { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+
+/* Small uppercase labels: BMC section-label style */
+#mainScrollCanvas .uppercase.tracking-wider,
+#mainScrollCanvas .uppercase.tracking-widest { color: var(--bmc-muted); letter-spacing: .14em !important; }
+
+/* ---------- Buttons ------------------------------------------------------ */
+button:not(:disabled):active, a[role="button"]:active { transform: scale(.98); }
+
+/* Primary (brand green fills) → yellow pill, ink label */
+button.bg-\[\#0B6623\],
+a.bg-\[\#0B6623\],
+label.bg-\[\#0B6623\],
+.am-primary {
+  background: var(--bmc-yellow) !important;
+  background-image: none !important;
+  color: #222222 !important;
+  border-color: transparent !important;
+  border-radius: 9999px !important;
+  box-shadow: none !important;
+  font-weight: 700 !important;
+}
+button.bg-\[\#0B6623\] *, a.bg-\[\#0B6623\] *, label.bg-\[\#0B6623\] * { color: #222222 !important; }
+button.bg-\[\#0B6623\]:hover,
+a.bg-\[\#0B6623\]:hover,
+.hover\:bg-\[\#074818\]:hover,
+.hover\:bg-\[\#09521C\]:hover,
+.hover\:bg-\[\#09501c\]:hover {
+  background: var(--bmc-yellow-hover) !important;
+  color: #222222 !important;
+  transform: none !important;
+}
+a.bg-\[\#0B6623\]::before { display: none !important; }
+.am-ripple { background: rgba(34, 34, 34, .12) !important; }
+
+/* Other brand-green fills (badges, icon tiles, bars, avatars) */
+div.bg-\[\#0B6623\], span.bg-\[\#0B6623\] {
+  background-color: var(--bmc-yellow) !important;
+  color: #222222 !important;
+}
+div.bg-\[\#0B6623\] svg, span.bg-\[\#0B6623\] svg,
+div.bg-\[\#0B6623\] .text-white, span.bg-\[\#0B6623\] .text-white { color: #222222 !important; }
+.hover\:bg-\[\#0B6623\]:hover, .group:hover .group-hover\:bg-\[\#0B6623\] {
+  background-color: var(--bmc-yellow) !important;
+  color: #222222 !important;
+}
+
+/* Dark fills stay dark — BMC's secondary "ink" button */
+button.bg-\[\#0F172A\] { background: #222222 !important; border-radius: 9999px !important; }
+button.bg-\[\#0F172A\]:hover { background: #000000 !important; }
+
+/* Secondary: white pill with hairline border */
+#mainScrollCanvas button.bg-white.border,
+html.dark #mainScrollCanvas button.bg-white.border {
+  background: var(--bmc-surface) !important;
+  border-color: var(--bmc-line-strong) !important;
+  border-radius: 9999px !important;
+  box-shadow: none !important;
+  color: var(--bmc-ink) !important;
+}
+#mainScrollCanvas button.bg-white.border:hover { background: var(--bmc-hover) !important; transform: none !important; }
+
+/* Pills/chips */
+#mainScrollCanvas button.rounded-full:hover { transform: none; }
+
+/* ---------- Inputs ------------------------------------------------------- */
+#mainScrollCanvas input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+#mainScrollCanvas select,
+#mainScrollCanvas textarea,
+.fixed input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+.fixed select, .fixed textarea {
+  border-color: var(--bmc-line-strong) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+input:focus, select:focus, textarea:focus,
+.focus\:border-\[\#0B6623\]:focus {
+  border-color: var(--bmc-ink) !important;
+  box-shadow: 0 0 0 3px rgba(255, 221, 0, .45) !important;
+  outline: none !important;
+}
+.focus\:ring-\[\#0B6623\]:focus { --tw-ring-color: rgba(255, 221, 0, .6) !important; }
+:focus-visible { outline: 2px solid var(--bmc-ink); outline-offset: 2px; }
+input[type="checkbox"], input[type="radio"] { accent-color: #222222; }
+input[type="range"] { accent-color: var(--bmc-yellow); }
+.border-\[\#0B6623\], .hover\:border-\[\#0B6623\]:hover { border-color: var(--bmc-ink) !important; }
+.ring-\[\#0B6623\] { --tw-ring-color: var(--bmc-yellow) !important; }
+
+/* ---------- Tables ------------------------------------------------------- */
+#mainScrollCanvas table thead th {
+  color: var(--bmc-muted) !important;
+  font-weight: 600 !important;
+  letter-spacing: .06em;
+  background: transparent !important;
+  border-color: var(--bmc-line) !important;
+}
+#mainScrollCanvas table tbody tr { border-color: var(--bmc-line) !important; }
+#mainScrollCanvas table tbody tr:hover,
+.saas-table tbody tr:hover { background-color: var(--bmc-tint) !important; }
+
+/* ---------- Floating panels, toasts, modals ----------------------------- */
+#notificationPopupDropdown, #profileDropdownMenu,
+html.dark #notificationPopupDropdown, html.dark #profileDropdownMenu,
+html.am-refract #notificationPopupDropdown, html.am-refract #profileDropdownMenu {
+  background: var(--bmc-surface) !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  border-radius: 20px !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: var(--bmc-shadow-lg) !important;
+}
+#toastContainer > *, html.am-refract #toastContainer > * {
+  background-color: #222222 !important;
+  color: #FFFFFF !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border-radius: 16px !important;
+  box-shadow: var(--bmc-shadow-lg) !important;
+}
+.fixed.inset-0[class*="bg-slate-900"]:not(.hidden):not(#page-login) > div {
+  border-radius: 24px !important;
+  box-shadow: var(--bmc-shadow-lg) !important;
+}
+
+/* ---------- Live mandi ticker: light strip instead of terminal-black ---- */
+#bloombergMandiTicker {
+  background: var(--bmc-surface) !important;
+  border-bottom: 1px solid var(--bmc-line);
+  box-shadow: none !important;
+}
+#bloombergMandiTicker > div:first-child {
+  background: var(--bmc-yellow) !important;
+  color: #222222 !important;
+  border-right: 0 !important;
+  box-shadow: none !important;
+}
+#bloombergMandiTicker > div:first-child * { color: #222222 !important; }
+#bloombergMandiTicker > div:first-child .animate-ping,
+#bloombergMandiTicker > div:first-child .relative > span { background-color: #222222 !important; }
+#bloombergMandiTicker > div:nth-child(2) [class*="from-"] { --tw-gradient-from: var(--bmc-surface) !important; }
+.mandi-ticker-track .text-white,
+.mandi-ticker-track .text-slate-200,
+.mandi-ticker-track .text-slate-300 { color: var(--bmc-ink) !important; }
+.mandi-ticker-track .text-slate-400,
+.mandi-ticker-track .text-slate-500 { color: var(--bmc-muted) !important; }
+/* Commodity tags: soft grey chip with ink label */
+.mandi-ticker-item > span:first-child {
+  background: var(--bmc-tint) !important;
+  color: var(--bmc-ink) !important;
+  border-color: var(--bmc-line) !important;
+  border-radius: 9999px !important;
+}
+/* Price moves: readable green / red on white */
+.mandi-ticker-track [class*="text-emerald-"], .mandi-ticker-track [class*="text-green-"] { color: #15803D !important; }
+.mandi-ticker-track [class*="text-rose-"], .mandi-ticker-track [class*="text-red-"] { color: #DC2626 !important; }
+.mandi-ticker-track [class*="text-amber-"] { color: #B45309 !important; }
+.mandi-ticker-item > span:last-child { border-radius: 9999px !important; }
+#bloombergMandiTicker > :last-child {
+  background: var(--bmc-surface) !important;
+  color: var(--bmc-ink) !important;
+  border-left: 1px solid var(--bmc-line) !important;
+  border-radius: 0 !important;
+}
+#bloombergMandiTicker > :last-child:hover { background: var(--bmc-hover) !important; }
+#bloombergMandiTicker > :last-child * { color: var(--bmc-ink) !important; }
+
+/* ---------- AI Mitra orb: yellow coffee-button style -------------------- */
+#floatingAiMitraBtn {
+  background: var(--bmc-yellow) !important;
+  background-image: none !important;
+  color: #222222 !important;
+  box-shadow: var(--bmc-shadow-lg) !important;
+}
+#floatingAiMitraBtn svg, #floatingAiMitraBtn img { color: #222222 !important; }
+#floatingAiMitraBtn::after, #floatingAiMitraBtn::before { display: none !important; }
+
+/* ---------- Login: cream canvas, flat white card, yellow CTA ----------- */
+#page-login > div:last-child,
+html.dark #page-login > div:last-child { background: var(--bmc-canvas) !important; }
+#page-login > div:last-child > .my-auto {
+  background: var(--bmc-surface) !important;
+  border: 0 !important;
+  border-radius: 32px !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: var(--bmc-shadow) !important;
+}
+#page-login > div:first-child h2 {
+  background: none !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  letter-spacing: -.035em !important;
+  animation: none !important;
+}
+#page-login h1, #page-login h2, #page-login h3 { letter-spacing: -.03em; }
+#page-login input:not([type="checkbox"]) {
+  border-color: var(--bmc-line-strong) !important;
+  border-radius: 12px !important;
+  background: var(--bmc-surface) !important;
+}
+#page-login [role="tablist"] button[aria-selected="true"],
+#page-login .border-b-2.border-\[\#0B6623\] { border-color: #222222 !important; color: #222222 !important; }
+
+/* ---------- Scrollbars --------------------------------------------------- */
+::-webkit-scrollbar-thumb { background: rgba(34, 34, 34, .15); }
+::-webkit-scrollbar-thumb:hover { background: rgba(34, 34, 34, .3); }
+
+/* ---------- Dark mode: ink fills invert ---------------------------------- */
+html.dark .text-\[\#0B6623\],
+html.dark .group:hover .group-hover\:text-\[\#0B6623\] { color: var(--bmc-ink) !important; }
+html.dark button.bg-\[\#0F172A\] { background: #F5F5F5 !important; color: #222222 !important; }
+/* Light tinted chips with no dark variant keep ink text so it stays readable on their pale fill */
+html.dark :is([class~="bg-emerald-50"], [class~="bg-emerald-100"], [class~="bg-green-50"], [class~="bg-green-100"], [class~="bg-\[\#E5F4EA\]"], [class~="bg-\[\#E8F5E9\]"]):not([class*="dark:bg-"]):is(.text-\[\#0B6623\], .text-\[\#0F172A\]),
+html.dark :is([class~="bg-emerald-50"], [class~="bg-emerald-100"], [class~="bg-green-50"], [class~="bg-green-100"], [class~="bg-\[\#E5F4EA\]"], [class~="bg-\[\#E8F5E9\]"]):not([class*="dark:bg-"]) :is(.text-\[\#0B6623\], .text-\[\#0F172A\]) { color: #222222 !important; }
