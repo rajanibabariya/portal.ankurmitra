@@ -298,6 +298,7 @@ for (const [modKey, mod] of Object.entries(modulesConfig)) {
     subPageContent = subPageContent.replace(/href="assets\//g, 'href="../assets/');
     subPageContent = subPageContent.replace(/url\('assets\//g, "url('../assets/");
     subPageContent = subPageContent.replace(/src="portal-shell.js"/g, 'src="../portal-shell.js"');
+    subPageContent = subPageContent.replace(/src="portal-upgrade.js"/g, 'src="../portal-upgrade.js"');
     subPageContent = subPageContent.replace(/'assets\/farmer_jayesh_exact.png'/g, "'../assets/farmer_jayesh_exact.png'");
     subPageContent = subPageContent.replace(/'assets\/ankurmitra_emblem.png'/g, "'../assets/ankurmitra_emblem.png'");
     subPageContent = subPageContent.replace(/'assets\/product_logo.png'/g, "'../assets/product_logo.png'");

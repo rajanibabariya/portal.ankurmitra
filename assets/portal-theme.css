@@ -10,183 +10,183 @@
 
 
 /* =========================================================================
-   ANKURMITRA OFFICIAL PRODUCT LOGO THEME ENGINE
+   ANKURMITRA OFFICIAL PRODUCT LOGO THEME ENGINE (LIGHT & VIBRANT PALETTE)
    Derived directly from the official AnkurMitra emblem:
-   - Forest Emerald: mature crop foliage & "ANKUR" wordmark
-   - Vibrant Sprout Green: fresh seedling & "MITRA" wordmark
-   - Radiant Solar Gold: sunrise emblem bringing warmth & prosperity
-   - Fertile Soil Bronze: agricultural furrowed earth & baseline swoop
+   - Fresh Spring Green: light, vibrant leaf canopy & "ANKUR" wordmark
+   - Bright Sprout Lime: tender germinating shoots & "MITRA" wordmark
+   - Radiant Solar Gold: warm sunrise glow bringing life to the fields
+   - Golden Sand & Earth: light warm agricultural furrow tones
    ========================================================================= */
 
 :root,
 html[data-theme-preset="ankurmitra-harmony"],
 html:not([data-theme-preset]) {
   --am-theme-id: "ankurmitra-harmony";
-  --am-theme-name: "AnkurMitra Harmonized Dual";
-  --am-primary: #0B6623;
-  --am-primary-hover: #074818;
-  --am-primary-dark: #044B22;
-  --am-primary-light: #E5F4EA;
-  --am-secondary: #D97706;
-  --am-secondary-hover: #B45309;
+  --am-theme-name: "Light Harmonized Dual";
+  --am-primary: #16A34A;
+  --am-primary-hover: #15803D;
+  --am-primary-dark: #166534;
+  --am-primary-light: #F0FDF4;
+  --am-secondary: #F59E0B;
+  --am-secondary-hover: #D97706;
   --am-accent: #22C55E;
-  --am-leaf: #16A34A;
-  --am-sun: #F59E0B;
-  --am-sun-orange: #EA580C;
-  --am-soil: #78350F;
-  --am-soil-dark: #5C2C16;
-  --am-green: #0B6623;
-  --am-green-2: #12863a;
-  --am-teal: #00A6C7;
+  --am-leaf: #4ADE80;
+  --am-sun: #FBBF24;
+  --am-sun-orange: #FB923C;
+  --am-soil: #B45309;
+  --am-soil-dark: #92400E;
+  --am-green: #16A34A;
+  --am-green-2: #22C55E;
+  --am-teal: #14B8A6;
   --am-ink: #0F172A;
   --am-ease: cubic-bezier(.22, 1, .36, 1);
   --am-spring: cubic-bezier(.34, 1.56, .64, 1);
-  --am-shadow-sm: 0 1px 2px rgba(15, 23, 42, .04), 0 2px 6px -2px rgba(15, 23, 42, .05);
-  --am-shadow-md: 0 2px 4px rgba(15, 23, 42, .04), 0 12px 28px -10px rgba(11, 102, 35, .18);
-  --am-shadow-glow: 0 8px 24px -8px rgba(11, 102, 35, .55);
-  --am-glow: rgba(11, 102, 35, 0.45);
-  --am-ring: rgba(11, 102, 35, 0.28);
-  --am-glass: rgba(255, 255, 255, .72);
-  --am-canvas: #F5F8F6;
-  --am-surface-accent: rgba(11, 102, 35, 0.08);
-  --am-gradient-brand: linear-gradient(115deg, #044B22 0%, #0B6623 45%, #D97706 100%);
-  --am-gradient-subtle: linear-gradient(135deg, rgba(11, 102, 35, 0.08) 0%, rgba(217, 119, 6, 0.05) 100%);
-  --am-badge-bg: #E5F4EA;
-  --am-badge-text: #0B6623;
-  --am-top-loader: linear-gradient(90deg, #044B22, #0B6623, #22C55E, #F59E0B, #EA580C);
+  --am-shadow-sm: 0 1px 3px rgba(15, 23, 42, .04), 0 4px 12px -2px rgba(15, 23, 42, .03);
+  --am-shadow-md: 0 4px 16px -4px rgba(15, 23, 42, .06), 0 12px 28px -8px rgba(34, 197, 94, .16);
+  --am-shadow-glow: 0 8px 24px -6px rgba(34, 197, 94, .35);
+  --am-glow: rgba(34, 197, 94, 0.35);
+  --am-ring: rgba(34, 197, 94, 0.22);
+  --am-glass: rgba(255, 255, 255, .82);
+  --am-canvas: #F8FAF8;
+  --am-surface-accent: #F0FDF4;
+  --am-gradient-brand: linear-gradient(135deg, #16A34A 0%, #22C55E 55%, #F59E0B 100%);
+  --am-gradient-subtle: linear-gradient(135deg, rgba(34, 197, 94, 0.07) 0%, rgba(245, 158, 11, 0.04) 100%);
+  --am-badge-bg: #F0FDF4;
+  --am-badge-text: #16A34A;
+  --am-top-loader: linear-gradient(90deg, #16A34A, #22C55E, #4ADE80, #FBBF24, #F59E0B);
 }
 
 html[data-theme-preset="ankur-emerald"] {
   --am-theme-id: "ankur-emerald";
-  --am-theme-name: "Ankur Signature Emerald";
-  --am-primary: #0B6623;
-  --am-primary-hover: #074818;
-  --am-primary-dark: #044B22;
-  --am-primary-light: #E5F4EA;
-  --am-secondary: #15803D;
-  --am-secondary-hover: #166534;
+  --am-theme-name: "Light Ankur Emerald";
+  --am-primary: #15803D;
+  --am-primary-hover: #166534;
+  --am-primary-dark: #14532D;
+  --am-primary-light: #F0FDF4;
+  --am-secondary: #16A34A;
+  --am-secondary-hover: #15803D;
   --am-accent: #22C55E;
-  --am-leaf: #22C55E;
-  --am-sun: #F59E0B;
-  --am-soil: #78350F;
-  --am-green: #0B6623;
-  --am-green-2: #15803D;
-  --am-glow: rgba(11, 102, 35, 0.45);
-  --am-ring: rgba(11, 102, 35, 0.28);
-  --am-surface-accent: rgba(11, 102, 35, 0.08);
-  --am-gradient-brand: linear-gradient(115deg, #044B22 0%, #0B6623 55%, #15803D 100%);
-  --am-gradient-subtle: linear-gradient(135deg, rgba(11, 102, 35, 0.08) 0%, rgba(34, 197, 94, 0.04) 100%);
-  --am-badge-bg: #E5F4EA;
-  --am-badge-text: #0B6623;
-  --am-top-loader: linear-gradient(90deg, #044B22, #0B6623, #15803D, #22C55E);
+  --am-leaf: #4ADE80;
+  --am-sun: #FBBF24;
+  --am-soil: #B45309;
+  --am-green: #15803D;
+  --am-green-2: #16A34A;
+  --am-glow: rgba(22, 163, 74, 0.35);
+  --am-ring: rgba(22, 163, 74, 0.22);
+  --am-surface-accent: #F0FDF4;
+  --am-gradient-brand: linear-gradient(135deg, #15803D 0%, #16A34A 55%, #22C55E 100%);
+  --am-gradient-subtle: linear-gradient(135deg, rgba(22, 163, 74, 0.07) 0%, rgba(34, 197, 94, 0.04) 100%);
+  --am-badge-bg: #F0FDF4;
+  --am-badge-text: #15803D;
+  --am-top-loader: linear-gradient(90deg, #15803D, #16A34A, #22C55E, #4ADE80);
 }
 
 html[data-theme-preset="mitra-sprout"] {
   --am-theme-id: "mitra-sprout";
-  --am-theme-name: "Mitra Spring Sprout";
-  --am-primary: #16A34A;
-  --am-primary-hover: #15803D;
-  --am-primary-dark: #166534;
-  --am-primary-light: #DCFCE7;
-  --am-secondary: #65A30D;
-  --am-secondary-hover: #4D7C0F;
-  --am-accent: #84CC16;
-  --am-leaf: #84CC16;
-  --am-sun: #F59E0B;
-  --am-soil: #78350F;
-  --am-green: #16A34A;
-  --am-green-2: #65A30D;
-  --am-glow: rgba(22, 163, 74, 0.45);
-  --am-ring: rgba(22, 163, 74, 0.28);
-  --am-surface-accent: rgba(22, 163, 74, 0.08);
-  --am-gradient-brand: linear-gradient(115deg, #15803D 0%, #16A34A 55%, #65A30D 100%);
-  --am-gradient-subtle: linear-gradient(135deg, rgba(22, 163, 74, 0.08) 0%, rgba(132, 204, 22, 0.05) 100%);
-  --am-badge-bg: #DCFCE7;
-  --am-badge-text: #15803D;
-  --am-top-loader: linear-gradient(90deg, #15803D, #16A34A, #65A30D, #84CC16);
+  --am-theme-name: "Light Mitra Spring";
+  --am-primary: #22C55E;
+  --am-primary-hover: #16A34A;
+  --am-primary-dark: #15803D;
+  --am-primary-light: #F0FDF4;
+  --am-secondary: #4ADE80;
+  --am-secondary-hover: #22C55E;
+  --am-accent: #86EFAC;
+  --am-leaf: #86EFAC;
+  --am-sun: #FBBF24;
+  --am-soil: #B45309;
+  --am-green: #22C55E;
+  --am-green-2: #4ADE80;
+  --am-glow: rgba(34, 197, 94, 0.35);
+  --am-ring: rgba(34, 197, 94, 0.22);
+  --am-surface-accent: #F0FDF4;
+  --am-gradient-brand: linear-gradient(135deg, #16A34A 0%, #22C55E 55%, #4ADE80 100%);
+  --am-gradient-subtle: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(74, 222, 128, 0.05) 100%);
+  --am-badge-bg: #F0FDF4;
+  --am-badge-text: #16A34A;
+  --am-top-loader: linear-gradient(90deg, #16A34A, #22C55E, #4ADE80, #86EFAC);
 }
 
 html[data-theme-preset="surya-gold"] {
   --am-theme-id: "surya-gold";
-  --am-theme-name: "Surya Sunrise Gold";
-  --am-primary: #D97706;
-  --am-primary-hover: #B45309;
-  --am-primary-dark: #92400E;
-  --am-primary-light: #FEF3C7;
-  --am-secondary: #EA580C;
-  --am-secondary-hover: #C2410C;
-  --am-accent: #F59E0B;
-  --am-leaf: #22C55E;
-  --am-sun: #FBBF24;
-  --am-soil: #78350F;
-  --am-green: #D97706;
-  --am-green-2: #EA580C;
-  --am-glow: rgba(217, 119, 6, 0.45);
-  --am-ring: rgba(217, 119, 6, 0.28);
-  --am-surface-accent: rgba(217, 119, 6, 0.08);
-  --am-gradient-brand: linear-gradient(115deg, #B45309 0%, #D97706 50%, #F59E0B 100%);
-  --am-gradient-subtle: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, rgba(245, 158, 11, 0.05) 100%);
-  --am-badge-bg: #FEF3C7;
-  --am-badge-text: #92400E;
-  --am-top-loader: linear-gradient(90deg, #B45309, #D97706, #F59E0B, #EA580C);
+  --am-theme-name: "Light Surya Sunrise";
+  --am-primary: #F59E0B;
+  --am-primary-hover: #D97706;
+  --am-primary-dark: #B45309;
+  --am-primary-light: #FFFBEB;
+  --am-secondary: #FBBF24;
+  --am-secondary-hover: #F59E0B;
+  --am-accent: #FDE68A;
+  --am-leaf: #4ADE80;
+  --am-sun: #FDE68A;
+  --am-soil: #B45309;
+  --am-green: #F59E0B;
+  --am-green-2: #FBBF24;
+  --am-glow: rgba(245, 158, 11, 0.35);
+  --am-ring: rgba(245, 158, 11, 0.22);
+  --am-surface-accent: #FFFBEB;
+  --am-gradient-brand: linear-gradient(135deg, #F59E0B 0%, #FBBF24 55%, #FDE68A 100%);
+  --am-gradient-subtle: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(251, 191, 36, 0.05) 100%);
+  --am-badge-bg: #FFFBEB;
+  --am-badge-text: #B45309;
+  --am-top-loader: linear-gradient(90deg, #D97706, #F59E0B, #FBBF24, #FDE68A);
 }
 
 html[data-theme-preset="dharati-soil"] {
   --am-theme-id: "dharati-soil";
-  --am-theme-name: "Dharati Fertile Soil";
-  --am-primary: #78350F;
-  --am-primary-hover: #5C2C16;
-  --am-primary-dark: #451A03;
-  --am-primary-light: #FEF3C7;
-  --am-secondary: #92400E;
-  --am-secondary-hover: #78350F;
-  --am-accent: #B45309;
-  --am-leaf: #22C55E;
-  --am-sun: #F59E0B;
-  --am-soil: #78350F;
-  --am-green: #78350F;
-  --am-green-2: #92400E;
-  --am-glow: rgba(120, 53, 15, 0.45);
-  --am-ring: rgba(120, 53, 15, 0.28);
-  --am-surface-accent: rgba(120, 53, 15, 0.08);
-  --am-gradient-brand: linear-gradient(115deg, #451A03 0%, #78350F 55%, #92400E 100%);
-  --am-gradient-subtle: linear-gradient(135deg, rgba(120, 53, 15, 0.08) 0%, rgba(180, 83, 9, 0.05) 100%);
-  --am-badge-bg: #FEF3C7;
-  --am-badge-text: #78350F;
-  --am-top-loader: linear-gradient(90deg, #451A03, #78350F, #B45309, #F59E0B);
+  --am-theme-name: "Light Dharati Sand";
+  --am-primary: #B45309;
+  --am-primary-hover: #92400E;
+  --am-primary-dark: #78350F;
+  --am-primary-light: #FEFCE8;
+  --am-secondary: #D97706;
+  --am-secondary-hover: #B45309;
+  --am-accent: #F59E0B;
+  --am-leaf: #4ADE80;
+  --am-sun: #FBBF24;
+  --am-soil: #B45309;
+  --am-green: #B45309;
+  --am-green-2: #D97706;
+  --am-glow: rgba(180, 83, 9, 0.35);
+  --am-ring: rgba(180, 83, 9, 0.22);
+  --am-surface-accent: #FEFCE8;
+  --am-gradient-brand: linear-gradient(135deg, #B45309 0%, #D97706 55%, #F59E0B 100%);
+  --am-gradient-subtle: linear-gradient(135deg, rgba(180, 83, 9, 0.08) 0%, rgba(217, 119, 6, 0.05) 100%);
+  --am-badge-bg: #FEFCE8;
+  --am-badge-text: #92400E;
+  --am-top-loader: linear-gradient(90deg, #92400E, #B45309, #D97706, #F59E0B);
 }
 
 /* Dark mode variations for product logo themes */
 html.dark[data-theme-preset="ankurmitra-harmony"],
 html.dark:not([data-theme-preset]) {
-  --am-primary-light: rgba(11, 102, 35, 0.25);
-  --am-surface-accent: rgba(11, 102, 35, 0.18);
-  --am-badge-bg: rgba(11, 102, 35, 0.3);
-  --am-badge-text: #4ADE80;
-}
-html.dark[data-theme-preset="ankur-emerald"] {
-  --am-primary-light: rgba(11, 102, 35, 0.25);
-  --am-surface-accent: rgba(11, 102, 35, 0.18);
-  --am-badge-bg: rgba(11, 102, 35, 0.3);
-  --am-badge-text: #4ADE80;
-}
-html.dark[data-theme-preset="mitra-sprout"] {
-  --am-primary-light: rgba(22, 163, 74, 0.25);
-  --am-surface-accent: rgba(22, 163, 74, 0.18);
-  --am-badge-bg: rgba(22, 163, 74, 0.3);
+  --am-primary-light: rgba(34, 197, 94, 0.2);
+  --am-surface-accent: rgba(34, 197, 94, 0.14);
+  --am-badge-bg: rgba(34, 197, 94, 0.25);
   --am-badge-text: #86EFAC;
 }
+html.dark[data-theme-preset="ankur-emerald"] {
+  --am-primary-light: rgba(22, 163, 74, 0.2);
+  --am-surface-accent: rgba(22, 163, 74, 0.14);
+  --am-badge-bg: rgba(22, 163, 74, 0.25);
+  --am-badge-text: #86EFAC;
+}
+html.dark[data-theme-preset="mitra-sprout"] {
+  --am-primary-light: rgba(74, 222, 128, 0.2);
+  --am-surface-accent: rgba(74, 222, 128, 0.14);
+  --am-badge-bg: rgba(74, 222, 128, 0.25);
+  --am-badge-text: #BBF7D0;
+}
 html.dark[data-theme-preset="surya-gold"] {
-  --am-primary-light: rgba(217, 119, 6, 0.25);
-  --am-surface-accent: rgba(217, 119, 6, 0.18);
-  --am-badge-bg: rgba(217, 119, 6, 0.3);
+  --am-primary-light: rgba(245, 158, 11, 0.2);
+  --am-surface-accent: rgba(245, 158, 11, 0.14);
+  --am-badge-bg: rgba(245, 158, 11, 0.25);
   --am-badge-text: #FDE047;
 }
 html.dark[data-theme-preset="dharati-soil"] {
-  --am-primary-light: rgba(120, 53, 15, 0.25);
-  --am-surface-accent: rgba(120, 53, 15, 0.18);
-  --am-badge-bg: rgba(120, 53, 15, 0.3);
-  --am-badge-text: #FCD34D;
+  --am-primary-light: rgba(180, 83, 9, 0.2);
+  --am-surface-accent: rgba(180, 83, 9, 0.14);
+  --am-badge-bg: rgba(180, 83, 9, 0.25);
+  --am-badge-text: #FDE047;
 }
 
 
@@ -1018,4 +1018,40 @@ html.dark header[role="banner"] input { background-color: rgba(15, 23, 42, .55) 
 }
 .theme-preset-card.active-theme .theme-check-badge {
   display: flex !important;
+}
+
+
+/* Light, clean card styling */
+.saas-card,
+#mainScrollCanvas .bg-white.border.rounded-2xl,
+#mainScrollCanvas .bg-white.border.rounded-xl {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 12px -2px rgba(15, 23, 42, 0.02) !important;
+}
+
+#mainScrollCanvas .am-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--am-primary) !important;
+  box-shadow: 0 8px 24px -6px var(--am-glow), 0 0 0 1px var(--am-primary-light) !important;
+}
+
+/* Light button styles */
+button.bg-\[\#0B6623\],
+a.bg-\[\#0B6623\],
+label.bg-\[\#0B6623\],
+.am-primary,
+.bg-am-primary {
+  background: var(--am-primary) !important;
+  background-image: var(--am-gradient-brand) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .25) inset, 0 4px 14px -4px var(--am-glow) !important;
+}
+
+button.bg-\[\#0B6623\]:hover,
+a.bg-\[\#0B6623\]:hover,
+.am-primary:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 0 rgba(255, 255, 255, .3) inset, 0 8px 20px -4px var(--am-glow) !important;
 }
