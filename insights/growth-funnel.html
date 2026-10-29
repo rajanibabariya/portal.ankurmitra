@@ -1353,289 +1353,566 @@
                8 KPI cards with sparklines, Amreli district map, sell vs purchase,
                donut users by role, funnel, marketing strip.
                ------------------------------------------------------------- -->
+                    <!-- -------------------------------------------------------------
+               VIEW 1: A02 COMMAND DASHBOARD (Executive Redesign 2026)
+               Ultra-premium, hyper-interactive, multi-cluster Saurashtra Agro-Grid
+               ------------------------------------------------------------- -->
           <div id="view-dashboard" class="hidden space-y-6 view-section">
 
-            <div id="dashboardAttentionRail" class="attention-rail saas-card p-4 flex flex-wrap items-center justify-between gap-3">
-              <div class="flex items-start gap-3">
-                <div class="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0">
-                  <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+            <!-- Executive Command Header with Live Telemetry Stream -->
+            <div class="saas-card p-5 bg-gradient-to-r from-emerald-50/90 via-teal-50/40 to-white dark:from-emerald-950/40 dark:via-slate-900 dark:to-slate-900 border border-emerald-200/80 dark:border-emerald-800/50 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+              <div>
+                <div class="flex items-center gap-2 text-xs font-bold text-[#0B6623] dark:text-emerald-400">
+                  <span class="relative flex h-2.5 w-2.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#0B6623] dark:bg-emerald-400"></span>
+                  </span>
+                  <span>Saurashtra Regional Operations Hub · Amreli District Command</span>
+                  <span class="hidden sm:inline-block text-slate-300 dark:text-slate-600">•</span>
+                  <span class="hidden sm:inline-block text-[11px] font-mono text-[#64748B] dark:text-slate-400" id="dashLiveClock">14:59:09 IST · Live Telemetry</span>
                 </div>
-                <div>
-                  <div class="text-sm font-bold text-[#0F172A]">3 items need attention in Amreli</div>
-                  <p class="text-xs text-[#475569] mt-0.5">Sudavad has no nearby input dealer · Pink bollworm flagged in 14 clusters · Urea at Kishan Agro is down to 12 bags.</p>
-                </div>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <button type="button" onclick="navigateTo('coverage-gaps','Insights','Coverage gaps')" class="h-9 px-3.5 bg-white border border-[#E5E7EB] hover:bg-[#F8FAFC] text-xs font-bold rounded-xl">Invite dealer</button>
-                <button type="button" onclick="navigateTo('crop-doctor','Field','Crop doctor')" class="h-9 px-3.5 bg-white border border-[#E5E7EB] hover:bg-[#F8FAFC] text-xs font-bold rounded-xl">Open crop doctor</button>
-                <button type="button" onclick="navigateTo('dealer-stock','Sales','Dealer stock')" class="h-9 px-3.5 bg-[#0B6623] hover:bg-[#09521C] text-white text-xs font-bold rounded-xl">Review urea stock</button>
-              </div>
-            </div>
-            
-            <!-- Filter Bar: 1–15 October, place All, role chips, compare vs last week -->
-            <div class="saas-card p-4 flex flex-wrap items-center justify-between gap-4">
-              <div class="flex flex-wrap items-center gap-3">
-                <div class="flex items-center gap-2 text-xs font-bold text-[#0F172A]">
-                  <i data-lucide="calendar" class="w-4 h-4 text-[#0B6623]"></i>
-                  <label for="dashboardDateSelect">Date:</label>
-                  <select id="dashboardDateSelect" onchange="applyDashboardFilters()" class="bg-[#F8FAFC] border border-[#E5E7EB] rounded-lg px-2.5 py-1 text-xs font-semibold">
-                    <option selected>1–15 October</option>
-                    <option>Today</option>
-                    <option>Past 30 Days</option>
-                  </select>
-                </div>
-
-                <div class="flex items-center gap-2 text-xs font-bold text-[#0F172A]">
-                  <i data-lucide="map-pin" class="w-4 h-4 text-[#7CB342]"></i>
-                  <label for="dashboardPlaceSelect">Place:</label>
-                  <select id="dashboardPlaceSelect" onchange="applyDashboardFilters()" class="bg-[#F8FAFC] border border-[#E5E7EB] rounded-lg px-2.5 py-1 text-xs font-semibold">
-                    <option selected>All (Amreli District)</option>
-                    <option>Sudavad</option>
-                    <option>Bagasara</option>
-                    <option>Amreli City</option>
-                  </select>
-                </div>
-
-                <!-- Role Chips: Farmer, Dealer, Retailer, Industrial -->
-                <div class="flex items-center gap-1.5 text-xs font-semibold" role="group" aria-label="Filter by role">
-                  <span class="text-[#64748B] text-xs">Role:</span>
-                  <button type="button" data-role="farmer" onclick="toggleDashboardRole(this)" class="dashboard-role-chip px-2.5 py-1 rounded-full bg-[#0B6623] text-white font-bold text-xs">Farmer</button>
-                  <button type="button" data-role="dealer" onclick="toggleDashboardRole(this)" class="dashboard-role-chip px-2.5 py-1 rounded-full bg-[#0B6623] text-white font-bold text-xs">Dealer</button>
-                  <button type="button" data-role="retailer" onclick="toggleDashboardRole(this)" class="dashboard-role-chip px-2.5 py-1 rounded-full bg-[#0B6623] text-white font-bold text-xs">Retailer</button>
-                  <button type="button" data-role="industrial" onclick="toggleDashboardRole(this)" class="dashboard-role-chip px-2.5 py-1 rounded-full bg-[#0B6623] text-white font-bold text-xs">Industrial</button>
-                </div>
+                <h1 class="text-2xl font-black text-[#0F172A] dark:text-white mt-1 tracking-tight flex items-center gap-2">
+                  <span>Executive Operations Dashboard</span>
+                  <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-[#0B6623] dark:bg-emerald-900/60 dark:text-emerald-300">Live Grid</span>
+                </h1>
+                <p class="text-xs text-[#64748B] dark:text-slate-400 mt-0.5 max-w-3xl">
+                  Unified command of farmer engagement, mandi transaction velocity, input dealer logistics, agro-met radar, and godown fulfillment across Saurashtra.
+                </p>
               </div>
 
-              <div class="flex items-center gap-2 text-xs font-semibold text-[#64748B]">
-                <span class="px-2.5 py-1 bg-emerald-50 text-[#0B6623] rounded-lg border border-emerald-200">
-                  Compare vs last week: <strong id="dashboardCompareDelta" class="text-[#0B6623]">+8.4%</strong>
-                </span>
-                <button onclick="exportDashboardData()" class="h-8 px-3 rounded-lg border border-[#E5E7EB] bg-white hover:bg-[#F8FAFC] text-xs font-bold text-[#0F172A] flex items-center gap-1.5">
-                  <i data-lucide="download" class="w-3.5 h-3.5"></i> Export
+              <!-- Executive Action Toolbar -->
+              <div class="flex flex-wrap items-center gap-2 shrink-0">
+                <button type="button" onclick="simulateLiveOpsPulse()" class="h-9 px-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-emerald-50 dark:hover:bg-slate-700 text-[#0F172A] dark:text-white text-xs font-bold rounded-xl transition flex items-center gap-1.5 shadow-2xs group" title="Simulate a live data stream event">
+                  <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-500 group-hover:scale-110 transition"></i>
+                  <span>Simulate Pulse</span>
+                </button>
+                <button type="button" onclick="openBroadcastAdvisoryModal()" class="h-9 px-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-emerald-50 dark:hover:bg-slate-700 text-[#0F172A] dark:text-white text-xs font-bold rounded-xl transition flex items-center gap-1.5 shadow-2xs group" title="Broadcast urgent advisory to clusters">
+                  <i data-lucide="radio" class="w-3.5 h-3.5 text-rose-500 group-hover:scale-110 transition"></i>
+                  <span>Broadcast Advisory</span>
+                </button>
+                <button type="button" onclick="exportDashboardData()" class="h-9 px-4 bg-[#0B6623] hover:bg-[#074818] text-white text-xs font-bold rounded-xl shadow-xs transition flex items-center gap-1.5">
+                  <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                  <span>Export Report</span>
                 </button>
               </div>
             </div>
 
-            
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
-              <button type="button" onclick="navigateTo('weather-dashboard','Dashboard','Weather dashboard')" class="saas-card p-4 text-left hover:border-[#0B6623]">
-                <div class="text-[11px] font-bold text-sky-700">WEATHER</div>
-                <div class="text-lg font-black">32°C · spray safe</div>
-              </button>
-              <button type="button" onclick="navigateTo('network-dashboard','Dashboard','Network dashboard')" class="saas-card p-4 text-left hover:border-[#0B6623]">
-                <div class="text-[11px] font-bold text-emerald-700">NETWORK</div>
-                <div class="text-lg font-black">1,240 farmers live</div>
-              </button>
-              <button type="button" onclick="navigateTo('live-pulse','Dashboard','Live pulse')" class="saas-card p-4 text-left hover:border-[#0B6623]">
-                <div class="text-[11px] font-bold text-teal-700">LIVE PULSE</div>
-                <div class="text-lg font-black">312 on app</div>
-              </button>
-              <button type="button" onclick="informWeatherParty('farmer','Jayesh Patel','Sudavad')" class="saas-card p-4 text-left hover:border-[#0B6623]">
-                <div class="text-[11px] font-bold text-amber-700">ADVISORY</div>
-                <div class="text-lg font-black">Send farmer alert</div>
-              </button>
+            <!-- Priority Operational Attention Rail (Triage Banner) -->
+            <div id="dashboardAttentionRail" class="attention-rail saas-card p-4 bg-gradient-to-r from-amber-50/90 via-white to-rose-50/60 dark:from-amber-950/30 dark:via-slate-900 dark:to-rose-950/20 border border-amber-300/80 dark:border-amber-800/40 flex flex-wrap items-center justify-between gap-3 shadow-xs">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-xs">
+                  <i data-lucide="alert-triangle" class="w-5 h-5 animate-pulse"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-black text-[#0F172A] dark:text-white">3 High-Priority Items Require Action in Amreli District</span>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-100 text-amber-800 dark:bg-amber-900/60 dark:text-amber-300">Action Required</span>
+                  </div>
+                  <p class="text-xs text-[#475569] dark:text-slate-400 mt-0.5">
+                    <strong>1. Sudavad:</strong> 640 farmers have 0 input dealers · <strong>2. Crop Health:</strong> Pink bollworm flagged in 14 cotton clusters (spray safe window ends in 4 hrs) · <strong>3. Urea Shortage:</strong> Kishan Agro Bagasara down to 12 bags with 34 farmers in queue.
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-wrap items-center gap-2">
+                <button type="button" onclick="selectDashboardTaluka('Sudavad'); navigateTo('coverage-gaps','Insights','Coverage gaps')" class="h-8 px-3 bg-white dark:bg-slate-800 border border-amber-200 dark:border-amber-800 hover:bg-amber-50 text-xs font-bold rounded-xl text-[#0F172A] dark:text-slate-200 shadow-2xs">
+                  Invite Dealer to Sudavad
+                </button>
+                <button type="button" onclick="navigateTo('crop-doctor','Field','Crop doctor')" class="h-8 px-3 bg-white dark:bg-slate-800 border border-rose-200 dark:border-rose-800 hover:bg-rose-50 text-xs font-bold rounded-xl text-rose-700 dark:text-rose-400 shadow-2xs">
+                  Open Crop Doctor
+                </button>
+                <button type="button" onclick="navigateTo('dealer-stock','Sales','Dealer stock')" class="h-8 px-3.5 bg-[#0B6623] hover:bg-[#074818] text-white text-xs font-bold rounded-xl shadow-xs">
+                  Dispatch 200 Bags Urea
+                </button>
+              </div>
             </div>
 
-            <!-- KPI Row of Eight with Sparklines & % Delta -->
-            <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-8 gap-3">
+            <!-- Interactive Multi-Parameter Filter & Comparison Bar -->
+            <div class="saas-card p-4 flex flex-wrap items-center justify-between gap-4 border border-slate-200 dark:border-slate-800 shadow-xs">
+              <div class="flex flex-wrap items-center gap-3">
+                <!-- Date Filter -->
+                <div class="flex items-center gap-2 text-xs font-bold text-[#0F172A] dark:text-white">
+                  <i data-lucide="calendar" class="w-4 h-4 text-[#0B6623]"></i>
+                  <label for="dashboardDateSelect">Period:</label>
+                  <select id="dashboardDateSelect" onchange="applyDashboardFilters()" class="bg-[#F8FAFC] dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[#0F172A] dark:text-white rounded-xl px-3 py-1.5 text-xs font-semibold focus:ring-2 focus:ring-[#0B6623] outline-none">
+                    <option selected>1–15 October</option>
+                    <option>Today</option>
+                    <option>Past 7 Days</option>
+                    <option>Past 30 Days</option>
+                    <option>Full Kharif 2026</option>
+                  </select>
+                </div>
+
+                <!-- Geographic Taluka Filter -->
+                <div class="flex items-center gap-2 text-xs font-bold text-[#0F172A] dark:text-white">
+                  <i data-lucide="map-pin" class="w-4 h-4 text-[#7CB342]"></i>
+                  <label for="dashboardPlaceSelect">Cluster:</label>
+                  <select id="dashboardPlaceSelect" onchange="applyDashboardFilters()" class="bg-[#F8FAFC] dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[#0F172A] dark:text-white rounded-xl px-3 py-1.5 text-xs font-semibold focus:ring-2 focus:ring-[#0B6623] outline-none">
+                    <option selected>All (Amreli District)</option>
+                    <option>Sudavad</option>
+                    <option>Bagasara</option>
+                    <option>Amreli City</option>
+                    <option>Dhari Belt</option>
+                    <option>Babra Outpost</option>
+                  </select>
+                </div>
+
+                <!-- Role Multi-Chips -->
+                <div class="flex items-center gap-1.5 text-xs font-semibold" role="group" aria-label="Filter by role">
+                  <span class="text-[#64748B] dark:text-slate-400 text-xs">Roles:</span>
+                  <button type="button" data-role="farmer" onclick="toggleDashboardRole(this)" class="dashboard-role-chip px-3 py-1 rounded-full bg-[#0B6623] text-white font-bold text-xs shadow-2xs transition">Farmer (1,240)</button>
+                  <button type="button" data-role="dealer" onclick="toggleDashboardRole(this)" class="dashboard-role-chip px-3 py-1 rounded-full bg-[#0B6623] text-white font-bold text-xs shadow-2xs transition">Dealer (86)</button>
+                  <button type="button" data-role="retailer" onclick="toggleDashboardRole(this)" class="dashboard-role-chip px-3 py-1 rounded-full bg-[#0B6623] text-white font-bold text-xs shadow-2xs transition">Retailer (140)</button>
+                  <button type="button" data-role="industrial" onclick="toggleDashboardRole(this)" class="dashboard-role-chip px-3 py-1 rounded-full bg-[#0B6623] text-white font-bold text-xs shadow-2xs transition">Industrial (18)</button>
+                </div>
+              </div>
+
+              <!-- Growth Delta Comparison & Quick Tools -->
+              <div class="flex items-center gap-2.5 text-xs font-semibold">
+                <span class="px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/50 text-[#0B6623] dark:text-emerald-400 rounded-xl border border-emerald-200 dark:border-emerald-800 flex items-center gap-1.5">
+                  <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
+                  <span>Velocity vs LW: <strong id="dashboardCompareDelta" class="font-extrabold">+8.4%</strong></span>
+                </span>
+                <span class="text-xs text-[#64748B] dark:text-slate-400 hidden sm:inline-block">Total Network: <strong>1,484 entities</strong></span>
+              </div>
+            </div>
+
+            <!-- Executive Quick-Glance Ribbon (4 Critical Operational Pillars) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+              
+              <!-- Pillar 1: Agro-Weather Radar -->
+              <div onclick="navigateTo('weather-dashboard','Dashboard','Weather dashboard')" class="saas-card p-4 cursor-pointer hover:border-[#0B6623] transition group border border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                <div class="flex items-center justify-between">
+                  <div class="text-[11px] font-bold text-sky-700 dark:text-sky-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <i data-lucide="cloud-sun" class="w-4 h-4 text-sky-500"></i>
+                    <span>AGRO-WEATHER RADAR</span>
+                  </div>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-[#0B6623] dark:bg-emerald-900/60 dark:text-emerald-300">SPRAY SAFE</span>
+                </div>
+                <div class="text-xl font-black text-[#0F172A] dark:text-white mt-1.5">32°C · Clear Sky</div>
+                <p class="text-[11px] text-[#64748B] dark:text-slate-400 mt-1 flex items-center justify-between">
+                  <span>Wind 12 km/h SW · RH 58%</span>
+                  <span class="text-sky-600 font-bold group-hover:underline">Open Station →</span>
+                </p>
+              </div>
+
+              <!-- Pillar 2: Live Network Pulse -->
+              <div onclick="navigateTo('live-pulse','Dashboard','Live pulse')" class="saas-card p-4 cursor-pointer hover:border-[#0B6623] transition group border border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                <div class="flex items-center justify-between">
+                  <div class="text-[11px] font-bold text-teal-700 dark:text-teal-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-teal-500 animate-ping"></span>
+                    <span>LIVE PULSE STREAM</span>
+                  </div>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-teal-100 text-teal-800 dark:bg-teal-900/60 dark:text-teal-300">312 Online</span>
+                </div>
+                <div class="text-xl font-black text-[#0F172A] dark:text-white mt-1.5">1,240 Farmers Live</div>
+                <p class="text-[11px] text-[#64748B] dark:text-slate-400 mt-1 flex items-center justify-between">
+                  <span>Peak Window: 4:00–6:00 PM</span>
+                  <span class="text-teal-600 font-bold group-hover:underline">Live View →</span>
+                </p>
+              </div>
+
+              <!-- Pillar 3: Mandi Market Flash -->
+              <div onclick="navigateTo('mandi-prices','Content','Mandi prices')" class="saas-card p-4 cursor-pointer hover:border-[#0B6623] transition group border border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                <div class="flex items-center justify-between">
+                  <div class="text-[11px] font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <i data-lucide="trending-up" class="w-4 h-4 text-amber-500"></i>
+                    <span>APMC MANDI FLASH</span>
+                  </div>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-100 text-amber-800 dark:bg-amber-900/60 dark:text-amber-300">+₹65 Today</span>
+                </div>
+                <div class="text-xl font-black text-[#0F172A] dark:text-white mt-1.5">Cotton ₹ 7,450 /q</div>
+                <p class="text-[11px] text-[#64748B] dark:text-slate-400 mt-1 flex items-center justify-between">
+                  <span>Groundnut ₹6,820 · Wheat ₹2,850</span>
+                  <span class="text-amber-600 font-bold group-hover:underline">Mandi Rates →</span>
+                </p>
+              </div>
+
+              <!-- Pillar 4: Van Logistics & Fleet -->
+              <div onclick="navigateTo('deliveries','Delivery','Deliveries')" class="saas-card p-4 cursor-pointer hover:border-[#0B6623] transition group border border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                <div class="flex items-center justify-between">
+                  <div class="text-[11px] font-bold text-indigo-700 dark:text-indigo-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <i data-lucide="truck" class="w-4 h-4 text-indigo-500"></i>
+                    <span>VAN FLEET LOGISTICS</span>
+                  </div>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-indigo-100 text-indigo-800 dark:bg-indigo-900/60 dark:text-indigo-300">2 Vans En-Route</span>
+                </div>
+                <div class="text-xl font-black text-[#0F172A] dark:text-white mt-1.5">21 Open Orders</div>
+                <p class="text-[11px] text-[#64748B] dark:text-slate-400 mt-1 flex items-center justify-between">
+                  <span>98.4% On-Time · 0 Exceptions</span>
+                  <span class="text-indigo-600 font-bold group-hover:underline">Track Vans →</span>
+                </p>
+              </div>
+
+            </div>
+
+            <!-- KPI Row of Eight with Sparklines & % Deltas -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-8 gap-3">
               
               <!-- 1. Registered Farmers -->
-              <div class="saas-card p-3.5 kpi-clickable relative overflow-hidden" onclick="drillDashboardKpi('farmers')" role="button" tabindex="0">
-                <div class="text-[11px] font-semibold text-[#64748B] dark:text-slate-400">Registered farmers</div>
-                <div id="kpiFarmers" class="text-[28px] font-extrabold text-[#0F172A] dark:text-white leading-tight mt-1">1,240</div>
-                <div class="flex items-center justify-between mt-2">
-                  <span class="text-[11px] font-bold text-[#22C55E] flex items-center"><i data-lucide="trending-up" class="w-3 h-3 mr-0.5"></i> +4%</span>
-                  <span class="text-[10px] text-[#64748B] dark:text-slate-400">vs LW</span>
+              <div class="saas-card p-3.5 kpi-clickable relative overflow-hidden border border-slate-200 dark:border-slate-800" onclick="drillDashboardKpi('farmers')" role="button" tabindex="0">
+                <div class="text-[11px] font-semibold text-[#64748B] dark:text-slate-400 flex items-center justify-between">
+                  <span>Farmers</span>
+                  <i data-lucide="users" class="w-3.5 h-3.5 text-[#0B6623]"></i>
+                </div>
+                <div id="kpiFarmers" class="text-2xl font-black text-[#0F172A] dark:text-white leading-tight mt-1">1,240</div>
+                <!-- Sparkline SVG -->
+                <div class="h-6 w-full my-1">
+                  <svg class="w-full h-full stroke-[#0B6623] fill-none" viewBox="0 0 100 24">
+                    <path d="M 0 18 Q 20 16 35 12 T 70 8 T 100 4" stroke-width="2.5" stroke-linecap="round"></path>
+                    <path d="M 0 18 Q 20 16 35 12 T 70 8 T 100 4 L 100 24 L 0 24 Z" fill="rgba(11, 102, 35, 0.08)" stroke="none"></path>
+                  </svg>
+                </div>
+                <div class="flex items-center justify-between mt-0.5">
+                  <span class="text-[10px] font-bold text-emerald-600 flex items-center"><i data-lucide="trending-up" class="w-3 h-3 mr-0.5"></i> +4%</span>
+                  <span class="text-[9px] font-medium text-[#64748B] dark:text-slate-400">Sudavad 640</span>
                 </div>
               </div>
 
               <!-- 2. Dealers -->
-              <div class="saas-card p-3.5 kpi-clickable relative overflow-hidden" onclick="drillDashboardKpi('dealers')" role="button" tabindex="0">
-                <div class="text-[11px] font-semibold text-[#64748B] dark:text-slate-400">Dealers</div>
-                <div id="kpiDealers" class="text-[28px] font-extrabold text-[#0F172A] dark:text-white leading-tight mt-1">86</div>
-                <div class="flex items-center justify-between mt-2">
-                  <span class="text-[11px] font-bold text-[#22C55E] flex items-center"><i data-lucide="trending-up" class="w-3 h-3 mr-0.5"></i> +1%</span>
-                  <span class="text-[10px] text-[#64748B] dark:text-slate-400">Bagasara 86</span>
+              <div class="saas-card p-3.5 kpi-clickable relative overflow-hidden border border-slate-200 dark:border-slate-800" onclick="drillDashboardKpi('dealers')" role="button" tabindex="0">
+                <div class="text-[11px] font-semibold text-[#64748B] dark:text-slate-400 flex items-center justify-between">
+                  <span>Dealers</span>
+                  <i data-lucide="store" class="w-3.5 h-3.5 text-amber-600"></i>
+                </div>
+                <div id="kpiDealers" class="text-2xl font-black text-[#0F172A] dark:text-white leading-tight mt-1">86</div>
+                <div class="h-6 w-full my-1">
+                  <svg class="w-full h-full stroke-amber-500 fill-none" viewBox="0 0 100 24">
+                    <path d="M 0 20 Q 25 15 50 14 T 80 9 T 100 6" stroke-width="2.5" stroke-linecap="round"></path>
+                    <path d="M 0 20 Q 25 15 50 14 T 80 9 T 100 6 L 100 24 L 0 24 Z" fill="rgba(245, 158, 11, 0.08)" stroke="none"></path>
+                  </svg>
+                </div>
+                <div class="flex items-center justify-between mt-0.5">
+                  <span class="text-[10px] font-bold text-emerald-600 flex items-center"><i data-lucide="trending-up" class="w-3 h-3 mr-0.5"></i> +1%</span>
+                  <span class="text-[9px] font-medium text-[#64748B] dark:text-slate-400">Bagasara 86</span>
                 </div>
               </div>
 
               <!-- 3. Retailers -->
-              <div class="saas-card p-3.5 kpi-clickable relative overflow-hidden" onclick="drillDashboardKpi('retailers')" role="button" tabindex="0">
-                <div class="text-[11px] font-semibold text-[#64748B] dark:text-slate-400">Retailers</div>
-                <div id="kpiRetailers" class="text-[28px] font-extrabold text-[#0F172A] dark:text-white leading-tight mt-1">140</div>
-                <div class="flex items-center justify-between mt-2">
-                  <span class="text-[11px] font-bold text-[#22C55E] flex items-center"><i data-lucide="trending-up" class="w-3 h-3 mr-0.5"></i> +2%</span>
-                  <span class="text-[10px] text-[#64748B] dark:text-slate-400">14 villages</span>
+              <div class="saas-card p-3.5 kpi-clickable relative overflow-hidden border border-slate-200 dark:border-slate-800" onclick="drillDashboardKpi('retailers')" role="button" tabindex="0">
+                <div class="text-[11px] font-semibold text-[#64748B] dark:text-slate-400 flex items-center justify-between">
+                  <span>Retailers</span>
+                  <i data-lucide="shopping-bag" class="w-3.5 h-3.5 text-teal-600"></i>
+                </div>
+                <div id="kpiRetailers" class="text-2xl font-black text-[#0F172A] dark:text-white leading-tight mt-1">140</div>
+                <div class="h-6 w-full my-1">
+                  <svg class="w-full h-full stroke-teal-500 fill-none" viewBox="0 0 100 24">
+                    <path d="M 0 16 Q 30 18 55 12 T 85 8 T 100 5" stroke-width="2.5" stroke-linecap="round"></path>
+                    <path d="M 0 16 Q 30 18 55 12 T 85 8 T 100 5 L 100 24 L 0 24 Z" fill="rgba(0, 166, 199, 0.08)" stroke="none"></path>
+                  </svg>
+                </div>
+                <div class="flex items-center justify-between mt-0.5">
+                  <span class="text-[10px] font-bold text-emerald-600 flex items-center"><i data-lucide="trending-up" class="w-3 h-3 mr-0.5"></i> +2%</span>
+                  <span class="text-[9px] font-medium text-[#64748B] dark:text-slate-400">14 villages</span>
                 </div>
               </div>
 
               <!-- 4. Industrial -->
-              <div class="saas-card p-3.5 kpi-clickable relative overflow-hidden" onclick="drillDashboardKpi('industrial')" role="button" tabindex="0">
-                <div class="text-[11px] font-semibold text-[#64748B] dark:text-slate-400">Industrial</div>
-                <div id="kpiIndustrial" class="text-[28px] font-extrabold text-[#0F172A] dark:text-white leading-tight mt-1">18</div>
-                <div class="flex items-center justify-between mt-2">
-                  <span class="text-[11px] font-bold text-[#64748B] dark:text-slate-400">0%</span>
-                  <span class="text-[10px] text-[#64748B] dark:text-slate-400">Amreli mills</span>
+              <div class="saas-card p-3.5 kpi-clickable relative overflow-hidden border border-slate-200 dark:border-slate-800" onclick="drillDashboardKpi('industrial')" role="button" tabindex="0">
+                <div class="text-[11px] font-semibold text-[#64748B] dark:text-slate-400 flex items-center justify-between">
+                  <span>Industrial</span>
+                  <i data-lucide="factory" class="w-3.5 h-3.5 text-amber-800"></i>
+                </div>
+                <div id="kpiIndustrial" class="text-2xl font-black text-[#0F172A] dark:text-white leading-tight mt-1">18</div>
+                <div class="h-6 w-full my-1">
+                  <svg class="w-full h-full stroke-[#78350F] fill-none" viewBox="0 0 100 24">
+                    <path d="M 0 12 L 35 12 L 65 10 L 100 10" stroke-width="2.5" stroke-linecap="round"></path>
+                    <path d="M 0 12 L 35 12 L 65 10 L 100 10 L 100 24 L 0 24 Z" fill="rgba(120, 53, 15, 0.08)" stroke="none"></path>
+                  </svg>
+                </div>
+                <div class="flex items-center justify-between mt-0.5">
+                  <span class="text-[10px] font-bold text-[#64748B] dark:text-slate-400">Steady</span>
+                  <span class="text-[9px] font-medium text-[#64748B] dark:text-slate-400">Amreli mills</span>
                 </div>
               </div>
 
               <!-- 5. Active Now -->
-              <div class="saas-card p-3.5 bg-emerald-50/50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-800 kpi-clickable relative overflow-hidden" onclick="drillDashboardKpi('active')" role="button" tabindex="0">
-                <div class="text-[11px] font-semibold text-[#0B6623] dark:text-emerald-400 flex items-center gap-1">
-                  <span class="w-2 h-2 rounded-full bg-[#22C55E] animate-ping"></span> Active now
+              <div class="saas-card p-3.5 bg-emerald-50/50 dark:bg-emerald-950/30 border-2 border-emerald-300 dark:border-emerald-700 kpi-clickable relative overflow-hidden" onclick="drillDashboardKpi('active')" role="button" tabindex="0">
+                <div class="text-[11px] font-bold text-[#0B6623] dark:text-emerald-400 flex items-center justify-between">
+                  <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#22C55E] animate-ping"></span> Active Now</span>
+                  <i data-lucide="activity" class="w-3.5 h-3.5 text-[#0B6623]"></i>
                 </div>
-                <div id="kpiActive" class="text-[28px] font-extrabold text-[#0B6623] dark:text-emerald-400 leading-tight mt-1">312</div>
-                <div class="text-[10px] text-[#0B6623] dark:text-emerald-300 font-semibold mt-2">Peak: 4–6 pm</div>
+                <div id="kpiActive" class="text-2xl font-black text-[#0B6623] dark:text-emerald-400 leading-tight mt-1">312</div>
+                <div class="h-6 w-full my-1">
+                  <svg class="w-full h-full stroke-[#22C55E] fill-none" viewBox="0 0 100 24">
+                    <path d="M 0 15 Q 15 20 30 14 T 60 8 T 85 10 T 100 4" stroke-width="2.5" stroke-linecap="round"></path>
+                    <path d="M 0 15 Q 15 20 30 14 T 60 8 T 85 10 T 100 4 L 100 24 L 0 24 Z" fill="rgba(34, 197, 94, 0.1)" stroke="none"></path>
+                  </svg>
+                </div>
+                <div class="flex items-center justify-between mt-0.5 text-[9px] font-bold text-[#0B6623] dark:text-emerald-300">
+                  <span>Peak: 4–6 pm</span>
+                  <span>79% mobile</span>
+                </div>
               </div>
 
               <!-- 6. Sell GMV -->
-              <div class="saas-card p-3.5 kpi-clickable relative overflow-hidden" onclick="drillDashboardKpi('sell')" role="button" tabindex="0">
-                <div class="text-[11px] font-semibold text-[#64748B] dark:text-slate-400">Sell GMV</div>
-                <div id="kpiSellGmv" class="text-[22px] font-extrabold text-[#0F172A] dark:text-white leading-tight mt-1">₹ 8,20,000</div>
-                <div class="flex items-center justify-between mt-2">
-                  <span class="text-[11px] font-bold text-[#22C55E] flex items-center"><i data-lucide="trending-up" class="w-3 h-3 mr-0.5"></i> +9%</span>
-                  <span class="text-[10px] text-[#64748B] dark:text-slate-400">Groundnut</span>
+              <div class="saas-card p-3.5 kpi-clickable relative overflow-hidden border border-slate-200 dark:border-slate-800" onclick="drillDashboardKpi('sell')" role="button" tabindex="0">
+                <div class="text-[11px] font-semibold text-[#64748B] dark:text-slate-400 flex items-center justify-between">
+                  <span>Sell GMV</span>
+                  <i data-lucide="arrow-down-left" class="w-3.5 h-3.5 text-emerald-600"></i>
+                </div>
+                <div id="kpiSellGmv" class="text-lg font-black text-[#0F172A] dark:text-white leading-tight mt-1">₹ 8,20,000</div>
+                <div class="h-6 w-full my-1">
+                  <svg class="w-full h-full stroke-[#0B6623] fill-none" viewBox="0 0 100 24">
+                    <path d="M 0 19 Q 20 14 45 15 T 75 9 T 100 3" stroke-width="2.5" stroke-linecap="round"></path>
+                    <path d="M 0 19 Q 20 14 45 15 T 75 9 T 100 3 L 100 24 L 0 24 Z" fill="rgba(11, 102, 35, 0.08)" stroke="none"></path>
+                  </svg>
+                </div>
+                <div class="flex items-center justify-between mt-0.5">
+                  <span class="text-[10px] font-bold text-emerald-600 flex items-center"><i data-lucide="trending-up" class="w-3 h-3 mr-0.5"></i> +9%</span>
+                  <span class="text-[9px] font-medium text-[#64748B] dark:text-slate-400">Groundnut</span>
                 </div>
               </div>
 
               <!-- 7. Purchase GMV -->
-              <div class="saas-card p-3.5 kpi-clickable relative overflow-hidden" onclick="drillDashboardKpi('purchase')" role="button" tabindex="0">
-                <div class="text-[11px] font-semibold text-[#64748B] dark:text-slate-400">Purchase GMV</div>
-                <div id="kpiPurchaseGmv" class="text-[22px] font-extrabold text-[#0F172A] dark:text-white leading-tight mt-1">₹ 4,20,000</div>
-                <div class="flex items-center justify-between mt-2">
-                  <span class="text-[11px] font-bold text-[#22C55E] flex items-center"><i data-lucide="trending-up" class="w-3 h-3 mr-0.5"></i> +6%</span>
-                  <span class="text-[10px] text-[#64748B] dark:text-slate-400">Cotton F2I</span>
+              <div class="saas-card p-3.5 kpi-clickable relative overflow-hidden border border-slate-200 dark:border-slate-800" onclick="drillDashboardKpi('purchase')" role="button" tabindex="0">
+                <div class="text-[11px] font-semibold text-[#64748B] dark:text-slate-400 flex items-center justify-between">
+                  <span>Purchase GMV</span>
+                  <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-amber-600"></i>
+                </div>
+                <div id="kpiPurchaseGmv" class="text-lg font-black text-[#0F172A] dark:text-white leading-tight mt-1">₹ 4,20,000</div>
+                <div class="h-6 w-full my-1">
+                  <svg class="w-full h-full stroke-amber-500 fill-none" viewBox="0 0 100 24">
+                    <path d="M 0 16 Q 25 18 50 13 T 75 10 T 100 4" stroke-width="2.5" stroke-linecap="round"></path>
+                    <path d="M 0 16 Q 25 18 50 13 T 75 10 T 100 4 L 100 24 L 0 24 Z" fill="rgba(245, 158, 11, 0.08)" stroke="none"></path>
+                  </svg>
+                </div>
+                <div class="flex items-center justify-between mt-0.5">
+                  <span class="text-[10px] font-bold text-emerald-600 flex items-center"><i data-lucide="trending-up" class="w-3 h-3 mr-0.5"></i> +6%</span>
+                  <span class="text-[9px] font-medium text-[#64748B] dark:text-slate-400">Cotton F2I</span>
                 </div>
               </div>
 
               <!-- 8. Open Deliveries -->
-              <div class="saas-card p-3.5 kpi-clickable relative overflow-hidden" onclick="drillDashboardKpi('deliveries')" role="button" tabindex="0">
-                <div class="text-[11px] font-semibold text-[#64748B] dark:text-slate-400">Open deliveries</div>
-                <div id="kpiDeliveries" class="text-[28px] font-extrabold text-[#0F172A] dark:text-white leading-tight mt-1">21</div>
-                <div class="flex items-center justify-between mt-2">
-                  <span class="text-[11px] font-bold text-amber-600 dark:text-amber-400">Active</span>
-                  <span class="text-[10px] text-[#64748B] dark:text-slate-400">2 vans</span>
+              <div class="saas-card p-3.5 kpi-clickable relative overflow-hidden border border-slate-200 dark:border-slate-800" onclick="drillDashboardKpi('deliveries')" role="button" tabindex="0">
+                <div class="text-[11px] font-semibold text-[#64748B] dark:text-slate-400 flex items-center justify-between">
+                  <span>Deliveries</span>
+                  <i data-lucide="package-check" class="w-3.5 h-3.5 text-indigo-600"></i>
+                </div>
+                <div id="kpiDeliveries" class="text-2xl font-black text-[#0F172A] dark:text-white leading-tight mt-1">21</div>
+                <div class="h-6 w-full my-1">
+                  <svg class="w-full h-full stroke-indigo-500 fill-none" viewBox="0 0 100 24">
+                    <path d="M 0 14 Q 30 12 55 16 T 80 10 T 100 6" stroke-width="2.5" stroke-linecap="round"></path>
+                    <path d="M 0 14 Q 30 12 55 16 T 80 10 T 100 6 L 100 24 L 0 24 Z" fill="rgba(99, 102, 241, 0.08)" stroke="none"></path>
+                  </svg>
+                </div>
+                <div class="flex items-center justify-between mt-0.5">
+                  <span class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400">Active</span>
+                  <span class="text-[9px] font-medium text-[#64748B] dark:text-slate-400">2 vans moving</span>
                 </div>
               </div>
 
             </div>
 
-            <!-- Main Grid: Left Amreli District Map (Pins by role) | Right 3 Charts -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Main Geographic Operations Grid (Left: Interactive Amreli Map | Right: Rich Analytics Suite) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               
               <!-- Left Map Card (7 Cols) -->
-              <div class="lg:col-span-7 saas-card p-5 flex flex-col justify-between">
+              <div class="lg:col-span-7 saas-card p-5 flex flex-col justify-between border border-slate-200 dark:border-slate-800 shadow-xs">
                 <div>
-                  <div class="flex items-center justify-between mb-3">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 gap-2 mb-3">
                     <div>
-                      <h3 class="text-sm font-bold text-[#0F172A]">Amreli District Operating Map</h3>
-                      <p class="text-xs text-[#64748B]">Geographic pin clusters across Sudavad, Bagasara, and Amreli</p>
+                      <h2 class="text-sm font-black text-[#0F172A] dark:text-white flex items-center gap-2">
+                        <i data-lucide="map" class="w-4 h-4 text-[#0B6623]"></i>
+                        <span>Amreli District Geographic Operations Map</span>
+                      </h2>
+                      <p class="text-xs text-[#64748B] dark:text-slate-400">Click any cluster pin or layer filter to inspect live local supply-demand status</p>
                     </div>
-                    <!-- Role Pin Legends -->
-                    <div class="flex items-center gap-2 text-[11px] font-semibold flex-wrap">
-                      <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#22C55E]"></span> Farmer</span>
-                      <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B]"></span> Dealer</span>
-                      <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#00A6C7]"></span> Retailer</span>
-                      <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#8B5E3C]"></span> Industrial</span>
+
+                    <!-- Map Layer Controls & Quick Jump -->
+                    <div class="flex items-center gap-1.5 flex-wrap">
+                      <button type="button" onclick="filterDashboardMapLayers('all')" id="btnMapLayerAll" class="px-2.5 py-1 text-[10px] font-bold rounded-lg bg-[#0B6623] text-white shadow-2xs">All</button>
+                      <button type="button" onclick="filterDashboardMapLayers('farmer')" id="btnMapLayerFarmer" class="px-2.5 py-1 text-[10px] font-bold rounded-lg bg-slate-100 dark:bg-slate-800 text-[#0F172A] dark:text-slate-300 hover:bg-slate-200">Farmers</button>
+                      <button type="button" onclick="filterDashboardMapLayers('dealer')" id="btnMapLayerDealer" class="px-2.5 py-1 text-[10px] font-bold rounded-lg bg-slate-100 dark:bg-slate-800 text-[#0F172A] dark:text-slate-300 hover:bg-slate-200">Dealers</button>
+                      <button type="button" onclick="filterDashboardMapLayers('industrial')" id="btnMapLayerIndustrial" class="px-2.5 py-1 text-[10px] font-bold rounded-lg bg-slate-100 dark:bg-slate-800 text-[#0F172A] dark:text-slate-300 hover:bg-slate-200">Mills</button>
+                      <button type="button" onclick="filterDashboardMapLayers('gaps')" id="btnMapLayerGaps" class="px-2.5 py-1 text-[10px] font-bold rounded-lg bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-300 hover:bg-rose-100">Gaps Only</button>
                     </div>
                   </div>
 
-                  <!-- Simulated High-Fidelity SVG Map of Amreli Region -->
-                  <div class="relative h-72 bg-[#F1F5F9] rounded-2xl overflow-hidden border border-[#E5E7EB] p-4 flex items-center justify-center">
-                    <!-- SVG Background Roads / Boundaries -->
-                    <svg class="absolute inset-0 w-full h-full stroke-slate-300 fill-none" viewBox="0 0 500 300">
-                      <path d="M 50 150 Q 180 80 320 140 T 480 200" stroke-width="3" stroke-dasharray="4,4"></path>
-                      <path d="M 120 40 L 220 180 L 380 260" stroke-width="2.5"></path>
-                      <circle cx="140" cy="110" r="45" fill="rgba(11, 102, 35, 0.05)" stroke="#0B6623" stroke-width="1"></circle>
-                      <circle cx="280" cy="170" r="50" fill="rgba(245, 158, 11, 0.05)" stroke="#F59E0B" stroke-width="1"></circle>
-                      <circle cx="410" cy="110" r="40" fill="rgba(139, 94, 60, 0.05)" stroke="#8B5E3C" stroke-width="1"></circle>
+                  <!-- High-Fidelity Interactive SVG Map of Amreli Region -->
+                  <div class="relative h-80 bg-gradient-to-b from-slate-100 to-slate-200/80 dark:from-slate-900 dark:to-slate-950 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 p-4 flex items-center justify-center shadow-inner select-none">
+                    
+                    <!-- SVG Background Roads, Contours & Boundaries -->
+                    <svg class="absolute inset-0 w-full h-full stroke-slate-300 dark:stroke-slate-700 fill-none" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid meet">
+                      <!-- District Perimeter Contour -->
+                      <path d="M 40 180 C 80 80, 200 40, 360 50 C 480 60, 560 120, 550 220 C 540 310, 420 340, 260 330 C 140 320, 30 270, 40 180 Z" stroke="#0B6623" stroke-width="1.5" stroke-dasharray="6,4" fill="rgba(11, 102, 35, 0.03)" class="dark:stroke-emerald-600/40"></path>
+                      
+                      <!-- Arterial State Highways -->
+                      <path d="M 60 190 Q 200 120 330 160 T 520 230" stroke="#94A3B8" stroke-width="4" stroke-linecap="round" class="dark:stroke-slate-700"></path>
+                      <path d="M 60 190 Q 200 120 330 160 T 520 230" stroke="#F8FAFC" stroke-width="1.5" stroke-dasharray="6,6" stroke-linecap="round" class="dark:stroke-slate-500"></path>
+                      <path d="M 170 50 L 260 190 L 410 290" stroke="#94A3B8" stroke-width="3.5" class="dark:stroke-slate-700"></path>
+                      <path d="M 330 160 L 450 100" stroke="#94A3B8" stroke-width="3" stroke-dasharray="4,4" class="dark:stroke-slate-700"></path>
+                      
+                      <!-- Shetrunji River Contour -->
+                      <path d="M 30 250 Q 180 230 320 270 T 580 300" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" opacity="0.6"></path>
+                      
+                      <!-- Cluster Geofence Radii -->
+                      <circle cx="160" cy="140" r="54" fill="rgba(34, 197, 94, 0.08)" stroke="#22C55E" stroke-width="1.2" stroke-dasharray="4,3"></circle>
+                      <circle cx="330" cy="190" r="58" fill="rgba(245, 158, 11, 0.08)" stroke="#F59E0B" stroke-width="1.2" stroke-dasharray="4,3"></circle>
+                      <circle cx="460" cy="120" r="50" fill="rgba(120, 53, 15, 0.08)" stroke="#78350F" stroke-width="1.2" stroke-dasharray="4,3"></circle>
+                      <circle cx="270" cy="280" r="44" fill="rgba(0, 166, 199, 0.08)" stroke="#00A6C7" stroke-width="1" stroke-dasharray="3,3"></circle>
                     </svg>
 
-                    <!-- Interactive Pin 1: Sudavad Farmer (Jayesh Patel) -->
-                    <div class="absolute left-[26%] top-[34%] transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group" onclick="showPinDetails('farmer')">
-                      <div class="w-7 h-7 rounded-full bg-[#22C55E] text-white flex items-center justify-center font-bold text-xs shadow-md border-2 border-white ring-2 ring-[#22C55E]/40 animate-bounce">
-                        <i data-lucide="sprout" class="w-4 h-4"></i>
+                    <!-- Interactive Pin 1: Sudavad Farmer Cluster (Jayesh Patel) -->
+                    <div id="mapPinSudavad" class="absolute left-[27%] top-[39%] transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-10" onclick="selectDashboardMapPin('sudavad')">
+                      <div class="relative flex items-center justify-center">
+                        <span class="animate-ping absolute inline-flex h-9 w-9 rounded-full bg-[#22C55E] opacity-50"></span>
+                        <div class="w-9 h-9 rounded-full bg-[#22C55E] text-white flex items-center justify-center font-bold text-xs shadow-lg border-2 border-white dark:border-slate-900 group-hover:scale-125 transition-transform duration-200">
+                          <i data-lucide="sprout" class="w-5 h-5"></i>
+                        </div>
                       </div>
-                      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 bg-[#0F172A] text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap shadow-lg">
-                        Sudavad • 640 Farmers
-                      </div>
-                    </div>
-
-                    <!-- Interactive Pin 2: Bagasara Dealer (Kishan Agro - Rameshbhai) -->
-                    <div class="absolute left-[54%] top-[56%] transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group" onclick="showPinDetails('dealer')">
-                      <div class="w-7 h-7 rounded-full bg-[#F59E0B] text-white flex items-center justify-center font-bold text-xs shadow-md border-2 border-white ring-2 ring-[#F59E0B]/40">
-                        <i data-lucide="store" class="w-4 h-4"></i>
-                      </div>
-                      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 bg-[#0F172A] text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap shadow-lg">
-                        Bagasara • 86 Dealers, 140 Retailers
+                      <div class="absolute -bottom-7 left-1/2 -translate-x-1/2 bg-[#0F172A] text-white text-[10px] font-bold px-2 py-0.5 rounded-md whitespace-nowrap shadow-md flex items-center gap-1">
+                        <span>Sudavad</span>
+                        <span class="text-emerald-400 font-extrabold">• 640F</span>
                       </div>
                     </div>
 
-                    <!-- Interactive Pin 3: Amreli Industrial (Patel Agro Industries) -->
-                    <div class="absolute left-[82%] top-[36%] transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group" onclick="showPinDetails('industrial')">
-                      <div class="w-7 h-7 rounded-full bg-[#8B5E3C] text-white flex items-center justify-center font-bold text-xs shadow-md border-2 border-white ring-2 ring-[#8B5E3C]/40">
-                        <i data-lucide="factory" class="w-4 h-4"></i>
+                    <!-- Interactive Pin 2: Bagasara Dealer Hub (Kishan Agro - Rameshbhai) -->
+                    <div id="mapPinBagasara" class="absolute left-[55%] top-[53%] transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-10" onclick="selectDashboardMapPin('bagasara')">
+                      <div class="relative flex items-center justify-center">
+                        <span class="animate-ping absolute inline-flex h-9 w-9 rounded-full bg-[#F59E0B] opacity-50"></span>
+                        <div class="w-9 h-9 rounded-full bg-[#F59E0B] text-white flex items-center justify-center font-bold text-xs shadow-lg border-2 border-white dark:border-slate-900 group-hover:scale-125 transition-transform duration-200">
+                          <i data-lucide="store" class="w-5 h-5"></i>
+                        </div>
                       </div>
-                      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 bg-[#0F172A] text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap shadow-lg">
-                        Amreli • 18 Industrial Units
+                      <div class="absolute -bottom-7 left-1/2 -translate-x-1/2 bg-[#0F172A] text-white text-[10px] font-bold px-2 py-0.5 rounded-md whitespace-nowrap shadow-md flex items-center gap-1">
+                        <span>Bagasara</span>
+                        <span class="text-amber-400 font-extrabold">• 86D</span>
                       </div>
                     </div>
+
+                    <!-- Interactive Pin 3: Amreli Industrial Mills & HQ -->
+                    <div id="mapPinAmreli" class="absolute left-[77%] top-[33%] transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-10" onclick="selectDashboardMapPin('amreli')">
+                      <div class="relative flex items-center justify-center">
+                        <span class="animate-ping absolute inline-flex h-9 w-9 rounded-full bg-[#78350F] opacity-40"></span>
+                        <div class="w-9 h-9 rounded-full bg-[#78350F] text-white flex items-center justify-center font-bold text-xs shadow-lg border-2 border-white dark:border-slate-900 group-hover:scale-125 transition-transform duration-200">
+                          <i data-lucide="factory" class="w-5 h-5"></i>
+                        </div>
+                      </div>
+                      <div class="absolute -bottom-7 left-1/2 -translate-x-1/2 bg-[#0F172A] text-white text-[10px] font-bold px-2 py-0.5 rounded-md whitespace-nowrap shadow-md flex items-center gap-1">
+                        <span>Amreli HQ</span>
+                        <span class="text-amber-300 font-extrabold">• 18M</span>
+                      </div>
+                    </div>
+
+                    <!-- Interactive Pin 4: Dhari Organic Belt -->
+                    <div id="mapPinDhari" class="absolute left-[45%] top-[78%] transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-10" onclick="selectDashboardMapPin('dhari')">
+                      <div class="w-8 h-8 rounded-full bg-[#00A6C7] text-white flex items-center justify-center font-bold text-xs shadow-md border-2 border-white dark:border-slate-900 group-hover:scale-125 transition-transform duration-200">
+                        <i data-lucide="leaf" class="w-4 h-4"></i>
+                      </div>
+                      <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-[#0F172A] text-white text-[9px] font-bold px-1.5 py-0.5 rounded whitespace-nowrap shadow-md">
+                        Dhari
+                      </div>
+                    </div>
+
+                    <!-- Map Compass Legend -->
+                    <div class="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm p-2 rounded-xl border border-slate-200 dark:border-slate-700 text-[10px] font-bold shadow-xs">
+                      <div class="flex items-center gap-1 text-slate-700 dark:text-slate-300"><i data-lucide="compass" class="w-3.5 h-3.5 text-[#0B6623]"></i> <span>AMRELI REGION</span></div>
+                      <div class="mt-1 space-y-0.5 text-[9px] font-semibold text-slate-500">
+                        <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#22C55E]"></span> Farmers</div>
+                        <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#F59E0B]"></span> Dealers</div>
+                        <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#78350F]"></span> Mills</div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
 
-                <!-- Click-State Callout Strip -->
-                <div id="mapCalloutBox" class="mt-4 p-3 bg-emerald-50/70 border border-emerald-200 rounded-xl flex items-center justify-between text-xs">
-                  <div class="flex items-center gap-2.5">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#0B6623]"></span>
-                    <span class="font-bold text-[#0F172A]" id="mapCalloutTitle">Sudavad · 640 farmers · 0 dealers</span>
+                <!-- Interactive Click-State Callout Strip (Geo-Inspector) -->
+                <div id="mapCalloutBox" class="mt-4 p-3.5 bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-2xs">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-xl bg-[#0B6623] text-white flex items-center justify-center font-bold shrink-0">
+                      <i data-lucide="map-pin" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                      <div class="font-extrabold text-[#0F172A] dark:text-white" id="mapCalloutTitle">Sudavad Cluster · 640 Farmers · 0 Input Dealers</div>
+                      <div class="text-[#0B6623] dark:text-emerald-400 font-semibold" id="mapCalloutAction">
+                        Jayesh Patel (4 acre cotton) • Active 12 min ago • Nearest dealer: Bagasara (11 km)
+                      </div>
+                    </div>
                   </div>
-                  <div class="text-[#0B6623] font-bold" id="mapCalloutAction">
-                    Jayesh Patel (4 acre) • Active 12 min ago
+                  <div class="flex items-center gap-2 shrink-0">
+                    <button type="button" onclick="selectDashboardTaluka('Sudavad')" class="h-8 px-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 text-[11px] font-bold rounded-lg text-[#0F172A] dark:text-white shadow-2xs">
+                      Focus Cluster
+                    </button>
+                    <button type="button" onclick="openBroadcastAdvisoryModal('Sudavad')" class="h-8 px-3 bg-[#0B6623] hover:bg-[#074818] text-white text-[11px] font-bold rounded-lg shadow-xs">
+                      Notify Cluster
+                    </button>
                   </div>
                 </div>
               </div>
 
-              <!-- Right Charts (5 Cols: Sell vs Purchase, Donut Users, Funnel) -->
+              <!-- Right Analytics Suite (5 Cols: Area GMV, Donut Users & Growth Funnel) -->
               <div class="lg:col-span-5 space-y-4">
                 
-                <!-- Chart A: Area 'Sell vs Purchase' -->
-                <div class="saas-card p-4">
+                <!-- Chart A: Area 'Sell vs Purchase' Dual-Axis -->
+                <div class="saas-card p-4 border border-slate-200 dark:border-slate-800 shadow-xs">
                   <div class="flex items-center justify-between mb-2">
-                    <h4 class="text-xs font-bold text-[#0F172A]">Sell vs Purchase GMV (₹)</h4>
-                    <span class="text-[10px] text-[#64748B]">Dual Axis</span>
+                    <div>
+                      <h2 class="text-xs font-black text-[#0F172A] dark:text-white">Sell vs Purchase GMV (₹)</h2>
+                      <p class="text-[10px] text-[#64748B] dark:text-slate-400">Farmgate crop sell velocity vs agro-input purchases</p>
+                    </div>
+                    <!-- Timeframe buttons -->
+                    <div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700">
+                      <button type="button" onclick="setDashboardChartTimeframe('7d')" class="px-2 py-0.5 text-[9px] font-bold rounded text-[#64748B] hover:text-[#0F172A] dark:hover:text-white">7D</button>
+                      <button type="button" onclick="setDashboardChartTimeframe('15d')" class="px-2 py-0.5 text-[9px] font-bold rounded bg-white dark:bg-slate-700 text-[#0F172A] dark:text-white shadow-2xs">15D</button>
+                      <button type="button" onclick="setDashboardChartTimeframe('30d')" class="px-2 py-0.5 text-[9px] font-bold rounded text-[#64748B] hover:text-[#0F172A] dark:hover:text-white">30D</button>
+                    </div>
                   </div>
-                  <div class="h-32">
+                  <div class="h-36">
                     <canvas id="chartSellVsBuy"></canvas>
+                  </div>
+                  <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[10px]">
+                    <span class="flex items-center gap-1 font-bold text-[#0B6623]"><span class="w-2.5 h-1 rounded-full bg-[#0B6623]"></span> Sell: ₹8.20L (+9%)</span>
+                    <span class="flex items-center gap-1 font-bold text-amber-600"><span class="w-2.5 h-1 rounded-full bg-amber-500"></span> Purchase: ₹4.20L (+6%)</span>
                   </div>
                 </div>
 
-                <!-- Chart B: Donut Users by Role & Funnel -->
-                <div class="grid grid-cols-2 gap-3">
+                <!-- Chart B: Donut Users by Role & Conversion Funnel Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <!-- Donut -->
-                  <div class="saas-card p-3">
-                    <h4 class="text-[11px] font-bold text-[#0F172A] mb-1">Users by Role</h4>
-                    <div class="h-28">
+                  <div class="saas-card p-3.5 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between">
+                    <div>
+                      <h2 class="text-[11px] font-black text-[#0F172A] dark:text-white mb-0.5">Ecosystem Share</h2>
+                      <p class="text-[9px] text-[#64748B] dark:text-slate-400">1,484 verified participants</p>
+                    </div>
+                    <div class="h-28 my-1">
                       <canvas id="chartUsersByRole"></canvas>
+                    </div>
+                    <div class="grid grid-cols-2 gap-1 text-[9px] font-semibold text-slate-600 dark:text-slate-400">
+                      <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#22C55E]"></span> Farmers 83%</span>
+                      <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#00A6C7]"></span> Retailers 9%</span>
+                      <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#F59E0B]"></span> Dealers 6%</span>
+                      <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#78350F]"></span> Mills 2%</span>
                     </div>
                   </div>
                   
-                  <!-- Funnel: Register -> First Order -> Repeat -->
-                  <div class="saas-card p-3 flex flex-col justify-between">
-                    <h4 class="text-[11px] font-bold text-[#0F172A] mb-1">Growth Funnel</h4>
-                    <div class="space-y-1.5 text-[10px]">
+                  <!-- Full-Funnel Growth & Retention -->
+                  <div class="saas-card p-3.5 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between">
+                    <div>
+                      <h2 class="text-[11px] font-black text-[#0F172A] dark:text-white mb-0.5">Growth Funnel</h2>
+                      <p class="text-[9px] text-[#64748B] dark:text-slate-400">Saurashtra farmer retention</p>
+                    </div>
+                    <div class="space-y-2 text-[10px] my-1">
                       <div>
-                        <div class="flex justify-between font-semibold"><span>Register</span><span class="font-bold">1,484</span></div>
-                        <div class="w-full bg-[#F1F5F9] h-2 rounded-full overflow-hidden mt-0.5"><div class="bg-[#0B6623] h-full" style="width: 100%"></div></div>
+                        <div class="flex justify-between font-bold text-[#0F172A] dark:text-white text-[9px]"><span>1. App Installs</span><span>2,850 (100%)</span></div>
+                        <div class="w-full bg-[#F1F5F9] dark:bg-slate-800 h-1.5 rounded-full overflow-hidden mt-0.5"><div class="bg-slate-400 h-full" style="width: 100%"></div></div>
                       </div>
                       <div>
-                        <div class="flex justify-between font-semibold"><span>First Order</span><span class="font-bold">640 (43%)</span></div>
-                        <div class="w-full bg-[#F1F5F9] h-2 rounded-full overflow-hidden mt-0.5"><div class="bg-[#7CB342] h-full" style="width: 43%"></div></div>
+                        <div class="flex justify-between font-bold text-[#0F172A] dark:text-white text-[9px]"><span>2. Verified Profile</span><span>1,484 (52%)</span></div>
+                        <div class="w-full bg-[#F1F5F9] dark:bg-slate-800 h-1.5 rounded-full overflow-hidden mt-0.5"><div class="bg-[#0B6623] h-full" style="width: 52%"></div></div>
                       </div>
                       <div>
-                        <div class="flex justify-between font-semibold"><span>Repeat Order</span><span class="font-bold">310 (21%)</span></div>
-                        <div class="w-full bg-[#F1F5F9] h-2 rounded-full overflow-hidden mt-0.5"><div class="bg-[#00A6C7] h-full" style="width: 21%"></div></div>
+                        <div class="flex justify-between font-bold text-[#0F172A] dark:text-white text-[9px]"><span>3. First Sell/Buy</span><span>640 (43%)</span></div>
+                        <div class="w-full bg-[#F1F5F9] dark:bg-slate-800 h-1.5 rounded-full overflow-hidden mt-0.5"><div class="bg-[#7CB342] h-full" style="width: 43%"></div></div>
+                      </div>
+                      <div>
+                        <div class="flex justify-between font-bold text-[#0F172A] dark:text-white text-[9px]"><span>4. Repeat Retained</span><span>310 (21%)</span></div>
+                        <div class="w-full bg-[#F1F5F9] dark:bg-slate-800 h-1.5 rounded-full overflow-hidden mt-0.5"><div class="bg-[#00A6C7] h-full" style="width: 21%"></div></div>
                       </div>
                     </div>
+                    <button type="button" onclick="navigateTo('growth-funnel','Insights','Growth funnel')" class="text-[9px] font-bold text-[#0B6623] hover:underline text-left">
+                      Inspect Funnel Telemetry →
+                    </button>
                   </div>
                 </div>
 
@@ -1643,39 +1920,158 @@
 
             </div>
 
-            <!-- Bottom: Marketing Strip Callout on Gaps -->
-            <div class="saas-card p-4 bg-gradient-to-r from-amber-50/60 via-white to-emerald-50/60 border border-amber-200/80 flex flex-wrap items-center justify-between gap-4">
+            <!-- Mandi Comparison & Live Activity Ticker Grid (2 Columns) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              
+              <!-- Left: Mandi Price vs Farmgate Direct Bar Chart (7 Cols) -->
+              <div class="lg:col-span-7 saas-card p-5 border border-slate-200 dark:border-slate-800 shadow-xs">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 gap-2 mb-3">
+                  <div>
+                    <h2 class="text-sm font-black text-[#0F172A] dark:text-white flex items-center gap-2">
+                      <i data-lucide="scale" class="w-4 h-4 text-emerald-600"></i>
+                      <span>APMC Mandi vs AnkurMitra Farmgate Direct Rate Comparison (₹/Quintal)</span>
+                    </h2>
+                    <p class="text-xs text-[#64748B] dark:text-slate-400">Farmers eliminate broker fees & mandi cess by selling directly to verified buyers</p>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-[#0B6623] dark:bg-emerald-900/60 dark:text-emerald-300 shrink-0">
+                    +₹310/q Avg Farmer Gain
+                  </span>
+                </div>
+
+                <div class="h-44">
+                  <canvas id="chartMandiComparison"></canvas>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+                  <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800">
+                    <span class="text-[10px] text-[#64748B] font-bold">Cotton Shankar-6</span>
+                    <div class="font-extrabold text-emerald-600 mt-0.5">+₹330 /q</div>
+                  </div>
+                  <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800">
+                    <span class="text-[10px] text-[#64748B] font-bold">Groundnut GG-20</span>
+                    <div class="font-extrabold text-emerald-600 mt-0.5">+₹280 /q</div>
+                  </div>
+                  <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800">
+                    <span class="text-[10px] text-[#64748B] font-bold">Wheat Tukdi</span>
+                    <div class="font-extrabold text-emerald-600 mt-0.5">+₹170 /q</div>
+                  </div>
+                  <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800">
+                    <span class="text-[10px] text-[#64748B] font-bold">Cumin (Jeera)</span>
+                    <div class="font-extrabold text-emerald-600 mt-0.5">+₹900 /q</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Live Operations Activity Stream (5 Cols) -->
+              <div class="lg:col-span-5 saas-card p-5 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-3">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                      <h2 class="text-xs font-black text-[#0F172A] dark:text-white">Live Operations Feed</h2>
+                    </div>
+                    <button type="button" onclick="injectSimulatedOpsEvent()" class="text-[10px] font-bold text-[#0B6623] dark:text-emerald-400 hover:underline flex items-center gap-1">
+                      <i data-lucide="plus" class="w-3 h-3"></i> Add Event
+                    </button>
+                  </div>
+
+                  <!-- Live Stream Feed Items -->
+                  <div id="dashboardLiveOpsFeed" class="space-y-2.5 max-h-[220px] overflow-y-auto pr-1">
+                    <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 text-xs flex items-start gap-2.5">
+                      <div class="w-7 h-7 rounded-lg bg-emerald-100 text-[#0B6623] flex items-center justify-center shrink-0 font-bold mt-0.5">
+                        <i data-lucide="sprout" class="w-3.5 h-3.5"></i>
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                          <span class="font-bold text-[#0F172A] dark:text-white truncate">Jayesh Patel (Sudavad)</span>
+                          <span class="text-[10px] text-emerald-600 font-mono font-bold shrink-0">Just now</span>
+                        </div>
+                        <p class="text-[11px] text-[#64748B] dark:text-slate-400 mt-0.5 truncate">Listed 40 quintals Groundnut GG-20 at ₹7,100/q</p>
+                      </div>
+                    </div>
+
+                    <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 text-xs flex items-start gap-2.5">
+                      <div class="w-7 h-7 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 font-bold mt-0.5">
+                        <i data-lucide="store" class="w-3.5 h-3.5"></i>
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                          <span class="font-bold text-[#0F172A] dark:text-white truncate">Kishan Agro (Bagasara)</span>
+                          <span class="text-[10px] text-[#64748B] font-mono shrink-0">3m ago</span>
+                        </div>
+                        <p class="text-[11px] text-[#64748B] dark:text-slate-400 mt-0.5 truncate">Accepted Urea Order #ORD-841 (10 bags)</p>
+                      </div>
+                    </div>
+
+                    <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 text-xs flex items-start gap-2.5">
+                      <div class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-800 flex items-center justify-center shrink-0 font-bold mt-0.5">
+                        <i data-lucide="truck" class="w-3.5 h-3.5"></i>
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                          <span class="font-bold text-[#0F172A] dark:text-white truncate">Dispatch Van GJ-14-X-9012</span>
+                          <span class="text-[10px] text-[#64748B] font-mono shrink-0">11m ago</span>
+                        </div>
+                        <p class="text-[11px] text-[#64748B] dark:text-slate-400 mt-0.5 truncate">En route Bagasara to Sudavad (12 drop-offs)</p>
+                      </div>
+                    </div>
+
+                    <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 text-xs flex items-start gap-2.5">
+                      <div class="w-7 h-7 rounded-lg bg-rose-100 text-rose-800 flex items-center justify-center shrink-0 font-bold mt-0.5">
+                        <i data-lucide="stethoscope" class="w-3.5 h-3.5"></i>
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                          <span class="font-bold text-[#0F172A] dark:text-white truncate">Crop Doctor Agronomist</span>
+                          <span class="text-[10px] text-[#64748B] font-mono shrink-0">24m ago</span>
+                        </div>
+                        <p class="text-[11px] text-[#64748B] dark:text-slate-400 mt-0.5 truncate">Issued Emamectin spray recommendation for Pink Bollworm</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px]">
+                  <span class="text-[#64748B] font-medium">Automatic 15-second refresh</span>
+                  <button type="button" onclick="navigateTo('live-pulse','Dashboard','Live pulse')" class="font-bold text-[#0B6623] hover:underline">
+                    Open Full Telemetry Desk →
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Bottom Operational Callout Strip (Cross-Module Fast Actions) -->
+            <div class="saas-card p-4 bg-gradient-to-r from-emerald-50/70 via-white to-amber-50/70 dark:from-emerald-950/30 dark:via-slate-900 dark:to-amber-950/20 border border-emerald-200 dark:border-emerald-800 flex flex-wrap items-center justify-between gap-4 shadow-xs">
               <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center font-bold">
-                  <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+                <div class="w-9 h-9 rounded-xl bg-[#0B6623] text-white flex items-center justify-center font-bold shadow-xs shrink-0">
+                  <i data-lucide="compass" class="w-5 h-5"></i>
                 </div>
                 <div>
-                  <div class="text-xs font-bold text-[#0F172A]">
-                    Gap detected: Sudavad farmers have no nearby input dealer.
+                  <div class="text-xs font-black text-[#0F172A] dark:text-white">
+                    Need to dispatch an agronomist advisory or recruit an input dealer for Sudavad?
                   </div>
-                  <div class="text-[11px] text-[#64748B]">
-                    Suggested: invite 1 dealer from Bagasara (11 km) and push seasonal urea credit offer.
+                  <div class="text-[11px] text-[#64748B] dark:text-slate-400">
+                    Use one-click routing to the Network Map, Coverage Gaps Studio, or Marketing Campaign Studio.
                   </div>
                 </div>
               </div>
 
               <div class="flex items-center gap-2">
-                <button onclick="navigateTo('network-map')" class="h-9 px-3.5 bg-white border border-[#E5E7EB] hover:bg-[#F8FAFC] text-xs font-bold text-[#0F172A] rounded-xl shadow-2xs">
-                  Open network map
+                <button type="button" onclick="navigateTo('network-map','Dashboard','Network map')" class="h-9 px-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 text-xs font-bold text-[#0F172A] dark:text-white rounded-xl shadow-2xs">
+                  Network Map
                 </button>
-                <button onclick="navigateTo('marketing-studio')" class="h-9 px-3.5 bg-white border border-[#E5E7EB] hover:bg-[#F8FAFC] text-xs font-bold text-[#0F172A] rounded-xl shadow-2xs">
-                  Open marketing studio
+                <button type="button" onclick="navigateTo('marketing-studio','Insights','Marketing studio')" class="h-9 px-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 text-xs font-bold text-[#0F172A] dark:text-white rounded-xl shadow-2xs">
+                  Marketing Studio
                 </button>
-                <button onclick="exportDashboardData()" class="h-9 px-4 bg-[#0B6623] hover:bg-[#074818] text-white text-xs font-bold rounded-xl shadow-xs">
-                  Export
+                <button type="button" onclick="openBroadcastAdvisoryModal()" class="h-9 px-4 bg-[#0B6623] hover:bg-[#074818] text-white text-xs font-bold rounded-xl shadow-xs">
+                  Send Advisory
                 </button>
               </div>
             </div>
 
           </div>
 
-
-          
           <!-- -------------------------------------------------------------
                VIEW 2: A03 USER LIST (Admin Desk)
                Columns: Name, Role, Place, Mobile, Status, Action
@@ -12049,19 +12445,19 @@
               <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-5 border-t border-white/20 text-xs">
                 <div>
                   <span class="text-sky-200 text-[10px] uppercase font-bold">Relative Humidity</span>
-                  <div class="text-lg font-black mt-0.5">58%</div>
+                  <div id="weatherHumidityVal" class="text-lg font-black mt-0.5">58%</div>
                 </div>
                 <div>
                   <span class="text-sky-200 text-[10px] uppercase font-bold">Wind Speed</span>
-                  <div class="text-lg font-black mt-0.5">12 km/h SW</div>
+                  <div id="weatherWindVal" class="text-lg font-black mt-0.5">12 km/h SW</div>
                 </div>
                 <div>
                   <span class="text-sky-200 text-[10px] uppercase font-bold">Soil Temp (10cm)</span>
-                  <div class="text-lg font-black mt-0.5">26.4°C</div>
+                  <div id="weatherSoilTempVal" class="text-lg font-black mt-0.5">26.4°C</div>
                 </div>
                 <div>
                   <span class="text-sky-200 text-[10px] uppercase font-bold">Dew Point</span>
-                  <div class="text-lg font-black mt-0.5">18.5°C</div>
+                  <div id="weatherDewPointVal" class="text-lg font-black mt-0.5">18.5°C</div>
                 </div>
               </div>
             </div>
@@ -21754,9 +22150,126 @@
 
                     </div>
 
-                    <!-- Brand Color Palette Selection -->
-                    <div class="pt-2">
-                      <label class="block text-xs font-bold text-[#0F172A] dark:text-white mb-2">Primary Brand Palette & Dashboard Accents</label>
+                    <!-- AnkurMitra Product Logo Brand Themes Section -->
+                    <div class="pt-3 border-t border-slate-100 dark:border-slate-800">
+                      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                        <div class="flex items-center gap-2.5">
+                          <div class="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 p-1 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center shrink-0 shadow-2xs">
+                            <img src="../assets/product_logo.png" alt="AnkurMitra Brand" class="h-6 w-auto object-contain">
+                          </div>
+                          <div>
+                            <h4 class="text-xs font-black text-[#0F172A] dark:text-white flex items-center gap-1.5">
+                              <span>Product Logo Brand Themes</span>
+                              <span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold bg-emerald-100 dark:bg-emerald-900/50 text-[#0B6623] dark:text-emerald-300">Emblem Palette</span>
+                            </h4>
+                            <p class="text-[10px] text-[#64748B] dark:text-slate-400">Themes calibrated directly from the Ankurmitra emblem (forest foliage, sprout leaves, rising sun gold, and fertile Saurashtra soil).</p>
+                          </div>
+                        </div>
+                        <span id="activeThemeBadgeDisplay" class="px-2.5 py-1 text-[10px] font-bold rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-[#0B6623] dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shrink-0">
+                          Harmonized Dual Active
+                        </span>
+                      </div>
+
+                      <!-- 5 Product Logo Theme Cards Grid -->
+                      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3" id="productLogoThemeCardsGrid">
+                        
+                        <!-- 1. Harmonized Dual -->
+                        <div onclick="selectProductLogoTheme('ankurmitra-harmony', true)" data-preset="ankurmitra-harmony" class="theme-preset-card active-theme p-3.5 rounded-2xl border-2 border-[#0B6623] bg-emerald-50/50 dark:bg-emerald-950/30">
+                          <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-1.5">
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#0B6623] shadow-xs ring-1 ring-white/50"></span>
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#22C55E] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#F59E0B] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#78350F] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                            </div>
+                            <span class="theme-check-badge w-5 h-5 rounded-full bg-[#0B6623] text-white flex items-center justify-center text-[10px] font-bold shadow-xs">✓</span>
+                          </div>
+                          <div class="text-xs font-black text-[#0F172A] dark:text-white">AnkurMitra Harmonized Dual</div>
+                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-0.5 leading-snug">Full brand symphony: forest canopy, sunrise amber, sprout green & furrowed soil.</p>
+                          <div class="mt-2 flex items-center gap-1">
+                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-[#E5F4EA] text-[#0B6623]">Forest #0B6623</span>
+                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-[#FEF3C7] text-[#D97706]">Sun #D97706</span>
+                          </div>
+                        </div>
+
+                        <!-- 2. Ankur Emerald -->
+                        <div onclick="selectProductLogoTheme('ankur-emerald', true)" data-preset="ankur-emerald" class="theme-preset-card p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+                          <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-1.5">
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#0B6623] shadow-xs ring-1 ring-white/50"></span>
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#15803D] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#22C55E] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                            </div>
+                            <span class="theme-check-badge w-5 h-5 rounded-full bg-[#0B6623] text-white flex items-center justify-center text-[10px] font-bold shadow-xs">✓</span>
+                          </div>
+                          <div class="text-xs font-black text-[#0F172A] dark:text-white">Ankur Signature Emerald</div>
+                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-0.5 leading-snug">Deep agricultural forest canopy inspired by mature cotton foliage and ANKUR text.</p>
+                          <div class="mt-2 flex items-center gap-1">
+                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-[#E5F4EA] text-[#0B6623]">Emerald #0B6623</span>
+                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-emerald-100 text-emerald-800">Canopy #15803D</span>
+                          </div>
+                        </div>
+
+                        <!-- 3. Mitra Spring Sprout -->
+                        <div onclick="selectProductLogoTheme('mitra-sprout', true)" data-preset="mitra-sprout" class="theme-preset-card p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+                          <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-1.5">
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#16A34A] shadow-xs ring-1 ring-white/50"></span>
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#65A30D] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#84CC16] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                            </div>
+                            <span class="theme-check-badge w-5 h-5 rounded-full bg-[#16A34A] text-white flex items-center justify-center text-[10px] font-bold shadow-xs">✓</span>
+                          </div>
+                          <div class="text-xs font-black text-[#0F172A] dark:text-white">Mitra Spring Sprout</div>
+                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-0.5 leading-snug">Vibrant living lime & sprout green representing new crop germination and MITRA partnership.</p>
+                          <div class="mt-2 flex items-center gap-1">
+                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-green-100 text-green-800">Sprout #16A34A</span>
+                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-lime-100 text-lime-800">Lime #84CC16</span>
+                          </div>
+                        </div>
+
+                        <!-- 4. Surya Sunrise Gold -->
+                        <div onclick="selectProductLogoTheme('surya-gold', true)" data-preset="surya-gold" class="theme-preset-card p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+                          <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-1.5">
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#D97706] shadow-xs ring-1 ring-white/50"></span>
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#EA580C] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#F59E0B] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                            </div>
+                            <span class="theme-check-badge w-5 h-5 rounded-full bg-[#D97706] text-white flex items-center justify-center text-[10px] font-bold shadow-xs">✓</span>
+                          </div>
+                          <div class="text-xs font-black text-[#0F172A] dark:text-white">Surya Sunrise Gold</div>
+                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-0.5 leading-snug">Warm radiant amber and dawn gold inspired by the rising sun spreading over Saurashtra fields.</p>
+                          <div class="mt-2 flex items-center gap-1">
+                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-amber-100 text-amber-900">Solar #D97706</span>
+                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-orange-100 text-orange-900">Dawn #EA580C</span>
+                          </div>
+                        </div>
+
+                        <!-- 5. Dharati Fertile Soil -->
+                        <div onclick="selectProductLogoTheme('dharati-soil', true)" data-preset="dharati-soil" class="theme-preset-card p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+                          <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-1.5">
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#78350F] shadow-xs ring-1 ring-white/50"></span>
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#92400E] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                              <span class="w-3.5 h-3.5 rounded-full bg-[#B45309] shadow-xs ring-1 ring-white/50 -ml-1"></span>
+                            </div>
+                            <span class="theme-check-badge w-5 h-5 rounded-full bg-[#78350F] text-white flex items-center justify-center text-[10px] font-bold shadow-xs">✓</span>
+                          </div>
+                          <div class="text-xs font-black text-[#0F172A] dark:text-white">Dharati Fertile Soil</div>
+                          <p class="text-[10px] text-[#64748B] dark:text-slate-400 mt-0.5 leading-snug">Grounded organic bronze & terracotta soil tones inspired by fertile agricultural field furrows.</p>
+                          <div class="mt-2 flex items-center gap-1">
+                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-amber-100 text-amber-950">Soil #78350F</span>
+                            <span class="px-1.5 py-0.5 rounded text-[8px] font-extrabold bg-orange-100 text-orange-950">Furrow #92400E</span>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <!-- Individual Accent Swatches -->
+                    <div class="pt-3">
+                      <label class="block text-xs font-bold text-[#0F172A] dark:text-white mb-2">Individual Primary Accent Color Override</label>
                       <div class="grid grid-cols-2 sm:grid-cols-6 gap-2.5" id="portalBrandColorGrid">
                         
                         <button type="button" onclick="selectPortalAccentColor('#0B6623', 'Forest Emerald')" class="portal-accent-swatch active p-2.5 rounded-xl border-2 border-[#0B6623] bg-emerald-50/50 dark:bg-emerald-950/30 flex items-center gap-2 transition text-left" data-color="#0B6623">
@@ -34327,20 +34840,31 @@ if (document.readyState === "loading") {
       const tempEl = document.getElementById('weatherCardTemp');
       if (titleEl) titleEl.textContent = taluka + ' Taluka (Amreli District)';
 
-      const temps = {
-        'Amreli': '32°C',
-        'Bagasara': '33°C',
-        'Dhari': '31°C',
-        'Babra': '34°C',
-        'Rajula': '30°C',
-        'Savarkundla': '32°C',
-        'Jafrabad': '29°C',
-        'Lathi': '33°C',
-        'Lilia': '32°C',
-        'Khambha': '31°C'
+      const weatherData = {
+        'Amreli': { temp: '32°C', hum: '58%', wind: '12 km/h SW', soil: '26.4°C', dew: '18.5°C', spray: 'Safe For Spraying' },
+        'Bagasara': { temp: '33°C', hum: '52%', wind: '14 km/h W', soil: '27.1°C', dew: '17.8°C', spray: 'Safe For Spraying' },
+        'Dhari': { temp: '31°C', hum: '64%', wind: '9 km/h S', soil: '25.8°C', dew: '19.2°C', spray: 'Safe For Spraying' },
+        'Babra': { temp: '34°C', hum: '48%', wind: '11 km/h WNW', soil: '28.0°C', dew: '16.5°C', spray: 'Safe For Spraying' },
+        'Rajula': { temp: '30°C', hum: '72%', wind: '18 km/h S (Coastal)', soil: '25.2°C', dew: '21.0°C', spray: 'Caution: Coastal Breeze' },
+        'Savarkundla': { temp: '32°C', hum: '56%', wind: '13 km/h SSW', soil: '26.8°C', dew: '18.1°C', spray: 'Safe For Spraying' },
+        'Jafrabad': { temp: '29°C', hum: '76%', wind: '20 km/h SW', soil: '24.9°C', dew: '22.4°C', spray: 'Delay: High Humidity & Wind' },
+        'Lathi': { temp: '33°C', hum: '50%', wind: '12 km/h W', soil: '27.4°C', dew: '17.2°C', spray: 'Safe For Spraying' },
+        'Lilia': { temp: '32°C', hum: '54%', wind: '10 km/h WSW', soil: '26.6°C', dew: '18.0°C', spray: 'Safe For Spraying' },
+        'Khambha': { temp: '31°C', hum: '60%', wind: '12 km/h S', soil: '26.0°C', dew: '18.9°C', spray: 'Safe For Spraying' }
       };
-      if (tempEl) tempEl.textContent = temps[taluka] || '32°C';
-      showToast('Loaded micro-climate weather feed for ' + taluka, 'info');
+
+      const d = weatherData[taluka] || weatherData['Amreli'];
+      if (tempEl) tempEl.textContent = d.temp;
+      const hEl = document.getElementById('weatherHumidityVal');
+      if (hEl) hEl.textContent = d.hum;
+      const wEl = document.getElementById('weatherWindVal');
+      if (wEl) wEl.textContent = d.wind;
+      const sEl = document.getElementById('weatherSoilTempVal');
+      if (sEl) sEl.textContent = d.soil;
+      const dwEl = document.getElementById('weatherDewPointVal');
+      if (dwEl) dwEl.textContent = d.dew;
+
+      showToast('Loaded micro-climate weather feed for ' + taluka + ' (' + d.temp + ', ' + d.spray + ')', 'info');
     }
 
     // ─── SCHEME APPLICATIONS CONTROLLERS ────────────────────────────────────────
@@ -40959,6 +41483,9 @@ function updateSettingsLiveClock(tz) {
       if (document.getElementById('cfgTopProgressBar')) document.getElementById('cfgTopProgressBar').checked = true;
 
       selectPortalAccentColor('#0B6623', 'Forest Emerald');
+      if (typeof selectProductLogoTheme === 'function') {
+        selectProductLogoTheme('ankurmitra-harmony', false);
+      }
 
       recordSettingAuditEntry('Platform preferences reset to factory defaults', 'Portal Settings');
 
@@ -41033,6 +41560,11 @@ function updateSettingsLiveClock(tz) {
         const currSel = document.getElementById('portalPrefCurrency');
         if (currSel) currSel.value = savedCurr;
         applyCurrencyPreference(savedCurr, false);
+
+        const savedThemePreset = localStorage.getItem('ankurmitra_theme_preset') || 'ankurmitra-harmony';
+        if (typeof selectProductLogoTheme === 'function') {
+          selectProductLogoTheme(savedThemePreset, false);
+        }
 
         updateSettingsLiveClock(savedTz);
         syncSettingsAcrossAllPages();
@@ -42453,5 +42985,78 @@ window.renderFeatureFlags = function() {
 
 <script src="portal-upgrade.js"></script>
 <script src="../assets/portal-motion.js" defer></script>
+
+  <!-- Broadcast Advisory Operational Modal -->
+  <div id="broadcastAdvisoryModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+    <div class="saas-card w-full max-w-lg p-6 bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-[#0B6623] text-white flex items-center justify-center font-bold">
+            <i data-lucide="radio" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-sm font-black text-[#0F172A] dark:text-white">Broadcast Cluster Advisory</h3>
+            <p class="text-[11px] text-[#64748B] dark:text-slate-400">Direct multi-channel notification to farmers, dealers, or villages</p>
+          </div>
+        </div>
+        <button type="button" onclick="closeBroadcastAdvisoryModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <form onsubmit="submitBroadcastAdvisory(event)" class="space-y-3.5 text-xs">
+        <div>
+          <label class="block font-bold text-[#0F172A] dark:text-white mb-1">Target Cluster / Village</label>
+          <select id="broadcastTargetVillage" class="w-full h-10 px-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-semibold outline-none focus:ring-2 focus:ring-[#0B6623]">
+            <option value="Sudavad" selected>Sudavad (640 Farmers · Pink Bollworm Window)</option>
+            <option value="Bagasara">Bagasara (86 Dealers · 140 Retailers · Kishan Agro)</option>
+            <option value="Amreli">Amreli City (18 Industrial Mills · APMC Mandi)</option>
+            <option value="Dhari">Dhari Outpost (Horticulture & Organic)</option>
+            <option value="All">All Amreli District (1,484 Total Network)</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-[#0F172A] dark:text-white mb-1">Target Audience</label>
+            <select id="broadcastAudience" class="w-full h-10 px-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-semibold outline-none focus:ring-2 focus:ring-[#0B6623]">
+              <option value="farmers" selected>Farmers Only</option>
+              <option value="dealers">Input Dealers Only</option>
+              <option value="retailers">Retailers Only</option>
+              <option value="all">Entire Ecosystem</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-[#0F172A] dark:text-white mb-1">Priority Channel</label>
+            <select id="broadcastChannel" class="w-full h-10 px-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-semibold outline-none focus:ring-2 focus:ring-[#0B6623]">
+              <option value="all" selected>WhatsApp + In-App Push + SMS</option>
+              <option value="whatsapp">WhatsApp Direct</option>
+              <option value="push">In-App Push Alert</option>
+              <option value="sms">SMS Fast Gateway</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-[#0F172A] dark:text-white mb-1">Advisory Title</label>
+          <input id="broadcastTitle" required value="Pink Bollworm Spray Window — Sudavad Cotton" class="w-full h-10 px-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-semibold outline-none focus:ring-2 focus:ring-[#0B6623]">
+        </div>
+
+        <div>
+          <label class="block font-bold text-[#0F172A] dark:text-white mb-1">Gujarati / English Advisory Text</label>
+          <textarea id="broadcastBody" rows="3" class="w-full p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-semibold outline-none focus:ring-2 focus:ring-[#0B6623]">જયેશભાઈ અને સુડાવદના કપાસ ખેડૂતો: પિંક બોલવોર્મ સામે આજે સાંજે 4 થી 6 વાગ્યા વચ્ચે એમામેક્ટીન બેન્ઝોએટ 5% SG નો છંટકાવ કરવો. પવનની ગતિ 12 કિમી/કલાક અનુકૂળ છે.</textarea>
+        </div>
+
+        <div class="pt-2 flex items-center justify-end gap-2.5">
+          <button type="button" onclick="closeBroadcastAdvisoryModal()" class="h-9 px-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-[#0F172A] dark:text-white font-bold rounded-xl">Cancel</button>
+          <button type="submit" class="h-9 px-5 bg-[#0B6623] hover:bg-[#074818] text-white font-bold rounded-xl shadow-xs flex items-center gap-1.5">
+            <i data-lucide="send" class="w-3.5 h-3.5"></i>
+            <span>Broadcast Immediately</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
 </body>
 </html>

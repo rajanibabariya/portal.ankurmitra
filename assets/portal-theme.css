@@ -8,10 +8,35 @@
    on containers (fixed-position modals inside views keep working).
    ========================================================================= */
 
-:root {
+
+/* =========================================================================
+   ANKURMITRA OFFICIAL PRODUCT LOGO THEME ENGINE
+   Derived directly from the official AnkurMitra emblem:
+   - Forest Emerald: mature crop foliage & "ANKUR" wordmark
+   - Vibrant Sprout Green: fresh seedling & "MITRA" wordmark
+   - Radiant Solar Gold: sunrise emblem bringing warmth & prosperity
+   - Fertile Soil Bronze: agricultural furrowed earth & baseline swoop
+   ========================================================================= */
+
+:root,
+html[data-theme-preset="ankurmitra-harmony"],
+html:not([data-theme-preset]) {
+  --am-theme-id: "ankurmitra-harmony";
+  --am-theme-name: "AnkurMitra Harmonized Dual";
+  --am-primary: #0B6623;
+  --am-primary-hover: #074818;
+  --am-primary-dark: #044B22;
+  --am-primary-light: #E5F4EA;
+  --am-secondary: #D97706;
+  --am-secondary-hover: #B45309;
+  --am-accent: #22C55E;
+  --am-leaf: #16A34A;
+  --am-sun: #F59E0B;
+  --am-sun-orange: #EA580C;
+  --am-soil: #78350F;
+  --am-soil-dark: #5C2C16;
   --am-green: #0B6623;
   --am-green-2: #12863a;
-  --am-leaf: #7CB342;
   --am-teal: #00A6C7;
   --am-ink: #0F172A;
   --am-ease: cubic-bezier(.22, 1, .36, 1);
@@ -19,9 +44,151 @@
   --am-shadow-sm: 0 1px 2px rgba(15, 23, 42, .04), 0 2px 6px -2px rgba(15, 23, 42, .05);
   --am-shadow-md: 0 2px 4px rgba(15, 23, 42, .04), 0 12px 28px -10px rgba(11, 102, 35, .18);
   --am-shadow-glow: 0 8px 24px -8px rgba(11, 102, 35, .55);
+  --am-glow: rgba(11, 102, 35, 0.45);
+  --am-ring: rgba(11, 102, 35, 0.28);
   --am-glass: rgba(255, 255, 255, .72);
   --am-canvas: #F5F8F6;
+  --am-surface-accent: rgba(11, 102, 35, 0.08);
+  --am-gradient-brand: linear-gradient(115deg, #044B22 0%, #0B6623 45%, #D97706 100%);
+  --am-gradient-subtle: linear-gradient(135deg, rgba(11, 102, 35, 0.08) 0%, rgba(217, 119, 6, 0.05) 100%);
+  --am-badge-bg: #E5F4EA;
+  --am-badge-text: #0B6623;
+  --am-top-loader: linear-gradient(90deg, #044B22, #0B6623, #22C55E, #F59E0B, #EA580C);
 }
+
+html[data-theme-preset="ankur-emerald"] {
+  --am-theme-id: "ankur-emerald";
+  --am-theme-name: "Ankur Signature Emerald";
+  --am-primary: #0B6623;
+  --am-primary-hover: #074818;
+  --am-primary-dark: #044B22;
+  --am-primary-light: #E5F4EA;
+  --am-secondary: #15803D;
+  --am-secondary-hover: #166534;
+  --am-accent: #22C55E;
+  --am-leaf: #22C55E;
+  --am-sun: #F59E0B;
+  --am-soil: #78350F;
+  --am-green: #0B6623;
+  --am-green-2: #15803D;
+  --am-glow: rgba(11, 102, 35, 0.45);
+  --am-ring: rgba(11, 102, 35, 0.28);
+  --am-surface-accent: rgba(11, 102, 35, 0.08);
+  --am-gradient-brand: linear-gradient(115deg, #044B22 0%, #0B6623 55%, #15803D 100%);
+  --am-gradient-subtle: linear-gradient(135deg, rgba(11, 102, 35, 0.08) 0%, rgba(34, 197, 94, 0.04) 100%);
+  --am-badge-bg: #E5F4EA;
+  --am-badge-text: #0B6623;
+  --am-top-loader: linear-gradient(90deg, #044B22, #0B6623, #15803D, #22C55E);
+}
+
+html[data-theme-preset="mitra-sprout"] {
+  --am-theme-id: "mitra-sprout";
+  --am-theme-name: "Mitra Spring Sprout";
+  --am-primary: #16A34A;
+  --am-primary-hover: #15803D;
+  --am-primary-dark: #166534;
+  --am-primary-light: #DCFCE7;
+  --am-secondary: #65A30D;
+  --am-secondary-hover: #4D7C0F;
+  --am-accent: #84CC16;
+  --am-leaf: #84CC16;
+  --am-sun: #F59E0B;
+  --am-soil: #78350F;
+  --am-green: #16A34A;
+  --am-green-2: #65A30D;
+  --am-glow: rgba(22, 163, 74, 0.45);
+  --am-ring: rgba(22, 163, 74, 0.28);
+  --am-surface-accent: rgba(22, 163, 74, 0.08);
+  --am-gradient-brand: linear-gradient(115deg, #15803D 0%, #16A34A 55%, #65A30D 100%);
+  --am-gradient-subtle: linear-gradient(135deg, rgba(22, 163, 74, 0.08) 0%, rgba(132, 204, 22, 0.05) 100%);
+  --am-badge-bg: #DCFCE7;
+  --am-badge-text: #15803D;
+  --am-top-loader: linear-gradient(90deg, #15803D, #16A34A, #65A30D, #84CC16);
+}
+
+html[data-theme-preset="surya-gold"] {
+  --am-theme-id: "surya-gold";
+  --am-theme-name: "Surya Sunrise Gold";
+  --am-primary: #D97706;
+  --am-primary-hover: #B45309;
+  --am-primary-dark: #92400E;
+  --am-primary-light: #FEF3C7;
+  --am-secondary: #EA580C;
+  --am-secondary-hover: #C2410C;
+  --am-accent: #F59E0B;
+  --am-leaf: #22C55E;
+  --am-sun: #FBBF24;
+  --am-soil: #78350F;
+  --am-green: #D97706;
+  --am-green-2: #EA580C;
+  --am-glow: rgba(217, 119, 6, 0.45);
+  --am-ring: rgba(217, 119, 6, 0.28);
+  --am-surface-accent: rgba(217, 119, 6, 0.08);
+  --am-gradient-brand: linear-gradient(115deg, #B45309 0%, #D97706 50%, #F59E0B 100%);
+  --am-gradient-subtle: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, rgba(245, 158, 11, 0.05) 100%);
+  --am-badge-bg: #FEF3C7;
+  --am-badge-text: #92400E;
+  --am-top-loader: linear-gradient(90deg, #B45309, #D97706, #F59E0B, #EA580C);
+}
+
+html[data-theme-preset="dharati-soil"] {
+  --am-theme-id: "dharati-soil";
+  --am-theme-name: "Dharati Fertile Soil";
+  --am-primary: #78350F;
+  --am-primary-hover: #5C2C16;
+  --am-primary-dark: #451A03;
+  --am-primary-light: #FEF3C7;
+  --am-secondary: #92400E;
+  --am-secondary-hover: #78350F;
+  --am-accent: #B45309;
+  --am-leaf: #22C55E;
+  --am-sun: #F59E0B;
+  --am-soil: #78350F;
+  --am-green: #78350F;
+  --am-green-2: #92400E;
+  --am-glow: rgba(120, 53, 15, 0.45);
+  --am-ring: rgba(120, 53, 15, 0.28);
+  --am-surface-accent: rgba(120, 53, 15, 0.08);
+  --am-gradient-brand: linear-gradient(115deg, #451A03 0%, #78350F 55%, #92400E 100%);
+  --am-gradient-subtle: linear-gradient(135deg, rgba(120, 53, 15, 0.08) 0%, rgba(180, 83, 9, 0.05) 100%);
+  --am-badge-bg: #FEF3C7;
+  --am-badge-text: #78350F;
+  --am-top-loader: linear-gradient(90deg, #451A03, #78350F, #B45309, #F59E0B);
+}
+
+/* Dark mode variations for product logo themes */
+html.dark[data-theme-preset="ankurmitra-harmony"],
+html.dark:not([data-theme-preset]) {
+  --am-primary-light: rgba(11, 102, 35, 0.25);
+  --am-surface-accent: rgba(11, 102, 35, 0.18);
+  --am-badge-bg: rgba(11, 102, 35, 0.3);
+  --am-badge-text: #4ADE80;
+}
+html.dark[data-theme-preset="ankur-emerald"] {
+  --am-primary-light: rgba(11, 102, 35, 0.25);
+  --am-surface-accent: rgba(11, 102, 35, 0.18);
+  --am-badge-bg: rgba(11, 102, 35, 0.3);
+  --am-badge-text: #4ADE80;
+}
+html.dark[data-theme-preset="mitra-sprout"] {
+  --am-primary-light: rgba(22, 163, 74, 0.25);
+  --am-surface-accent: rgba(22, 163, 74, 0.18);
+  --am-badge-bg: rgba(22, 163, 74, 0.3);
+  --am-badge-text: #86EFAC;
+}
+html.dark[data-theme-preset="surya-gold"] {
+  --am-primary-light: rgba(217, 119, 6, 0.25);
+  --am-surface-accent: rgba(217, 119, 6, 0.18);
+  --am-badge-bg: rgba(217, 119, 6, 0.3);
+  --am-badge-text: #FDE047;
+}
+html.dark[data-theme-preset="dharati-soil"] {
+  --am-primary-light: rgba(120, 53, 15, 0.25);
+  --am-surface-accent: rgba(120, 53, 15, 0.18);
+  --am-badge-bg: rgba(120, 53, 15, 0.3);
+  --am-badge-text: #FCD34D;
+}
+
 
 html { scroll-behavior: smooth; }
 ::selection { background: rgba(124, 179, 66, .28); color: inherit; }
@@ -80,9 +247,10 @@ html.dark #sidebarZoneA, html.dark #sidebarZoneC { background: transparent !impo
 }
 
 .child-nav-selected {
-  background: linear-gradient(110deg, var(--am-green) 0%, var(--am-green-2) 55%, #2a9a46 100%) !important;
+  background: var(--am-gradient-brand) !important;
   background-size: 200% 100% !important;
-  box-shadow: var(--am-shadow-glow), inset 0 1px 0 rgba(255, 255, 255, .18) !important;
+  box-shadow: 0 4px 16px -4px var(--am-glow), inset 0 1px 0 rgba(255, 255, 255, .22) !important;
+  color: #FFFFFF !important;
   animation: am-nav-pop .45s var(--am-spring) backwards, am-gradient-drift 6s ease-in-out infinite;
 }
 @keyframes am-nav-pop {
@@ -814,4 +982,40 @@ html.dark header[role="banner"] input { background-color: rgba(15, 23, 42, .55) 
     scroll-behavior: auto !important;
   }
   .am-particle { display: none; }
+}
+
+
+#portalTopProgressBar {
+  background: var(--am-top-loader) !important;
+}
+
+.text-\[\#0B6623\] {
+  color: var(--am-primary) !important;
+}
+
+.border-\[\#0B6623\] {
+  border-color: var(--am-primary) !important;
+}
+
+/* Theme preset visual selector cards */
+.theme-preset-card {
+  position: relative;
+  border: 2px solid transparent;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+.theme-preset-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -8px var(--am-glow, rgba(15, 23, 42, 0.15));
+}
+.theme-preset-card.active-theme {
+  border-color: var(--am-primary) !important;
+  background: var(--am-surface-accent) !important;
+  box-shadow: 0 0 0 1px var(--am-primary), 0 8px 24px -6px var(--am-glow) !important;
+}
+.theme-preset-card .theme-check-badge {
+  display: none;
+}
+.theme-preset-card.active-theme .theme-check-badge {
+  display: flex !important;
 }
